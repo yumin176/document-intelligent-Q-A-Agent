@@ -24,6 +24,13 @@ class Settings(BaseSettings):
     embedding_timeout: float = 30.0
     embedding_batch_size: int = 20
 
+    # LLM：默认复用 Embedding 的 base_url / api_key
+    llm_base_url: str = ""
+    llm_api_key: str = ""
+    llm_model: str = "qwen-plus"
+    llm_temperature: float = 0.0
+    llm_timeout: float = 30.0
+
     # Milvus：本地 Docker Compose 默认地址
     milvus_uri: str = "http://127.0.0.1:19530"
     milvus_collection_name: str = "qa_chunks"
