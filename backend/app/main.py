@@ -3,7 +3,9 @@
 from fastapi import FastAPI
 
 from app.api.routes.health import router as health_router
+from app.api.routes.chat import router as chat_router
 from app.config import get_settings
+from app.api.routes.documents import router as documents_router
 
 
 def create_app() -> FastAPI:
@@ -18,6 +20,8 @@ def create_app() -> FastAPI:
         version=settings.app_version,
     )
     app.include_router(health_router)
+    app.include_router(chat_router)
+    app.include_router(documents_router)
     return app
 
 

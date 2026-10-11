@@ -27,3 +27,10 @@ def test_complete_wraps_prompt_as_user_message() -> None:
     model.complete("帮我")
     assert model.calls[0][0].role == "user"
     assert model.calls[0][0].content == "帮我"
+
+
+def test_fake_chat_stream() -> None:
+    model = FakeChatModel(response="abc")
+    chunks = list(model.stream([ChatMessage(role="user", content="hi")]))
+    assert chunks == ["a", "b", "c"]
+    assert len(model.calls) == 1

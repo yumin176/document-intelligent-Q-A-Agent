@@ -2,6 +2,7 @@
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from typing import Iterator
 
 
 @dataclass
@@ -25,6 +26,14 @@ class ChatModel(ABC):
         temperature: float | None = None,
     ) -> str:
         """根据消息列表生成回答。"""
+    @abstractmethod
+    def stream(
+        self,
+        messages: list[ChatMessage],
+        temperature: float | None = None,
+    )->Iterator[str]:
+        """流式输出"""
+
 
     def complete(self, prompt: str, temperature: float | None = None) -> str:
         """把一段纯文本当作单条 user 消息交给模型。"""

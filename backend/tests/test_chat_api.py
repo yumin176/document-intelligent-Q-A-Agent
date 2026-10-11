@@ -1,0 +1,59 @@
+from fastapi.testclient import TestClient
+
+from app.dependencies import get_rag_service
+from app.main import create_app
+from app.rag.service import RAGService
+from app.llm.fake import FakeChatModel
+from app.embedding.fake import FakeEmbedder
+from app.vectorstore.base import ChunkRecord
+from app.vectorstore.memory import InMemoryVectorStore
+
+
+def make_test_service():
+    # 用 FakeEmbedder + InMemoryVectorStore + FakeChatModel 组装
+    store = InMemoryVectorStore()
+    store.upsert(
+        [
+            ChunkRecord(
+                id="doc:0",
+                text="员工每年有 10 天带薪年假",
+                embedding=[1.0, 0.0, 0.0],
+                metadata={"filename": "员工手册.md"},
+            )
+        ]
+    )
+    return RAGService(
+        embedder=FakeEmbedder(dim=3),
+        vector_store=store,
+        chat_model=FakeChatModel(response="fake answer"),
+        top_k=2,
+    )
+
+
+def test_chat_endpoint():
+    app = create_app()
+    app.dependency_overrides[get_rag_service] = make_test_service
+    client = TestClient(app)
+
+    response = client.post("/api/chat", json={"question": "测试"})
+
+    assert response.status_code == 200
+    data = response.json()
+    print(data)
+    assert data["answer"] == "fake answer"
+    assert data["sources"][0]["chunk_id"] == "doc:0"
+
+def test_chat_stream_endpoint():
+    app = create_app()
+    app.dependency_overrides[get_rag_service] = make_test_service
+    client = TestClient(app)
+
+    with client.stream("POST", "/api/chat/stream", json={"question": "测试"}) as response:
+        assert response.status_code == 200
+        assert "text/event-stream" in response.headers["content-type"]
+        body = "".join(response.iter_text())
+
+    assert "event: sources" in body
+    assert '"chunk_id": "doc:0"' in body
+    assert "event: delta" in body
+    assert "event: done" in body

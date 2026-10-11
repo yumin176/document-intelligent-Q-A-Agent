@@ -5,11 +5,13 @@ from app.llm.base import ChatMessage, ChatModel
 from app.prompts.templates import build_rag_system_prompt
 from app.rag.models import RAGAnswer, Source
 from app.vectorstore.base import SearchResult, VectorStore
-
+from collections.abc import Iterator
 
 class RAGService:
     """把 Embedding、向量检索和 LLM 生成串联起来。"""
-
+    """
+    在线检索：传入问题->问题向量化->问题检索->组装上下文->LLM回答->返回回答
+    """
     def __init__(
         self,
         embedder: Embedder,
@@ -61,3 +63,38 @@ class RAGService:
         ]
 
         return RAGAnswer(answer=answer_text, sources=sources)
+
+    def answer_stream(
+        self,
+        question: str,
+        top_k: int | None = None,
+    ) -> tuple[Iterator[str], list[Source]]:
+        k = top_k or self.top_k
+
+        question_vector = self.embedder.embed(question)
+        hits = self.vector_store.search(question_vector, top_k=k)
+
+        context_blocks = []
+        for index, hit in enumerate(hits, start=1):
+            source_name = hit.metadata.get("filename") or hit.metadata.get("source") or hit.id
+            context_blocks.append(f"[{index}] 来源: {source_name}\n{hit.text}")
+        context = "\n\n".join(context_blocks)
+
+        system_prompt = build_rag_system_prompt(context)
+        messages = [
+            ChatMessage(role="system", content=system_prompt),
+            ChatMessage(role="user", content=question),
+        ]
+
+        sources = [
+            Source(
+                chunk_id=hit.id,
+                score=hit.score,
+                text=hit.text,
+                metadata=hit.metadata,
+            )
+            for hit in hits
+        ]
+
+        # 返回 token 生成器和引用来源
+        return self.chat_model.stream(messages), sources

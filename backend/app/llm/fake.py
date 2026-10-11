@@ -1,5 +1,7 @@
 """测试用的假 LLM 实现。"""
 
+from typing import Iterator
+
 from app.llm.base import ChatMessage, ChatModel
 
 
@@ -17,3 +19,7 @@ class FakeChatModel(ChatModel):
     ) -> str:
         self.calls.append(messages)
         return self.response
+    def stream(self, messages: list[ChatMessage], temperature: float | None = None) -> Iterator[str]:
+        self.calls.append(messages)
+        for i in self.response:
+            yield i
