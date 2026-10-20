@@ -5,6 +5,7 @@
 """
 
 from functools import lru_cache
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -31,10 +32,20 @@ class Settings(BaseSettings):
     llm_temperature: float = 0.0
     llm_timeout: float = 30.0
 
+    # Rerank API
+    rerank_api_url: str = "https://aihubmix.com/v1/rerank"
+    rerank_api_key: str = ""
+    rerank_model: str = "cohere-rerank-v4.0-fast"
+    rerank_timeout: float = 30.0
+
     # Milvus：本地 Docker Compose 默认地址
     milvus_uri: str = "http://127.0.0.1:19530"
     milvus_collection_name: str = "qa_chunks"
     milvus_timeout: float = 10.0
+
+    # Retrieval
+    retrieval_mode: Literal["vector", "bm25", "hybrid", "hybrid_rerank"] = "vector"
+    retrieval_candidate_k: int = 10
 
     model_config = SettingsConfigDict(
         env_file=".env",

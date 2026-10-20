@@ -5,7 +5,7 @@ import json
 from pymilvus import MilvusClient
 
 from app.config import get_settings
-from app.vectorstore.base import ChunkRecord, SearchResult, VectorStore
+from app.vectorstore.base import ChunkRecord, SearchResult, VectorStore,TextRecord
 
 
 class MilvusStore(VectorStore):
@@ -82,6 +82,30 @@ class MilvusStore(VectorStore):
                 )
             )
         return search_results
+
+    def all_chunks(self)->list[TextRecord]:
+        if not self._client.has_collection(self.collection_name):
+            return []
+        rows = self._client.query(
+            collection_name=self.collection_name,
+            filter="",
+            output_fields=["id", "text", "metadata_json"],
+            limit=16384,
+            consistency_level="Strong",
+        )
+
+        records: list[TextRecord] = []
+        for row in rows:
+            records.append(
+                TextRecord(
+                    id=str(row["id"]),
+                    text=str(row.get("text") or ""),
+                    metadata=json.loads(row.get("metadata_json") or "{}"),
+                )
+            )
+        return records
+
+
 
     def close(self) -> None:
         self._client.close()

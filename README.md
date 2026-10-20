@@ -13,9 +13,9 @@
 | M1 | 文档解析、分块、Embedding、Milvus 入库与检索 | ✅ 已完成 |
 | M2 | LLM 接入层、RAG 组装服务、引用溯源 | ✅ 已完成 |
 | M3 | FastAPI 接口、SSE 流式输出、文档上传、原生前端 | ✅ 已完成 |
-| M4 | 混合检索（向量 + BM25 + Rerank）与对比评测 | ⏳ 待开始 |
+| M4 | 混合检索（向量 + BM25 + Rerank）与对比评测 | ✅ 已完成 |
 | M5 | LangGraph Agent 工作流（Router / Grader / Rewrite） | ⏳ 待开始 |
-| M6 | LangSmith 追踪、检索评测、Docker 打包收尾 | ⏳ 待开始 |
+| M6 | LangSmith 追踪、Docker 打包与最终收尾 | ⏳ 待开始 |
 
 ## 技术栈
 
@@ -24,6 +24,7 @@
 | 后端 | FastAPI + Uvicorn |
 | Agent / LLM | OpenAI 兼容 SDK（可切换 DeepSeek / 百炼 / OpenAI 等） |
 | 向量库 | Milvus 2.5（Docker Compose） |
+| 检索 | 向量检索 + BM25 + RRF + Rerank |
 | Embedding | OpenAI 兼容接口（示例：百炼 `qwen3.7-text-embedding`） |
 | LLM | OpenAI 兼容接口（示例：`deepseek-v4-flash`、`qwen-plus`） |
 | 前端 | 原生 HTML / CSS / JavaScript |
@@ -36,13 +37,18 @@
 - 文档解析：支持 `.txt` / `.md` / `.pdf`
 - 文本分块：支持 `chunk_size` 与 `chunk_overlap`
 - 向量化入库：批量调用 Embedding API，写入 Milvus
-- 语义检索：基于余弦相似度的 top-k 检索
+- 向量检索：基于余弦相似度的 top-k 检索
+- BM25 关键词检索：jieba 分词 + rank_bm25
+- 混合检索：向量与 BM25 通过 RRF 融合
+- Rerank 精排：支持 Cohere 兼容 API、LLM Rerank 与 NoOp 基线
+- 可配置检索模式：`vector` / `bm25` / `hybrid` / `hybrid_rerank`
+- 检索评测：Recall@k、Hit@k、MRR@k、nDCG@k 与延迟对比
 - RAG 生成：检索结果编号注入 Prompt，LLM 依据资料回答
 - 引用溯源：回答标注 `[1]`，返回 `filename`、`chunk_index`、`score`
 - SSE 流式输出：模型 token 逐步推送，前端打字机效果
 - 文件上传接口：浏览器直接上传文档并写入知识库
 - 原生前端：对话、上传、流式渲染、引用卡片
-- 可替换设计：`Embedder` / `VectorStore` / `ChatModel` 均面向接口编程
+- 可替换设计：`Embedder` / `VectorStore` / `Retriever` / `Reranker` / `ChatModel` 均面向接口编程
 
 ## 系统架构
 
@@ -61,12 +67,15 @@
                            │
 ┌──────────────────────────▼──────────────────────────────┐
 │                        RAGService                        │
-│  问题向量化 → Milvus 检索 → Prompt 组装 → LLM 生成        │
+│  Retriever → Prompt 组装 → LLM 流式生成 → 引用溯源        │
 └──────────────────────────┬──────────────────────────────┘
                            │
-        ┌──────────────────┼──────────────────┐
-        ▼                  ▼                  ▼
-   Embedding API       Milvus             LLM API
+┌──────────────────────────▼──────────────────────────────┐
+│                     Retrieval Pipeline                   │
+│  Vector / BM25 → RRF 融合 → 可选 Rerank → top-k          │
+└──────────────┬───────────────────────────┬──────────────┘
+               ▼                           ▼
+       Embedding API + Milvus         Rerank API
 ```
 
 ### Milvus 依赖组件
@@ -102,11 +111,18 @@ backend/
 │   ├── vectorstore/         # 向量库接口、内存版、Milvus 版
 │   ├── llm/                 # ChatModel 接口、Fake、OpenAI 兼容实现
 │   ├── rag/                 # RAGService 组装层
+│   ├── retrieval/           # 向量、BM25、RRF、Rerank 检索器
+│   ├── rerank/              # Cohere / LLM / NoOp Reranker
+│   ├── evaluation/          # Recall、MRR、nDCG 指标与评测运行器
 │   └── prompts/             # Prompt 模板
 ├── scripts/
 │   ├── inspect_milvus.py    # 只读查看 Milvus 数据
 │   ├── ingest_js_note.py    # 命令行文档入库演示
-│   └── ask.py               # 命令行 RAG 问答
+│   ├── ask.py               # 命令行 RAG 问答
+│   └── evaluate_retrieval.py # 多模式检索对比评测
+├── evaluation/
+│   ├── retrieval_cases.jsonl # 27 条标注问题
+│   └── results.json          # 最近一次完整评测报告
 └── tests/                   # 单元测试与集成测试
 
 frontend/
@@ -151,6 +167,13 @@ EMBEDDING_MODEL=你的 Embedding 模型名
 LLM_BASE_URL=你的 LLM 服务地址
 LLM_API_KEY=你的 LLM Key
 LLM_MODEL=你的 LLM 模型名
+
+RERANK_API_URL=https://aihubmix.com/v1/rerank
+RERANK_API_KEY=你的 Rerank Key
+RERANK_MODEL=cohere-rerank-v4.0-fast
+
+RETRIEVAL_MODE=hybrid_rerank
+RETRIEVAL_CANDIDATE_K=10
 ```
 
 > `LLM_BASE_URL` / `LLM_API_KEY` 留空时，会复用 `EMBEDDING_BASE_URL` / `EMBEDDING_API_KEY`。
@@ -305,6 +328,37 @@ cd backend
 .\.venv\Scripts\python.exe scripts\inspect_milvus.py --limit 10
 ```
 
+## 检索评测
+
+评测集位于 `backend/evaluation/retrieval_cases.jsonl`，当前包含 27 条基于 `js.md` 标注的问题。
+评测只比较检索质量，不调用 LLM 生成回答。
+
+```powershell
+cd backend
+.\.venv\Scripts\python.exe scripts\evaluate_retrieval.py
+```
+
+指定参数或保存完整报告：
+
+```powershell
+.\.venv\Scripts\python.exe scripts\evaluate_retrieval.py `
+  --modes vector bm25 hybrid hybrid_rerank `
+  --top-k 5 --candidate-k 10 `
+  --show-misses --output evaluation\results.json
+```
+
+最近一次结果（27 题，`top_k=5`，`candidate_k=10`）：
+
+| 模式 | Recall@5 | Hit@5 | MRR@5 | nDCG@5 | 平均延迟 |
+|---|---:|---:|---:|---:|---:|
+| `vector` | 1.0000 | 1.0000 | 0.9105 | 0.9212 | 522.87 ms |
+| `bm25` | 0.9630 | 0.9630 | 0.7963 | 0.8389 | 0.52 ms |
+| `hybrid` | 0.9815 | 1.0000 | 0.8457 | 0.8731 | 552.46 ms |
+| `hybrid_rerank` | 1.0000 | 1.0000 | 1.0000 | 0.9941 | 1090.15 ms |
+
+> 延迟受网络、模型服务和运行环境影响，只适合做同一环境下的相对比较。
+> 完整逐题结果见 `backend/evaluation/results.json`。
+
 ## 配置说明
 
 | 环境变量 | 默认值 | 说明 |
@@ -323,6 +377,12 @@ cd backend
 | `MILVUS_URI` | `http://127.0.0.1:19530` | Milvus 连接地址 |
 | `MILVUS_COLLECTION_NAME` | `qa_chunks` | 默认 Collection 名称 |
 | `MILVUS_TIMEOUT` | `10` | Milvus 请求超时（秒） |
+| `RERANK_API_URL` | `https://aihubmix.com/v1/rerank` | Rerank 接口地址 |
+| `RERANK_API_KEY` | 空 | Rerank API Key |
+| `RERANK_MODEL` | `cohere-rerank-v4.0-fast` | Rerank 模型名 |
+| `RERANK_TIMEOUT` | `30` | Rerank 请求超时（秒） |
+| `RETRIEVAL_MODE` | `vector` | `vector` / `bm25` / `hybrid` / `hybrid_rerank` |
+| `RETRIEVAL_CANDIDATE_K` | `10` | 混合检索与 Rerank 前的候选数量 |
 
 ## 测试
 
@@ -340,11 +400,13 @@ cd backend
 - RAGService 编排
 - ChatModel 流式接口
 - Chat / SSE / 文件上传 API
+- BM25、RRF 混合检索与 Rerank 回退逻辑
+- 检索评测指标与数据集加载
 
 健康状态下预期：
 
 ```text
-28 passed
+70 passed
 ```
 
 ## 常用 Docker 命令

@@ -1,0 +1,5049 @@
+{
+  "dataset": "E:\\01-学习\\01-项目练习\\document-intelligent-Q-A-Agent\\backend\\evaluation\\retrieval_cases.jsonl",
+  "case_count": 27,
+  "top_k": 5,
+  "candidate_k": 10,
+  "results": {
+    "vector": {
+      "mode": "vector",
+      "summary": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 0.9104938271604938,
+        "ndcg": 0.921163674881817,
+        "latency_ms": 522.8705333321597
+      },
+      "elapsed_ms": 14119.460000074469,
+      "queries": [
+        {
+          "case_id": "js-001",
+          "question": "var 声明的变量有哪些特点？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1120.978100108914
+        },
+        {
+          "case_id": "js-002",
+          "question": "const 和 let 为什么在声明前访问变量会报错？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              17
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 598.4126999974251
+        },
+        {
+          "case_id": "js-003",
+          "question": "JS 的简单数据类型和复杂数据类型分别有哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 400.81350004766136
+        },
+        {
+          "case_id": "js-004",
+          "question": "简单数据类型和复杂数据类型在内存中是如何存储的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 600.0132999615744
+        },
+        {
+          "case_id": "js-005",
+          "question": "typeof 判断 null、数组和 Date 时会得到什么结果？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              7
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 601.1933000991121
+        },
+        {
+          "case_id": "js-006",
+          "question": "instanceof 运算符有什么作用，适合判断什么类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              3
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 397.4615999031812
+        },
+        {
+          "case_id": "js-007",
+          "question": "如何通过 constructor 判断对象的构造函数类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              18
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 601.484699989669
+        },
+        {
+          "case_id": "js-008",
+          "question": "isPrototypeOf 方法如何判断原型链关系？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              5
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 402.30469999369234
+        },
+        {
+          "case_id": "js-009",
+          "question": "Object.prototype.toString.call 有什么用途？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              5
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              6
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.35800002422184
+        },
+        {
+          "case_id": "js-010",
+          "question": "什么是包装数据类型，它是什么时候创建的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              7
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 396.6401999350637
+        },
+        {
+          "case_id": "js-011",
+          "question": "JS 数据类型转换有哪些方式？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 600.5854000104591
+        },
+        {
+          "case_id": "js-012",
+          "question": "闭包是什么，作用域链在其中起什么作用？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 800.4888999275863
+        },
+        {
+          "case_id": "js-013",
+          "question": "如何使用闭包解决 var 在循环中输出同一结果的问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 402.00349991209805
+        },
+        {
+          "case_id": "js-014",
+          "question": "DOM2 级事件如何绑定多个处理函数并解绑其中一个？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 596.4999999850988
+        },
+        {
+          "case_id": "js-015",
+          "question": "DOM 事件流包含哪几个阶段？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              23
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 600.9739000583068
+        },
+        {
+          "case_id": "js-016",
+          "question": "事件委托为什么能提升网页性能？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 398.7814000574872
+        },
+        {
+          "case_id": "js-017",
+          "question": "如何阻止事件冒泡？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 399.8929000226781
+        },
+        {
+          "case_id": "js-018",
+          "question": "preventDefault 和 return false 阻止默认事件有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 400.66289994865656
+        },
+        {
+          "case_id": "js-019",
+          "question": "属性描述符的 writable、enumerable、configurable 默认值是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              25
+            ],
+            [
+              "js.md",
+              21
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              15
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 599.103800021112
+        },
+        {
+          "case_id": "js-020",
+          "question": "如何使用 getter 和 setter 定义访问器属性？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              25
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              17
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.94529995601624
+        },
+        {
+          "case_id": "js-021",
+          "question": "class 和构造函数有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 401.1735999956727
+        },
+        {
+          "case_id": "js-022",
+          "question": "为什么 JS 浮点数计算会出现精度问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.1168999345973
+        },
+        {
+          "case_id": "js-023",
+          "question": "严格模式和非严格模式有哪些区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              22
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 402.6066000806168
+        },
+        {
+          "case_id": "js-024",
+          "question": "函数防抖和节流分别是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 396.42459992319345
+        },
+        {
+          "case_id": "js-025",
+          "question": "浅拷贝和深拷贝有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              25
+            ],
+            [
+              "js.md",
+              28
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 800.1520000398159
+        },
+        {
+          "case_id": "js-026",
+          "question": "JSON.parse(JSON.stringify()) 实现深拷贝有什么缺陷？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              25
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              27
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 599.6195999905467
+        },
+        {
+          "case_id": "js-027",
+          "question": "JS 的微任务和宏任务分别包括哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:30",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              30
+            ],
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              30
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 400.8130000438541
+        }
+      ]
+    },
+    "bm25": {
+      "mode": "bm25",
+      "summary": {
+        "recall": 0.9629629629629629,
+        "hit": 0.9629629629629629,
+        "mrr": 0.7962962962962963,
+        "ndcg": 0.8388570464076003,
+        "latency_ms": 0.5220555424414299
+      },
+      "elapsed_ms": 14.901499962434173,
+      "queries": [
+        {
+          "case_id": "js-001",
+          "question": "var 声明的变量有哪些特点？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.4832999547943473
+        },
+        {
+          "case_id": "js-002",
+          "question": "const 和 let 为什么在声明前访问变量会报错？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              23
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.4401999758556485
+        },
+        {
+          "case_id": "js-003",
+          "question": "JS 的简单数据类型和复杂数据类型分别有哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.3774999640882015
+        },
+        {
+          "case_id": "js-004",
+          "question": "简单数据类型和复杂数据类型在内存中是如何存储的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 0.4143000114709139
+        },
+        {
+          "case_id": "js-005",
+          "question": "typeof 判断 null、数组和 Date 时会得到什么结果？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.39379997178912163
+        },
+        {
+          "case_id": "js-006",
+          "question": "instanceof 运算符有什么作用，适合判断什么类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              3
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              3
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.3507999936118722
+        },
+        {
+          "case_id": "js-007",
+          "question": "如何通过 constructor 判断对象的构造函数类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              5
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 0.32270001247525215
+        },
+        {
+          "case_id": "js-008",
+          "question": "isPrototypeOf 方法如何判断原型链关系？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:27"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              27
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              5
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.2804999239742756
+        },
+        {
+          "case_id": "js-009",
+          "question": "Object.prototype.toString.call 有什么用途？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              5
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              3
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              6
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.29499991796910763
+        },
+        {
+          "case_id": "js-010",
+          "question": "什么是包装数据类型，它是什么时候创建的？",
+          "retrieved_ids": [
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4"
+          ],
+          "retrieved_keys": [
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              7
+            ]
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 0.3651999868452549
+        },
+        {
+          "case_id": "js-011",
+          "question": "JS 数据类型转换有哪些方式？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6934264036172708,
+          "latency_ms": 0.24429999757558107
+        },
+        {
+          "case_id": "js-012",
+          "question": "闭包是什么，作用域链在其中起什么作用？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              9
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              23
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.41280000004917383
+        },
+        {
+          "case_id": "js-013",
+          "question": "如何使用闭包解决 var 在循环中输出同一结果的问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              23
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 0.4669999470934272
+        },
+        {
+          "case_id": "js-014",
+          "question": "DOM2 级事件如何绑定多个处理函数并解绑其中一个？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.6175999296829104
+        },
+        {
+          "case_id": "js-015",
+          "question": "DOM 事件流包含哪几个阶段？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              29
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 0.34600007347762585
+        },
+        {
+          "case_id": "js-016",
+          "question": "事件委托为什么能提升网页性能？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              29
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.28469995595514774
+        },
+        {
+          "case_id": "js-017",
+          "question": "如何阻止事件冒泡？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              29
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.17180002760142088
+        },
+        {
+          "case_id": "js-018",
+          "question": "preventDefault 和 return false 阻止默认事件有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.4385999636724591
+        },
+        {
+          "case_id": "js-019",
+          "question": "属性描述符的 writable、enumerable、configurable 默认值是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              15
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.40490005630999804
+        },
+        {
+          "case_id": "js-020",
+          "question": "如何使用 getter 和 setter 定义访问器属性？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              17
+            ]
+          ],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 0.358699937351048
+        },
+        {
+          "case_id": "js-021",
+          "question": "class 和构造函数有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6934264036172708,
+          "latency_ms": 4.474999965168536
+        },
+        {
+          "case_id": "js-022",
+          "question": "为什么 JS 浮点数计算会出现精度问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              22
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.3828000044450164
+        },
+        {
+          "case_id": "js-023",
+          "question": "严格模式和非严格模式有哪些区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              22
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.36159995943307877
+        },
+        {
+          "case_id": "js-024",
+          "question": "函数防抖和节流分别是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:16"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              16
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8772153153380493,
+          "latency_ms": 0.31130004208534956
+        },
+        {
+          "case_id": "js-025",
+          "question": "浅拷贝和深拷贝有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 0.30519999563694
+        },
+        {
+          "case_id": "js-026",
+          "question": "JSON.parse(JSON.stringify()) 实现深拷贝有什么缺陷？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              27
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.3925000783056021
+        },
+        {
+          "case_id": "js-027",
+          "question": "JS 的微任务和宏任务分别包括哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:30",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              30
+            ],
+            [
+              "js.md",
+              29
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "tmpsubnh1r5.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              30
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 0.39739999920129776
+        }
+      ]
+    },
+    "hybrid": {
+      "mode": "hybrid",
+      "summary": {
+        "recall": 0.9814814814814815,
+        "hit": 1.0,
+        "mrr": 0.845679012345679,
+        "ndcg": 0.8731247984076101,
+        "latency_ms": 552.4571222141041
+      },
+      "elapsed_ms": 14918.269300018437,
+      "queries": [
+        {
+          "case_id": "js-001",
+          "question": "var 声明的变量有哪些特点？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 920.2380999922752
+        },
+        {
+          "case_id": "js-002",
+          "question": "const 和 let 为什么在声明前访问变量会报错？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              18
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.54380004201084
+        },
+        {
+          "case_id": "js-003",
+          "question": "JS 的简单数据类型和复杂数据类型分别有哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 599.83610000927
+        },
+        {
+          "case_id": "js-004",
+          "question": "简单数据类型和复杂数据类型在内存中是如何存储的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 399.8319999082014
+        },
+        {
+          "case_id": "js-005",
+          "question": "typeof 判断 null、数组和 Date 时会得到什么结果？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 599.7516999486834
+        },
+        {
+          "case_id": "js-006",
+          "question": "instanceof 运算符有什么作用，适合判断什么类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              3
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 600.9447000687942
+        },
+        {
+          "case_id": "js-007",
+          "question": "如何通过 constructor 判断对象的构造函数类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 598.9963999018073
+        },
+        {
+          "case_id": "js-008",
+          "question": "isPrototypeOf 方法如何判断原型链关系？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              5
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 600.0818000175059
+        },
+        {
+          "case_id": "js-009",
+          "question": "Object.prototype.toString.call 有什么用途？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              6
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 599.2142999311909
+        },
+        {
+          "case_id": "js-010",
+          "question": "什么是包装数据类型，它是什么时候创建的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              7
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 402.2100999718532
+        },
+        {
+          "case_id": "js-011",
+          "question": "JS 数据类型转换有哪些方式？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 600.2898999722674
+        },
+        {
+          "case_id": "js-012",
+          "question": "闭包是什么，作用域链在其中起什么作用？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "5782ca8ab886ca9dcbc35d2064ec30c4:3"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "tmpsubnh1r5.md",
+              3
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 600.0700000440702
+        },
+        {
+          "case_id": "js-013",
+          "question": "如何使用闭包解决 var 在循环中输出同一结果的问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 397.09310000762343
+        },
+        {
+          "case_id": "js-014",
+          "question": "DOM2 级事件如何绑定多个处理函数并解绑其中一个？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 402.29350002482533
+        },
+        {
+          "case_id": "js-015",
+          "question": "DOM 事件流包含哪几个阶段？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 396.84309996664524
+        },
+        {
+          "case_id": "js-016",
+          "question": "事件委托为什么能提升网页性能？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 601.1799999978393
+        },
+        {
+          "case_id": "js-017",
+          "question": "如何阻止事件冒泡？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 599.4301000609994
+        },
+        {
+          "case_id": "js-018",
+          "question": "preventDefault 和 return false 阻止默认事件有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              23
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 602.7116000186652
+        },
+        {
+          "case_id": "js-019",
+          "question": "属性描述符的 writable、enumerable、configurable 默认值是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              15
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 997.8710999712348
+        },
+        {
+          "case_id": "js-020",
+          "question": "如何使用 getter 和 setter 定义访问器属性？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              17
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 401.4780999859795
+        },
+        {
+          "case_id": "js-021",
+          "question": "class 和构造函数有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              3
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6934264036172708,
+          "latency_ms": 598.63519994542
+        },
+        {
+          "case_id": "js-022",
+          "question": "为什么 JS 浮点数计算会出现精度问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.7470000758767
+        },
+        {
+          "case_id": "js-023",
+          "question": "严格模式和非严格模式有哪些区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              22
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 598.4963999362662
+        },
+        {
+          "case_id": "js-024",
+          "question": "函数防抖和节流分别是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 402.15060010086745
+        },
+        {
+          "case_id": "js-025",
+          "question": "浅拷贝和深拷贝有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 597.2470999695361
+        },
+        {
+          "case_id": "js-026",
+          "question": "JSON.parse(JSON.stringify()) 实现深拷贝有什么缺陷？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              27
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 603.431599913165
+        },
+        {
+          "case_id": "js-027",
+          "question": "JS 的微任务和宏任务分别包括哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:30",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              30
+            ],
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              30
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 396.7248999979347
+        }
+      ]
+    },
+    "hybrid_rerank": {
+      "mode": "hybrid_rerank",
+      "summary": {
+        "recall": 1.0,
+        "hit": 1.0,
+        "mrr": 1.0,
+        "ndcg": 0.9940533917887545,
+        "latency_ms": 1090.1462999991727
+      },
+      "elapsed_ms": 29435.67380006425,
+      "queries": [
+        {
+          "case_id": "js-001",
+          "question": "var 声明的变量有哪些特点？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1638.9342000475153
+        },
+        {
+          "case_id": "js-002",
+          "question": "const 和 let 为什么在声明前访问变量会报错？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 833.7952999863774
+        },
+        {
+          "case_id": "js-003",
+          "question": "JS 的简单数据类型和复杂数据类型分别有哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1483.3817000035197
+        },
+        {
+          "case_id": "js-004",
+          "question": "简单数据类型和复杂数据类型在内存中是如何存储的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              8
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1514.0225000213832
+        },
+        {
+          "case_id": "js-005",
+          "question": "typeof 判断 null、数组和 Date 时会得到什么结果？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              7
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 662.0588999940082
+        },
+        {
+          "case_id": "js-006",
+          "question": "instanceof 运算符有什么作用，适合判断什么类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              2
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              6
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              3
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1322.239000000991
+        },
+        {
+          "case_id": "js-007",
+          "question": "如何通过 constructor 判断对象的构造函数类型？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:18"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              18
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1580.214999965392
+        },
+        {
+          "case_id": "js-008",
+          "question": "isPrototypeOf 方法如何判断原型链关系？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:5",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:6"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              5
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              6
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              5
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1403.92970002722
+        },
+        {
+          "case_id": "js-009",
+          "question": "Object.prototype.toString.call 有什么用途？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:6",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:3",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:2"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              6
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              3
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              2
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              6
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 921.310400008224
+        },
+        {
+          "case_id": "js-010",
+          "question": "什么是包装数据类型，它是什么时候创建的？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              4
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              7
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 966.6187999537215
+        },
+        {
+          "case_id": "js-011",
+          "question": "JS 数据类型转换有哪些方式？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:7",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              7
+            ],
+            [
+              "js.md",
+              1
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 925.017699948512
+        },
+        {
+          "case_id": "js-012",
+          "question": "闭包是什么，作用域链在其中起什么作用？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              9
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1017.9680000292137
+        },
+        {
+          "case_id": "js-013",
+          "question": "如何使用闭包解决 var 在循环中输出同一结果的问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:9",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              9
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 809.2061999486759
+        },
+        {
+          "case_id": "js-014",
+          "question": "DOM2 级事件如何绑定多个处理函数并解绑其中一个？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 649.3707998888567
+        },
+        {
+          "case_id": "js-015",
+          "question": "DOM 事件流包含哪几个阶段？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ],
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1241.2299000425264
+        },
+        {
+          "case_id": "js-016",
+          "question": "事件委托为什么能提升网页性能？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              10
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 761.8206000188366
+        },
+        {
+          "case_id": "js-017",
+          "question": "如何阻止事件冒泡？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 994.7240999899805
+        },
+        {
+          "case_id": "js-018",
+          "question": "preventDefault 和 return false 阻止默认事件有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:14",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12",
+            "e16532bf63c722f5c3e7700dcfc08a3f:11"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              12
+            ],
+            [
+              "js.md",
+              11
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              14
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1294.2441999912262
+        },
+        {
+          "case_id": "js-019",
+          "question": "属性描述符的 writable、enumerable、configurable 默认值是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              25
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              15
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1026.049300096929
+        },
+        {
+          "case_id": "js-020",
+          "question": "如何使用 getter 和 setter 定义访问器属性？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:16",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:15",
+            "e16532bf63c722f5c3e7700dcfc08a3f:8",
+            "e16532bf63c722f5c3e7700dcfc08a3f:21"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              15
+            ],
+            [
+              "js.md",
+              8
+            ],
+            [
+              "js.md",
+              21
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              16
+            ],
+            [
+              "js.md",
+              17
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1148.9079999737442
+        },
+        {
+          "case_id": "js-021",
+          "question": "class 和构造函数有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:18",
+            "e16532bf63c722f5c3e7700dcfc08a3f:17",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19",
+            "e16532bf63c722f5c3e7700dcfc08a3f:4",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              17
+            ],
+            [
+              "js.md",
+              19
+            ],
+            [
+              "js.md",
+              4
+            ],
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              18
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 932.3882999597117
+        },
+        {
+          "case_id": "js-022",
+          "question": "为什么 JS 浮点数计算会出现精度问题？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:1",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:10"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              1
+            ],
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              10
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1134.8148999968544
+        },
+        {
+          "case_id": "js-023",
+          "question": "严格模式和非严格模式有哪些区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:21",
+            "e16532bf63c722f5c3e7700dcfc08a3f:20",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0",
+            "e16532bf63c722f5c3e7700dcfc08a3f:19"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              0
+            ],
+            [
+              "js.md",
+              19
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              20
+            ],
+            [
+              "js.md",
+              21
+            ],
+            [
+              "js.md",
+              22
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 854.7826000722125
+        },
+        {
+          "case_id": "js-024",
+          "question": "函数防抖和节流分别是什么？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:22",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:12"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              22
+            ],
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              12
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.9197207891481876,
+          "latency_ms": 1144.364699954167
+        },
+        {
+          "case_id": "js-025",
+          "question": "浅拷贝和深拷贝有什么区别？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:24",
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              24
+            ],
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              25
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 854.2588000418618
+        },
+        {
+          "case_id": "js-026",
+          "question": "JSON.parse(JSON.stringify()) 实现深拷贝有什么缺陷？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:27",
+            "e16532bf63c722f5c3e7700dcfc08a3f:28",
+            "e16532bf63c722f5c3e7700dcfc08a3f:25",
+            "e16532bf63c722f5c3e7700dcfc08a3f:26",
+            "e16532bf63c722f5c3e7700dcfc08a3f:24"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              27
+            ],
+            [
+              "js.md",
+              28
+            ],
+            [
+              "js.md",
+              25
+            ],
+            [
+              "js.md",
+              26
+            ],
+            [
+              "js.md",
+              24
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              27
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1211.7443999741226
+        },
+        {
+          "case_id": "js-027",
+          "question": "JS 的微任务和宏任务分别包括哪些？",
+          "retrieved_ids": [
+            "e16532bf63c722f5c3e7700dcfc08a3f:30",
+            "e16532bf63c722f5c3e7700dcfc08a3f:29",
+            "e16532bf63c722f5c3e7700dcfc08a3f:23",
+            "e16532bf63c722f5c3e7700dcfc08a3f:13",
+            "e16532bf63c722f5c3e7700dcfc08a3f:0"
+          ],
+          "retrieved_keys": [
+            [
+              "js.md",
+              30
+            ],
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              23
+            ],
+            [
+              "js.md",
+              13
+            ],
+            [
+              "js.md",
+              0
+            ]
+          ],
+          "relevant_keys": [
+            [
+              "js.md",
+              29
+            ],
+            [
+              "js.md",
+              30
+            ]
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1106.5521000418812
+        }
+      ]
+    }
+  },
+  "errors": {}
+}

@@ -1,4 +1,4 @@
-from app.vectorstore.base import ChunkRecord, SearchResult, VectorStore
+from app.vectorstore.base import ChunkRecord, SearchResult, VectorStore,TextRecord
 import math
 
 def _cosine(a: list[float], b: list[float]) -> float:
@@ -48,3 +48,12 @@ class InMemoryVectorStore(VectorStore):
         ]
         return result
 
+    def all_chunks(self)->list[TextRecord]:
+        result=[
+            TextRecord(
+                id=id,
+                text=record.text,
+                metadata=record.metadata
+            ) for id,record in self._records.items()
+        ]
+        return result

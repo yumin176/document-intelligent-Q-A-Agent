@@ -1,23 +1,28 @@
 from fastapi.testclient import TestClient
 
-from app.dependencies import get_ingestion_service, get_rag_service
+from app.dependencies import get_ingestion_service
+from app.embedding.fake import FakeEmbedder
 from app.ingestion.service import IngestionService
 from app.main import create_app
-from app.embedding.fake import FakeEmbedder
-
 from app.vectorstore.memory import InMemoryVectorStore
-def make_test_ingestion_service():
+
+
+def make_test_ingestion_service() -> IngestionService:
     return IngestionService(
-        embedder=FakeEmbedder(),
-        vector_store=InMemoryVectorStore()
+        embedder=FakeEmbedder(dim=8),
+        vector_store=InMemoryVectorStore(),
     )
 
-def test_upload_document_endpoint():
+
+def test_upload_document_endpoint() -> None:
     app = create_app()
     app.dependency_overrides[get_ingestion_service] = make_test_ingestion_service
     client = TestClient(app)
 
     files = {"file": ("test.md", b"# title\ncontent", "text/markdown")}
     response = client.post("/api/documents", files=files)
+
     assert response.status_code == 200
-    assert response.json()["chunk_count"] >= 1
+    body = response.json()
+    assert body["chunk_count"] >= 1
+    assert body["filename"] == "test.md"

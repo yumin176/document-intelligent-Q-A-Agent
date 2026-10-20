@@ -1,0 +1,27 @@
+{"id": "js-001", "question": "var 声明的变量有哪些特点？", "relevant": [{"filename": "js.md", "chunk_index": 0}]}
+{"id": "js-002", "question": "const 和 let 为什么在声明前访问变量会报错？", "relevant": [{"filename": "js.md", "chunk_index": 0}]}
+{"id": "js-003", "question": "JS 的简单数据类型和复杂数据类型分别有哪些？", "relevant": [{"filename": "js.md", "chunk_index": 0}]}
+{"id": "js-004", "question": "简单数据类型和复杂数据类型在内存中是如何存储的？", "relevant": [{"filename": "js.md", "chunk_index": 1}]}
+{"id": "js-005", "question": "typeof 判断 null、数组和 Date 时会得到什么结果？", "relevant": [{"filename": "js.md", "chunk_index": 2}]}
+{"id": "js-006", "question": "instanceof 运算符有什么作用，适合判断什么类型？", "relevant": [{"filename": "js.md", "chunk_index": 3}]}
+{"id": "js-007", "question": "如何通过 constructor 判断对象的构造函数类型？", "relevant": [{"filename": "js.md", "chunk_index": 4}]}
+{"id": "js-008", "question": "isPrototypeOf 方法如何判断原型链关系？", "relevant": [{"filename": "js.md", "chunk_index": 5}]}
+{"id": "js-009", "question": "Object.prototype.toString.call 有什么用途？", "relevant": [{"filename": "js.md", "chunk_index": 6}]}
+{"id": "js-010", "question": "什么是包装数据类型，它是什么时候创建的？", "relevant": [{"filename": "js.md", "chunk_index": 7}]}
+{"id": "js-011", "question": "JS 数据类型转换有哪些方式？", "relevant": [{"filename": "js.md", "chunk_index": 8}, {"filename": "js.md", "chunk_index": 9}]}
+{"id": "js-012", "question": "闭包是什么，作用域链在其中起什么作用？", "relevant": [{"filename": "js.md", "chunk_index": 9}]}
+{"id": "js-013", "question": "如何使用闭包解决 var 在循环中输出同一结果的问题？", "relevant": [{"filename": "js.md", "chunk_index": 10}]}
+{"id": "js-014", "question": "DOM2 级事件如何绑定多个处理函数并解绑其中一个？", "relevant": [{"filename": "js.md", "chunk_index": 12}]}
+{"id": "js-015", "question": "DOM 事件流包含哪几个阶段？", "relevant": [{"filename": "js.md", "chunk_index": 13}]}
+{"id": "js-016", "question": "事件委托为什么能提升网页性能？", "relevant": [{"filename": "js.md", "chunk_index": 13}]}
+{"id": "js-017", "question": "如何阻止事件冒泡？", "relevant": [{"filename": "js.md", "chunk_index": 13}]}
+{"id": "js-018", "question": "preventDefault 和 return false 阻止默认事件有什么区别？", "relevant": [{"filename": "js.md", "chunk_index": 13}, {"filename": "js.md", "chunk_index": 14}]}
+{"id": "js-019", "question": "属性描述符的 writable、enumerable、configurable 默认值是什么？", "relevant": [{"filename": "js.md", "chunk_index": 15}]}
+{"id": "js-020", "question": "如何使用 getter 和 setter 定义访问器属性？", "relevant": [{"filename": "js.md", "chunk_index": 16}, {"filename": "js.md", "chunk_index": 17}]}
+{"id": "js-021", "question": "class 和构造函数有什么区别？", "relevant": [{"filename": "js.md", "chunk_index": 18}, {"filename": "js.md", "chunk_index": 19}]}
+{"id": "js-022", "question": "为什么 JS 浮点数计算会出现精度问题？", "relevant": [{"filename": "js.md", "chunk_index": 20}]}
+{"id": "js-023", "question": "严格模式和非严格模式有哪些区别？", "relevant": [{"filename": "js.md", "chunk_index": 20}, {"filename": "js.md", "chunk_index": 21}, {"filename": "js.md", "chunk_index": 22}]}
+{"id": "js-024", "question": "函数防抖和节流分别是什么？", "relevant": [{"filename": "js.md", "chunk_index": 23}, {"filename": "js.md", "chunk_index": 24}]}
+{"id": "js-025", "question": "浅拷贝和深拷贝有什么区别？", "relevant": [{"filename": "js.md", "chunk_index": 24}]}
+{"id": "js-026", "question": "JSON.parse(JSON.stringify()) 实现深拷贝有什么缺陷？", "relevant": [{"filename": "js.md", "chunk_index": 27}]}
+{"id": "js-027", "question": "JS 的微任务和宏任务分别包括哪些？", "relevant": [{"filename": "js.md", "chunk_index": 29}, {"filename": "js.md", "chunk_index": 30}]}

@@ -1,16 +1,16 @@
 from fastapi.testclient import TestClient
 
 from app.dependencies import get_rag_service
+from app.embedding.fake import FakeEmbedder
+from app.llm.fake import FakeChatModel
 from app.main import create_app
 from app.rag.service import RAGService
-from app.llm.fake import FakeChatModel
-from app.embedding.fake import FakeEmbedder
+from app.retrieval.vector import VectorRetriever
 from app.vectorstore.base import ChunkRecord
 from app.vectorstore.memory import InMemoryVectorStore
 
 
-def make_test_service():
-    # 用 FakeEmbedder + InMemoryVectorStore + FakeChatModel 组装
+def make_test_service() -> RAGService:
     store = InMemoryVectorStore()
     store.upsert(
         [
@@ -23,14 +23,16 @@ def make_test_service():
         ]
     )
     return RAGService(
-        embedder=FakeEmbedder(dim=3),
-        vector_store=store,
+        retriever=VectorRetriever(
+            embedder=FakeEmbedder(dim=3),
+            vector_store=store,
+        ),
         chat_model=FakeChatModel(response="fake answer"),
         top_k=2,
     )
 
 
-def test_chat_endpoint():
+def test_chat_endpoint() -> None:
     app = create_app()
     app.dependency_overrides[get_rag_service] = make_test_service
     client = TestClient(app)
@@ -39,11 +41,11 @@ def test_chat_endpoint():
 
     assert response.status_code == 200
     data = response.json()
-    print(data)
     assert data["answer"] == "fake answer"
     assert data["sources"][0]["chunk_id"] == "doc:0"
 
-def test_chat_stream_endpoint():
+
+def test_chat_stream_endpoint() -> None:
     app = create_app()
     app.dependency_overrides[get_rag_service] = make_test_service
     client = TestClient(app)

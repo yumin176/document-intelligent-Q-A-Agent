@@ -3,6 +3,8 @@
 用法：
     python scripts/ask.py "const和let有什么区别"
     python scripts/ask.py --top-k 5 "公司年假有多少天"
+
+检索策略由 backend/.env 的 RETRIEVAL_MODE 控制。
 """
 
 import argparse
@@ -13,10 +15,8 @@ BACKEND_ROOT = Path(__file__).resolve().parents[1]
 if str(BACKEND_ROOT) not in sys.path:
     sys.path.insert(0, str(BACKEND_ROOT))
 
-from app.embedding.openai import OpenAIEmbedder
-from app.llm.openai import OpenAIChatModel
-from app.rag.service import RAGService
-from app.vectorstore.milvus import MilvusStore
+from app.config import get_settings
+from app.dependencies import get_rag_service, get_vector_store
 
 
 def parse_args() -> argparse.Namespace:
@@ -31,22 +31,15 @@ def main() -> None:
         sys.stdout.reconfigure(encoding="utf-8")
 
     args = parse_args()
-
-    embedder = OpenAIEmbedder()
-    chat_model = OpenAIChatModel()
-    store = MilvusStore()
+    settings = get_settings()
+    service = get_rag_service()
 
     try:
-        service = RAGService(
-            embedder=embedder,
-            vector_store=store,
-            chat_model=chat_model,
-            top_k=args.top_k,
-        )
         result = service.answer(args.question, top_k=args.top_k)
 
         print("=" * 70)
         print(f"问题：{args.question}")
+        print(f"检索模式：{settings.retrieval_mode}")
         print("=" * 70)
         print("回答：")
         print(result.answer)
@@ -61,7 +54,7 @@ def main() -> None:
         else:
             print("\n未检索到任何资料。")
     finally:
-        store.close()
+        get_vector_store().close()
 
 
 if __name__ == "__main__":

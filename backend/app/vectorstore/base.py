@@ -23,6 +23,11 @@ class SearchResult:
     text: str
     metadata: dict = field(default_factory=dict)
 
+@dataclass
+class TextRecord:
+    id: str
+    text: str
+    metadata: dict = field(default_factory=dict)
 
 class VectorStore(ABC):
     """向量存储接口。
@@ -43,6 +48,10 @@ class VectorStore(ABC):
         filter_expr: str | None = None,
     ) -> list[SearchResult]:
         """按向量相似度检索 top_k 条记录。"""
+
+    @abstractmethod
+    def all_chunks(self) -> list[TextRecord]:
+        """返回全部 chunk 的文本和元数据，用于构建 BM25 索引。"""
 
     def close(self) -> None:
         """释放底层连接，子类按需实现。"""
