@@ -47,6 +47,9 @@ class Settings(BaseSettings):
     retrieval_mode: Literal["vector", "bm25", "hybrid", "hybrid_rerank"] = "vector"
     retrieval_candidate_k: int = 10
 
+    # Agent
+    agent_max_rewrites: int = 1
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

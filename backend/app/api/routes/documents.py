@@ -1,11 +1,11 @@
 import shutil
 import tempfile
+from collections.abc import Callable
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 
-from app.config import get_settings
-from app.dependencies import get_bm25_retriever, get_ingestion_service
+from app.dependencies import get_bm25_refresher, get_ingestion_service
 from app.ingestion.service import IngestionService
 from app.schemas import DocumentUploadResponse
 
@@ -16,6 +16,7 @@ router = APIRouter(prefix="/api", tags=["documents"])
 async def upload_document(
     file: UploadFile = File(...),
     service: IngestionService = Depends(get_ingestion_service),
+    refresh_bm25: Callable[[], None] = Depends(get_bm25_refresher),
 ) -> DocumentUploadResponse:
     suffix = Path(file.filename or "").suffix.lower()
     if suffix not in {".txt", ".md", ".pdf"}:
@@ -29,8 +30,7 @@ async def upload_document(
 
         ingest_result = service.ingest_file(path=temp_path, original_filename=file.filename)
 
-        if get_settings().retrieval_mode in {"bm25", "hybrid", "hybrid_rerank"}:
-            get_bm25_retriever().refresh()
+        refresh_bm25()
 
         return DocumentUploadResponse(
             document_id=ingest_result.document_id,

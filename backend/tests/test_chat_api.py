@@ -1,16 +1,17 @@
 from fastapi.testclient import TestClient
 
-from app.dependencies import get_rag_service
+from app.agent.graph import AgentRetrievalGraph
+from app.agent.service import AgentService
+from app.dependencies import get_agent_service
 from app.embedding.fake import FakeEmbedder
-from app.llm.fake import FakeChatModel
+from app.llm.fake import ScriptedChatModel
 from app.main import create_app
-from app.rag.service import RAGService
 from app.retrieval.vector import VectorRetriever
 from app.vectorstore.base import ChunkRecord
 from app.vectorstore.memory import InMemoryVectorStore
 
 
-def make_test_service() -> RAGService:
+def make_test_service() -> AgentService:
     store = InMemoryVectorStore()
     store.upsert(
         [
@@ -18,23 +19,32 @@ def make_test_service() -> RAGService:
                 id="doc:0",
                 text="员工每年有 10 天带薪年假",
                 embedding=[1.0, 0.0, 0.0],
-                metadata={"filename": "员工手册.md"},
+                metadata={"filename": "员工手册.md", "chunk_index": 0},
             )
         ]
     )
-    return RAGService(
+    model = ScriptedChatModel(
+        [
+            '{"route":"retrieve"}',
+            '{"relevant_indices":[1]}',
+            "fake answer",
+        ]
+    )
+    graph = AgentRetrievalGraph(
         retriever=VectorRetriever(
             embedder=FakeEmbedder(dim=3),
             vector_store=store,
         ),
-        chat_model=FakeChatModel(response="fake answer"),
+        chat_model=model,
+        max_rewrites=1,
         top_k=2,
     )
+    return AgentService(graph=graph, chat_model=model, top_k=2)
 
 
 def test_chat_endpoint() -> None:
     app = create_app()
-    app.dependency_overrides[get_rag_service] = make_test_service
+    app.dependency_overrides[get_agent_service] = make_test_service
     client = TestClient(app)
 
     response = client.post("/api/chat", json={"question": "测试"})
@@ -47,7 +57,7 @@ def test_chat_endpoint() -> None:
 
 def test_chat_stream_endpoint() -> None:
     app = create_app()
-    app.dependency_overrides[get_rag_service] = make_test_service
+    app.dependency_overrides[get_agent_service] = make_test_service
     client = TestClient(app)
 
     with client.stream("POST", "/api/chat/stream", json={"question": "测试"}) as response:

@@ -29,3 +29,71 @@ def build_rerank_prompt(query: str, candidates: list) -> str:
         f"用户问题：\n{query}\n\n"
         f"候选文档：\n{candidate_text}"
     )
+
+
+def build_router_prompt(question: str) -> str:
+    """判断问题是否需要访问文档知识库。"""
+    return (
+        "你是文档问答系统的路由器。请判断用户问题是否需要检索知识库。\n"
+        "只输出 JSON，不要输出 Markdown 或解释。\n"
+        '输出格式：{"route":"retrieve"} 或 {"route":"direct"}\n\n'
+        "选择 direct：问候、感谢、闲聊、询问助手身份或能力等不需要资料的问题。\n"
+        "选择 retrieve：涉及事实、概念、文档内容、代码知识或需要依据资料回答的问题。\n"
+        "无法确定时选择 retrieve。\n\n"
+        f"用户问题：\n{question}"
+    )
+
+
+def build_grader_prompt(question: str, candidates: list) -> str:
+    """让 LLM 判断召回候选与问题的相关性。"""
+    blocks = []
+    for index, candidate in enumerate(candidates, start=1):
+        source_name = (
+            candidate.metadata.get("filename")
+            or candidate.metadata.get("source")
+            or candidate.id
+        )
+        blocks.append(
+            f"[{index}] 来源: {source_name}\n"
+            f"内容: {candidate.text[:800]}"
+        )
+
+    candidate_text = "\n\n".join(blocks)
+    return (
+        "你是检索结果相关性评估器。请判断每个候选片段是否能直接帮助回答用户问题。\n"
+        "只输出 JSON，不要输出 Markdown 或解释。\n"
+        '输出格式：{"relevant_indices":[1,2]}\n'
+        "使用 1-based 候选编号；只保留确实相关的候选；没有相关候选时输出空数组。\n\n"
+        f"用户问题：\n{question}\n\n"
+        f"候选片段：\n{candidate_text}"
+    )
+
+
+def build_rewrite_prompt(
+    question: str,
+    current_query: str,
+    candidates: list,
+) -> str:
+    """当检索结果不相关时，让 LLM 改写检索查询。"""
+    snippets = []
+    for index, candidate in enumerate(candidates[:5], start=1):
+        snippets.append(f"[{index}] {candidate.text[:200]}")
+
+    candidate_text = "\n".join(snippets) or "无候选结果"
+    return (
+        "你是检索查询改写器。当前查询没有找到足够相关的资料。\n"
+        "请保留用户原始意图，补充同义表达、关键术语或上下文，生成一个更适合检索的新查询。\n"
+        "不要回答问题，不要解释，只输出 JSON。\n"
+        '输出格式：{"query":"新的检索查询"}\n\n'
+        f"原始问题：\n{question}\n\n"
+        f"当前查询：\n{current_query}\n\n"
+        f"上次候选片段：\n{candidate_text}"
+    )
+
+
+def build_direct_answer_prompt() -> str:
+    """不需要检索时的对话 system prompt。"""
+    return (
+        "你是文档问答助手的对话层。用户当前的问题不需要检索知识库。\n"
+        "请简洁、自然地回答，不要伪造文档引用，也不要声称答案来自知识库。"
+    )
