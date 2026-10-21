@@ -4,7 +4,7 @@
     python scripts/ask.py "const和let有什么区别"
     python scripts/ask.py --top-k 5 "公司年假有多少天"
 
-Agent 检索策略由 backend/.env 的 RETRIEVAL_MODE 控制。
+检索策略由 backend/.env 的 RETRIEVAL_MODE 控制。
 """
 
 import argparse
@@ -16,7 +16,7 @@ if str(BACKEND_ROOT) not in sys.path:
     sys.path.insert(0, str(BACKEND_ROOT))
 
 from app.config import get_settings
-from app.dependencies import get_agent_service, get_vector_store
+from app.dependencies import get_rag_service, get_vector_store
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,7 +32,7 @@ def main() -> None:
 
     args = parse_args()
     settings = get_settings()
-    service = get_agent_service()
+    service = get_rag_service()
 
     try:
         result = service.answer(args.question, top_k=args.top_k)

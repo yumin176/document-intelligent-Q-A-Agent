@@ -1,8 +1,8 @@
 """问答接口"""
 from fastapi import APIRouter,Depends
 from app.schemas import ChatResponse,ChatRequest,SourceOut
-from app.dependencies import get_agent_service
-from app.agent.service import AgentService
+from app.dependencies import get_rag_service
+from app.rag.service import RAGService
 import json
 from fastapi.responses import StreamingResponse
 
@@ -12,7 +12,7 @@ def _sse(event: str, data: dict) -> str:
     return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
 @router.post("/chat", response_model=ChatResponse)
-def chat(body:ChatRequest,service:AgentService=Depends(get_agent_service))->ChatResponse:
+def chat(body:ChatRequest,service:RAGService=Depends(get_rag_service))->ChatResponse:
     result=service.answer(
         question=body.question,
         top_k=body.top_k
@@ -32,7 +32,7 @@ def chat(body:ChatRequest,service:AgentService=Depends(get_agent_service))->Chat
 @router.post("/chat/stream")
 def chat_stream(
     body: ChatRequest,
-    service: AgentService = Depends(get_agent_service),
+    service: RAGService = Depends(get_rag_service),
 ):
     def generate():
         try:

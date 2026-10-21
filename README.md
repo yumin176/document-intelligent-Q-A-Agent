@@ -14,7 +14,7 @@
 | M2 | LLM 接入层、RAG 组装服务、引用溯源 | ✅ 已完成 |
 | M3 | FastAPI 接口、SSE 流式输出、文档上传、原生前端 | ✅ 已完成 |
 | M4 | 混合检索（向量 + BM25 + Rerank）与对比评测 | ✅ 已完成 |
-| M5 | LangGraph Agent 工作流（Router / Grader / Rewrite） | ✅ 已完成 |
+| M5 | LangGraph Agent 工作流（Router / Grader / Rewrite） | ⏳ 待开始 |
 | M6 | LangSmith 追踪、Docker 打包与最终收尾 | ⏳ 待开始 |
 
 ## 技术栈
@@ -23,7 +23,6 @@
 |---|---|
 | 后端 | FastAPI + Uvicorn |
 | Agent / LLM | OpenAI 兼容 SDK（可切换 DeepSeek / 百炼 / OpenAI 等） |
-| Agent 工作流 | LangGraph 1.2 |
 | 向量库 | Milvus 2.5（Docker Compose） |
 | 检索 | 向量检索 + BM25 + RRF + Rerank |
 | Embedding | OpenAI 兼容接口（示例：百炼 `qwen3.7-text-embedding`） |
@@ -44,10 +43,6 @@
 - Rerank 精排：支持 Cohere 兼容 API、LLM Rerank 与 NoOp 基线
 - 可配置检索模式：`vector` / `bm25` / `hybrid` / `hybrid_rerank`
 - 检索评测：Recall@k、Hit@k、MRR@k、nDCG@k 与延迟对比
-- Agent Router：自动区分 `direct` 直答与 `retrieve` 知识库检索
-- Agent Grader：过滤与问题无关的召回 chunk，减少上下文噪声
-- Agent Rewrite：检索无相关结果时改写查询并重试一次
-- 可控重试：支持最大改写次数配置与异常输出回退
 - RAG 生成：检索结果编号注入 Prompt，LLM 依据资料回答
 - 引用溯源：回答标注 `[1]`，返回 `filename`、`chunk_index`、`score`
 - SSE 流式输出：模型 token 逐步推送，前端打字机效果
@@ -71,37 +66,18 @@
 └──────────────────────────┬──────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────┐
-│                      AgentService                        │
-│  LangGraph 决策 → Prompt 组装 → LLM 流式生成 → 引用溯源   │
+│                        RAGService                        │
+│  Retriever → Prompt 组装 → LLM 流式生成 → 引用溯源        │
 └──────────────────────────┬──────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────┐
-│                     LangGraph Workflow                   │
-│  Router ──▶ Retrieve ──▶ Grader ──▶ Rewrite（可选）       │
-│    │                         │             │             │
-│    └──── direct ────────────┴──▶ Answer ◀──┘             │
+│                     Retrieval Pipeline                   │
+│  Vector / BM25 → RRF 融合 → 可选 Rerank → top-k          │
 └──────────────┬───────────────────────────┬──────────────┘
                ▼                           ▼
        Embedding API + Milvus         Rerank API
 ```
 
-### Agent 工作流
-
-```text
-START → Router
-          ├─ direct   → 直接回答（不检索、不返回引用）
-          └─ retrieve → Retrieve → Grader
-                                  ├─ 有相关 chunk → 生成答案并返回引用
-                                  └─ 无相关 chunk → Rewrite → Retrieve（最多重试一次）
-                                                    └─ 仍无结果 → 明确告知资料不足
-```
-
-- `Router`：判断是否需要检索知识库；无法确定时保守选择 `retrieve`。
-- `Retriever`：复用 M4 的向量 / BM25 / Hybrid / Rerank 检索链路。
-- `Grader`：按问题逐条判断候选 chunk 是否相关，只把相关结果交给生成层。
-- `Rewrite`：检索失败时生成新的检索查询，最多重试 `AGENT_MAX_REWRITES` 次。
-- **异常回退**：Router 输出无效时使用规则路由；Grader 输出无效时保留全部候选；Rewrite 输出无效时使用保守改写。
-- **流式兼容**：路由、检索和评分在生成前完成，最终答案仍通过原有 SSE `delta` 事件逐 token 输出。
 ### Milvus 依赖组件
 
 ```text
@@ -134,7 +110,6 @@ backend/
 │   ├── embedding/           # Embedding 接口与实现
 │   ├── vectorstore/         # 向量库接口、内存版、Milvus 版
 │   ├── llm/                 # ChatModel 接口、Fake、OpenAI 兼容实现
-│   ├── agent/               # LangGraph Router / Grader / Rewrite
 │   ├── rag/                 # RAGService 组装层
 │   ├── retrieval/           # 向量、BM25、RRF、Rerank 检索器
 │   ├── rerank/              # Cohere / LLM / NoOp Reranker
@@ -199,7 +174,6 @@ RERANK_MODEL=cohere-rerank-v4.0-fast
 
 RETRIEVAL_MODE=hybrid_rerank
 RETRIEVAL_CANDIDATE_K=10
-AGENT_MAX_REWRITES=1
 ```
 
 > `LLM_BASE_URL` / `LLM_API_KEY` 留空时，会复用 `EMBEDDING_BASE_URL` / `EMBEDDING_API_KEY`。
@@ -409,7 +383,6 @@ cd backend
 | `RERANK_TIMEOUT` | `30` | Rerank 请求超时（秒） |
 | `RETRIEVAL_MODE` | `vector` | `vector` / `bm25` / `hybrid` / `hybrid_rerank` |
 | `RETRIEVAL_CANDIDATE_K` | `10` | 混合检索与 Rerank 前的候选数量 |
-| `AGENT_MAX_REWRITES` | `1` | Grader 未找到相关结果时的最大查询改写次数 |
 
 ## 测试
 
@@ -429,13 +402,11 @@ cd backend
 - Chat / SSE / 文件上传 API
 - BM25、RRF 混合检索与 Rerank 回退逻辑
 - 检索评测指标与数据集加载
-- LangGraph Router / Grader / Rewrite 分支与回退
-- Agent 直答、引用过滤与流式输出
 
 健康状态下预期：
 
 ```text
-77 passed, 1 skipped
+70 passed
 ```
 
 ## 常用 Docker 命令

@@ -14,10 +14,7 @@ from app.vectorstore.milvus import MilvusStore
 @pytest.mark.integration
 def test_milvus_store_upsert_and_search() -> None:
     collection_name = f"test_chunks_{uuid.uuid4().hex[:8]}"
-    try:
-        store = MilvusStore(collection_name=collection_name)
-    except Exception as exc:
-        pytest.skip(f"Milvus 不可用，跳过集成测试: {exc}")
+    store = MilvusStore(collection_name=collection_name)
 
     try:
         store.upsert(
