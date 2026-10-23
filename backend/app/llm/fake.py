@@ -23,3 +23,28 @@ class FakeChatModel(ChatModel):
         self.calls.append(messages)
         for i in self.response:
             yield i
+
+
+class ScriptedChatModel(ChatModel):
+    """按顺序返回预设响应，用于测试多节点 Agent。"""
+
+    def __init__(self, responses: list[str]) -> None:
+        self.responses = list(responses)
+        self.calls: list[list[ChatMessage]] = []
+
+    def _next_response(self) -> str:
+        if not self.responses:
+            raise RuntimeError("ScriptedChatModel 的预设响应已耗尽")
+        return self.responses.pop(0)
+
+    def chat(
+        self,
+        messages: list[ChatMessage],
+        temperature: float | None = None,
+    ) -> str:
+        self.calls.append(messages)
+        return self._next_response()
+
+    def stream(self, messages: list[ChatMessage], temperature: float | None = None) -> Iterator[str]:
+        self.calls.append(messages)
+        yield from self._next_response()

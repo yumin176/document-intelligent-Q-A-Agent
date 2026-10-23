@@ -16,7 +16,7 @@ if str(BACKEND_ROOT) not in sys.path:
     sys.path.insert(0, str(BACKEND_ROOT))
 
 from app.config import get_settings
-from app.dependencies import get_rag_service, get_vector_store
+from app.dependencies import get_agent_service, get_vector_store
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,7 +32,7 @@ def main() -> None:
 
     args = parse_args()
     settings = get_settings()
-    service = get_rag_service()
+    service = get_agent_service()
 
     try:
         result = service.answer(args.question, top_k=args.top_k)
