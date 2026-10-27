@@ -5,7 +5,10 @@ from pathlib import Path
 from pydantic import BaseModel
 
 from app.embedding.base import Embedder
-from app.ingestion.loader import load_document
+from app.ingestion.cleaning import CleanerPipeline
+from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
+from app.ingestion.cleaning.pdf_page_noise import PdfPageNoiseCleaner
+from app.ingestion.loader import parse_document
 from app.ingestion.splitter import split_text
 from app.vectorstore.base import ChunkRecord, VectorStore
 
@@ -41,6 +44,12 @@ def build_chunk_records(
     document_id = sha256(identity_key.encode("utf-8")).hexdigest()[:32]
     content_hash = sha256(text.encode("utf-8")).hexdigest()
 
+    # 兼容直接调用该函数的测试或脚本；没有清洗摘要时回退到当前文本长度。
+    raw_num_chars = file_meta.get("raw_num_chars", len(text))
+    num_chars = file_meta.get("num_chars", len(text))
+    cleaning_steps = list(file_meta.get("cleaning_steps", []))
+    page_cleaning = dict(file_meta.get("page_cleaning", {}))
+
     return [
         ChunkRecord(
             id=f"{document_id}:{index}",
@@ -53,6 +62,10 @@ def build_chunk_records(
                 "filename": file_meta["filename"],
                 "file_type": file_meta["file_type"],
                 "chunk_index": index,
+                "raw_num_chars": raw_num_chars,
+                "num_chars": num_chars,
+                "cleaning_steps": cleaning_steps,
+                "page_cleaning": page_cleaning,
             },
         )
         for index, (chunk, embedding) in enumerate(zip(chunks, embeddings))
@@ -60,18 +73,54 @@ def build_chunk_records(
 
 
 class IngestionService:
-    """离线索引：文档加载 → 分块 → 向量化 → 向量存储。"""
+    """离线索引：文档解析 → 页级清洗 → 文本清洗 → 分块 → 向量化 → 入库。"""
 
-    def __init__(self, embedder: Embedder, vector_store: VectorStore) -> None:
+    def __init__(
+        self,
+        embedder: Embedder,
+        vector_store: VectorStore,
+        cleaner: CleanerPipeline | None = None,
+        page_cleaner: PdfPageNoiseCleaner | None = None,
+    ) -> None:
         self.embedder = embedder
         self.vector_store = vector_store
+        self.cleaner = cleaner if cleaner is not None else build_default_cleaner_pipeline()
+        self.page_cleaner = (
+            page_cleaner if page_cleaner is not None else PdfPageNoiseCleaner()
+        )
 
     def ingest_file(
         self,
         path: Path,
         original_filename: str | None = None,
     ) -> IngestResult:
-        text, file_meta = load_document(path)
+        parsed = parse_document(path)
+        # 原始文本在页级清洗前保存，用于记录真实的 raw_num_chars。
+        raw_text = parsed.text
+        file_meta = parsed.metadata
+
+        # 旧入口已改为 parse_document，以便保留 PDF 页边界。
+        # raw_text, file_meta = load_document(path)
+
+        page_cleaning = {"enabled": False}
+        text_before_generic_cleaning = raw_text
+
+        if file_meta["file_type"] == "pdf":
+            page_clean_result = self.page_cleaner.clean_pages(parsed.pages)
+            text_before_generic_cleaning = page_clean_result.text
+            page_cleaning = {
+                "enabled": True,
+                "before_chars": len(raw_text),
+                "after_chars": len(text_before_generic_cleaning),
+                "removed_page_numbers": page_clean_result.removed_page_numbers,
+                "removed_header_keys": list(page_clean_result.removed_header_keys),
+                "removed_footer_keys": list(page_clean_result.removed_footer_keys),
+            }
+
+        clean_result = self.cleaner.clean(text_before_generic_cleaning)
+        cleaned_text = clean_result.text
+        if not cleaned_text.strip():
+            raise ValueError("清洗后文档为空，无法入库")
 
         if original_filename:
             safe_filename = Path(original_filename).name
@@ -80,8 +129,17 @@ class IngestionService:
         else:
             source = str(path.resolve())
 
+        # 增加源数据
+        file_meta["raw_num_chars"] = len(raw_text)
+        file_meta["num_chars"] = len(cleaned_text)
+        file_meta["page_cleaning"] = page_cleaning
+        file_meta["cleaning_steps"] = (
+            (["pdf_page_noise"] if page_cleaning["enabled"] else [])
+            + [step.cleaner_name for step in clean_result.steps]
+        )
+
         records = build_chunk_records(
-            text=text,
+            text=cleaned_text,
             file_meta=file_meta,
             embedder=self.embedder,
             source=source,

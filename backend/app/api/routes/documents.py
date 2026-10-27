@@ -39,5 +39,7 @@ async def upload_document(
             filename=ingest_result.filename,
             chunk_count=ingest_result.chunk_count,
         )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     finally:
         temp_path.unlink(missing_ok=True)
