@@ -50,6 +50,11 @@ class Settings(BaseSettings):
     # Agent
     agent_max_rewrites: int = 1
 
+    # chunk
+    chunk_strategy: Literal["fixed", "recursive"] = "fixed"
+    chunk_size: int = 500
+    chunk_overlap: int = 50
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

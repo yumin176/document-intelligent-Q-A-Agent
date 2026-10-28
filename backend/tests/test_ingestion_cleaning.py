@@ -11,6 +11,7 @@ from app.ingestion.cleaning import CleanerPipeline, PdfPageNoiseCleaner
 from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
 from app.ingestion.loader import ParsedDocument, ParsedPage
 from app.ingestion.service import IngestionService, build_chunk_records
+from app.ingestion.splitter import ChunkStrategy
 from app.main import create_app
 from app.vectorstore.memory import InMemoryVectorStore
 
@@ -18,6 +19,9 @@ from app.vectorstore.memory import InMemoryVectorStore
 def make_service(
     cleaner: CleanerPipeline | None = None,
     page_cleaner: PdfPageNoiseCleaner | None = None,
+    chunk_strategy: ChunkStrategy = "fixed",
+    chunk_size: int = 500,
+    chunk_overlap: int = 50,
 ) -> tuple[IngestionService, InMemoryVectorStore]:
     store = InMemoryVectorStore()
     service = IngestionService(
@@ -25,6 +29,9 @@ def make_service(
         vector_store=store,
         cleaner=cleaner,
         page_cleaner=page_cleaner,
+        chunk_strategy=chunk_strategy,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
     )
     return service, store
 
@@ -80,6 +87,9 @@ def test_ingest_file_uses_cleaned_text(tmp_path: Path) -> None:
         expected.encode("utf-8")
     ).hexdigest()
     assert metadata["document_id"] == result.document_id
+    assert metadata["chunk_strategy"] == "fixed"
+    assert metadata["chunk_size"] == 500
+    assert metadata["chunk_overlap"] == 50
     assert metadata["page_cleaning"] == {"enabled": False}
 
 
@@ -146,6 +156,9 @@ def test_build_chunk_records_supports_metadata_without_clean_summary() -> None:
     assert records[0].metadata["num_chars"] == len("hello")
     assert records[0].metadata["cleaning_steps"] == []
     assert records[0].metadata["page_cleaning"] == {}
+    assert records[0].metadata["chunk_strategy"] == "fixed"
+    assert records[0].metadata["chunk_size"] == 500
+    assert records[0].metadata["chunk_overlap"] == 50
 class SpyPageCleaner:
     def __init__(self) -> None:
         self.calls = 0
@@ -218,3 +231,48 @@ def test_pdf_document_uses_page_cleaner_and_records_metadata(
     assert metadata["page_cleaning"]["removed_footer_keys"] == [footer]
     assert metadata["page_cleaning"]["before_chars"] == len(parsed.text)
     assert metadata["page_cleaning"]["after_chars"] < len(parsed.text)
+def test_build_chunk_records_uses_recursive_chunk_config() -> None:
+    text = "".join(
+        f"第{index}句包含一些用于分块测试的正文内容。"
+        for index in range(20)
+    )
+    file_meta = {"filename": "sample.md", "file_type": "md"}
+
+    records = build_chunk_records(
+        text=text,
+        file_meta=file_meta,
+        embedder=FakeEmbedder(dim=8),
+        source="sample.md",
+        chunk_strategy="recursive",
+        chunk_size=30,
+        chunk_overlap=5,
+    )
+
+    assert len(records) > 1
+    assert all(len(record.text) <= 30 for record in records)
+    assert records[0].metadata["chunk_strategy"] == "recursive"
+    assert records[0].metadata["chunk_size"] == 30
+    assert records[0].metadata["chunk_overlap"] == 5
+
+
+def test_ingestion_service_uses_injected_chunk_config(tmp_path: Path) -> None:
+    text = "".join(
+        f"第{index}句包含一些用于分块测试的正文内容。"
+        for index in range(20)
+    )
+    path = tmp_path / "long.md"
+    path.write_text(text, encoding="utf-8")
+    service, store = make_service(
+        chunk_strategy="recursive",
+        chunk_size=30,
+        chunk_overlap=5,
+    )
+
+    service.ingest_file(path)
+    chunks = store.all_chunks()
+
+    assert len(chunks) > 1
+    assert all(len(chunk.text) <= 30 for chunk in chunks)
+    assert chunks[0].metadata["chunk_strategy"] == "recursive"
+    assert chunks[0].metadata["chunk_size"] == 30
+    assert chunks[0].metadata["chunk_overlap"] == 5

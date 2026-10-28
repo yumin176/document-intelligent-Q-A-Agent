@@ -1,4 +1,28 @@
+from typing import Literal
+
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+ChunkStrategy = Literal["fixed", "recursive"]
+
+def _validate_chunk_params(chunk_size: int, chunk_overlap: int) -> None:
+    if chunk_size <= 0:
+        raise ValueError("chunk_size 必须大于 0")
+    if chunk_overlap < 0 or chunk_overlap >= chunk_size:
+        raise ValueError("chunk_overlap 必须满足 0 <= chunk_overlap < chunk_size")
 def split_text(
+    text: str,
+    chunk_size: int = 500,
+    chunk_overlap: int = 50,
+    *,
+    strategy: ChunkStrategy = "fixed",
+) -> list[str]:
+    if strategy == "fixed":
+        return split_text_fixed(text, chunk_size, chunk_overlap)
+    if strategy == "recursive":
+        return split_text_recursive(text, chunk_size, chunk_overlap)
+    raise ValueError(f"不支持的分块策略: {strategy}")
+
+# 固定分块
+def split_text_fixed(
     text: str,
     chunk_size: int = 500,
     chunk_overlap: int = 50,
@@ -8,9 +32,7 @@ def split_text(
     if not text:
         return []
     # chunk_overlap必须大于等于0，小于chunk_size
-    if chunk_overlap < 0 or chunk_overlap >= chunk_size:
-        raise ValueError("chunk_overlap 必须满足 0 <= chunk_overlap < chunk_size")
-
+    _validate_chunk_params(chunk_size,chunk_overlap)
     chunk_list=[]
     front=text[:chunk_size]
     chunk_list.append(front)
@@ -22,6 +44,44 @@ def split_text(
         chunk_list.append(chunk)
         front=chunk
     return chunk_list
+
+# 递归分块
+def split_text_recursive(
+    text: str,
+    chunk_size: int = 500,
+    chunk_overlap: int = 50,
+) -> list[str]:
+    if not text:
+        return []
+    _validate_chunk_params(chunk_size,chunk_overlap)
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        #  分隔符优先级
+        # 分隔符要包含中英文标点符号，防止中文或者英文快速回退到只能用字符分割
+        separators=[
+            "\n\n",
+            "\n",
+            "。",
+            "！",
+            "？",
+            "；",
+            ". ",
+            "! ",
+            "? ",
+            "; ",
+            "，",
+            ", ",
+            " ",
+            "",
+        ],
+        # 切分后保留分隔符；"end" 会把标点留在前一个 chunk 末尾，
+        # 避免句号出现在下一个 chunk 开头。
+        keep_separator="end",
+        length_function=len, # 计算 chunk 长度的函数，默认是len（按字符数计算）
+        is_separator_regex=False, # separators 是否按正则表达式解释，默认是False
+    )
+    return splitter.split_text(text)
 
 if __name__=="__main__":
     text="""

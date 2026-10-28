@@ -1,15 +1,15 @@
 import unicodedata
-from hashlib import sha256
+from hashlib import sha256,sha1
 from pathlib import Path
-
 from pydantic import BaseModel
 
+from app.config import get_settings
 from app.embedding.base import Embedder
 from app.ingestion.cleaning import CleanerPipeline
 from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
 from app.ingestion.cleaning.pdf_page_noise import PdfPageNoiseCleaner
 from app.ingestion.loader import parse_document
-from app.ingestion.splitter import split_text
+from app.ingestion.splitter import ChunkStrategy, split_text
 from app.vectorstore.base import ChunkRecord, VectorStore
 
 
@@ -23,15 +23,34 @@ def normalize_filename(filename: str) -> str:
     """统一大小写和 Unicode，避免 README.md / readme.md 被当成两个文档。"""
     return unicodedata.normalize("NFKC", filename.strip()).casefold()
 
+# 创建chunk锚点
+def build_anchor_id(
+    document_id: str,
+    chunk_index: int,
+    chunk_text: str,
+) -> str:
+    prefix_hash = sha1(
+        chunk_text[:50].encode("utf-8")
+    ).hexdigest()[:8]
+    # 同一文档 + 相同分块配置 + 内容未变化
+    return f"{document_id}#{chunk_index}:{prefix_hash}"
 
 def build_chunk_records(
     text: str,
     file_meta: dict,
     embedder: Embedder,
     source: str,
+    chunk_strategy: ChunkStrategy = "fixed",
+    chunk_size: int = 500,
+    chunk_overlap: int = 50,
 ) -> list[ChunkRecord]:
     """把文档分块、向量化并组装成可入库记录。"""
-    chunks = split_text(text)
+    chunks = split_text(
+        text=text,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        strategy=chunk_strategy,
+    )
     embeddings = embedder.embed_batch(chunks)
 
     if len(chunks) != len(embeddings):
@@ -50,26 +69,37 @@ def build_chunk_records(
     cleaning_steps = list(file_meta.get("cleaning_steps", []))
     page_cleaning = dict(file_meta.get("page_cleaning", {}))
 
-    return [
-        ChunkRecord(
-            id=f"{document_id}:{index}",
-            text=chunk,
-            embedding=embedding,
-            metadata={
-                "document_id": document_id,
-                "content_hash": content_hash,
-                "source": source,
-                "filename": file_meta["filename"],
-                "file_type": file_meta["file_type"],
-                "chunk_index": index,
-                "raw_num_chars": raw_num_chars,
-                "num_chars": num_chars,
-                "cleaning_steps": cleaning_steps,
-                "page_cleaning": page_cleaning,
-            },
+    records: list[ChunkRecord] = []
+    for index, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+        anchor_id = build_anchor_id(document_id, index, chunk)
+        chunk_hash = sha256(chunk.encode("utf-8")).hexdigest()
+        records.append(
+            ChunkRecord(
+                # 主键改成稳定、可定位的锚点 id。
+                id=anchor_id,
+                text=chunk,
+                embedding=embedding,
+                metadata={
+                    "anchor_id": anchor_id,
+                    "doc_name": filename,
+                    "chunk_hash": chunk_hash,
+                    "document_id": document_id,
+                    "content_hash": content_hash,
+                    "source": source,
+                    "filename": filename,
+                    "file_type": file_meta["file_type"],
+                    "chunk_index": index,
+                    "raw_num_chars": raw_num_chars,
+                    "num_chars": num_chars,
+                    "cleaning_steps": cleaning_steps,
+                    "page_cleaning": page_cleaning,
+                    "chunk_strategy": chunk_strategy,
+                    "chunk_size": chunk_size,
+                    "chunk_overlap": chunk_overlap,
+                },
+            )
         )
-        for index, (chunk, embedding) in enumerate(zip(chunks, embeddings))
-    ]
+    return records
 
 
 class IngestionService:
@@ -81,12 +111,23 @@ class IngestionService:
         vector_store: VectorStore,
         cleaner: CleanerPipeline | None = None,
         page_cleaner: PdfPageNoiseCleaner | None = None,
+        chunk_strategy: ChunkStrategy | None = None,
+        chunk_size: int | None = None,
+        chunk_overlap: int | None = None,
     ) -> None:
+        settings = get_settings()
         self.embedder = embedder
         self.vector_store = vector_store
         self.cleaner = cleaner if cleaner is not None else build_default_cleaner_pipeline()
         self.page_cleaner = (
             page_cleaner if page_cleaner is not None else PdfPageNoiseCleaner()
+        )
+        self.chunk_strategy = (
+            settings.chunk_strategy if chunk_strategy is None else chunk_strategy
+        )
+        self.chunk_size = settings.chunk_size if chunk_size is None else chunk_size
+        self.chunk_overlap = (
+            settings.chunk_overlap if chunk_overlap is None else chunk_overlap
         )
 
     def ingest_file(
@@ -143,6 +184,9 @@ class IngestionService:
             file_meta=file_meta,
             embedder=self.embedder,
             source=source,
+            chunk_strategy=self.chunk_strategy,
+            chunk_size=self.chunk_size,
+            chunk_overlap=self.chunk_overlap,
         )
         self.vector_store.upsert(records)
 
