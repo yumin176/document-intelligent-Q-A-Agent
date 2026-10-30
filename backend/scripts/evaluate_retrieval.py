@@ -42,7 +42,7 @@ def parse_args(settings) -> argparse.Namespace:
     parser.add_argument(
         "--dataset",
         type=Path,
-        default=BACKEND_ROOT / "evaluation" / "retrieval_cases.jsonl",
+        default=BACKEND_ROOT / "evaluation" / "retrieval_cases_content.jsonl",
         help="评测集路径（JSONL 或 JSON 数组）",
     )
     parser.add_argument("--top-k", type=int, default=5, help="最终返回条数")
@@ -68,7 +68,7 @@ def parse_args(settings) -> argparse.Namespace:
     parser.add_argument(
         "--show-misses",
         action="store_true",
-        help="打印未完全召回相关 chunk 的问题",
+        help="打印未完全覆盖相关内容片段的问题",
     )
     args = parser.parse_args()
     if args.top_k <= 0:
@@ -130,11 +130,16 @@ def print_misses(evaluation: ModeEvaluation) -> None:
         return
     print(f"\n{evaluation.mode} 未完全召回：")
     for query in misses:
+        missing = [
+            snippet
+            for snippet in query.relevant_snippets
+            if snippet not in query.matched_snippets
+        ]
         print(
             f"- {query.case_id}: {query.question}\n"
-            f"  relevant={query.relevant_keys} "
-            f"retrieved={query.retrieved_keys} "
-            f"rank={query.first_relevant_rank}"
+            f"  retrieved_docs={query.retrieved_docs} "
+            f"rank={query.first_relevant_rank}\n"
+            f"  missing_snippets={missing}"
         )
 
 

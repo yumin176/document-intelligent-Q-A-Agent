@@ -276,3 +276,22 @@ def test_ingestion_service_uses_injected_chunk_config(tmp_path: Path) -> None:
     assert chunks[0].metadata["chunk_strategy"] == "recursive"
     assert chunks[0].metadata["chunk_size"] == 30
     assert chunks[0].metadata["chunk_overlap"] == 5
+def test_doc_name_controls_document_identity(tmp_path: Path) -> None:
+    raw = "相同的正文内容，用于验证同名文件隔离。"
+    path = tmp_path / "same.md"
+    path.write_text(raw, encoding="utf-8")
+
+    guide_service, guide_store = make_service()
+    api_service, api_store = make_service()
+    guide_service.ingest_file(path, doc_name="guide/same.md")
+    api_service.ingest_file(path, doc_name="api/same.md")
+
+    guide = guide_store.all_chunks()[0].metadata
+    api = api_store.all_chunks()[0].metadata
+
+    assert guide["doc_name"] == "guide/same.md"
+    assert api["doc_name"] == "api/same.md"
+    assert guide["source"] == "guide/same.md"
+    assert api["source"] == "api/same.md"
+    assert guide["document_id"] != api["document_id"]
+    assert guide["anchor_id"] != api["anchor_id"]

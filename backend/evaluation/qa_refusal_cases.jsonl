@@ -1,0 +1,3 @@
+{"id":"refusal-001","question":"极米科技 2030 年的目标股价是多少？","expected_behavior":"refuse","reason":"语料中没有未来目标股价信息"}
+{"id":"refusal-002","question":"科大讯飞 2035 年的市值目标是多少？","expected_behavior":"refuse","reason":"语料中没有未来市值目标信息"}
+{"id":"refusal-003","question":"Vue 4 的正式发布时间和全部破坏性变更是什么？","expected_behavior":"refuse","reason":"当前语料只包含 Vue 3 文档，没有 Vue 4 信息"}

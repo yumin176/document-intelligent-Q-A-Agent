@@ -1,40 +1,27 @@
-"""检索数据集、指标与评测运行器。"""
+"""内容锚点检索数据集、指标与评测运行器。"""
 
 from __future__ import annotations
 
 import json
 import math
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 from time import perf_counter
 from typing import Any, Iterable, Sequence
 
-from app.ingestion.service import normalize_filename
 from app.retrieval.base import Retriever
 from app.vectorstore.base import SearchResult
-
-ChunkKey = tuple[str, int]
-
-
-@dataclass(frozen=True)
-class RelevantChunk:
-    """评测集中标注为相关的 chunk。"""
-
-    filename: str
-    chunk_index: int
-
-    @property
-    def key(self) -> ChunkKey:
-        return self.filename, self.chunk_index
 
 
 @dataclass(frozen=True)
 class RetrievalCase:
-    """一条检索评测样本。"""
+    """一条检索评测样本，使用内容片段作为相关性锚点。"""
 
     case_id: str
     question: str
-    relevant: tuple[RelevantChunk, ...]
+    relevant_doc: str
+    relevant_snippets: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -44,8 +31,9 @@ class QueryEvaluation:
     case_id: str
     question: str
     retrieved_ids: tuple[str, ...]
-    retrieved_keys: tuple[ChunkKey, ...]
-    relevant_keys: tuple[ChunkKey, ...]
+    retrieved_docs: tuple[str, ...]
+    relevant_snippets: tuple[str, ...]
+    matched_snippets: tuple[str, ...]
     first_relevant_rank: int | None
     recall: float
     hit: float
@@ -58,8 +46,9 @@ class QueryEvaluation:
             "case_id": self.case_id,
             "question": self.question,
             "retrieved_ids": list(self.retrieved_ids),
-            "retrieved_keys": [list(key) for key in self.retrieved_keys],
-            "relevant_keys": [list(key) for key in self.relevant_keys],
+            "retrieved_docs": list(self.retrieved_docs),
+            "relevant_snippets": list(self.relevant_snippets),
+            "matched_snippets": list(self.matched_snippets),
             "first_relevant_rank": self.first_relevant_rank,
             "recall": self.recall,
             "hit": self.hit,
@@ -103,33 +92,53 @@ def _mean(values: Iterable[float]) -> float:
     return sum(values) / len(values)
 
 
-def _parse_relevant_chunk(raw: Any, location: str) -> RelevantChunk:
-    if not isinstance(raw, dict):
-        raise ValueError(f"{location}: relevant 项必须是对象")
+def normalize_doc_key(value: str) -> str:
+    """统一语料库相对路径，兼容 Windows 和 POSIX 分隔符。"""
+    normalized = unicodedata.normalize("NFKC", value).strip().replace("\\", "/")
+    while normalized.startswith("./"):
+        normalized = normalized[2:]
+    return normalized.casefold()
 
-    filename = raw.get("filename")
-    if not isinstance(filename, str) or not filename.strip():
-        raise ValueError(f"{location}: filename 必须是非空字符串")
 
-    raw_index = raw.get("chunk_index")
-    if isinstance(raw_index, bool):
-        raise ValueError(f"{location}: chunk_index 必须是整数")
-    try:
-        chunk_index = int(raw_index)
-    except (TypeError, ValueError) as exc:
-        raise ValueError(f"{location}: chunk_index 必须是整数") from exc
-    if chunk_index < 0:
-        raise ValueError(f"{location}: chunk_index 不能小于 0")
+def normalize_match_text(text: str) -> str:
+    """匹配时忽略 Unicode 兼容差异和所有空白字符。"""
+    normalized = unicodedata.normalize("NFKC", text)
+    return "".join(normalized.split())
 
-    return RelevantChunk(
-        filename=normalize_filename(filename),
-        chunk_index=chunk_index,
-    )
+
+def result_doc_name(result: SearchResult) -> str | None:
+    """优先使用语料库相对路径 doc_name，旧数据回退到 filename。"""
+    metadata = result.metadata or {}
+    doc_name = metadata.get("doc_name") or metadata.get("filename")
+    if not isinstance(doc_name, str) or not doc_name.strip():
+        return None
+    return normalize_doc_key(doc_name)
+
+
+def matched_snippet_indexes(
+    result: SearchResult,
+    case: RetrievalCase,
+) -> set[int]:
+    """返回该结果命中的相关 snippet 索引。"""
+    if result_doc_name(result) != normalize_doc_key(case.relevant_doc):
+        return set()
+
+    normalized_text = normalize_match_text(result.text)
+    return {
+        index
+        for index, snippet in enumerate(case.relevant_snippets)
+        if normalize_match_text(snippet) in normalized_text
+    }
 
 
 def _parse_case(raw: Any, location: str) -> RetrievalCase:
     if not isinstance(raw, dict):
         raise ValueError(f"{location}: 样本必须是对象")
+    if "relevant" in raw:
+        raise ValueError(
+            f"{location}: 旧格式 relevant/chunk_index 已不再支持，"
+            "请使用 relevant_doc/relevant_snippets"
+        )
 
     case_id = raw.get("id")
     if not isinstance(case_id, str) or not case_id.strip():
@@ -139,26 +148,38 @@ def _parse_case(raw: Any, location: str) -> RetrievalCase:
     if not isinstance(question, str) or not question.strip():
         raise ValueError(f"{location}: question 必须是非空字符串")
 
-    raw_relevant = raw.get("relevant")
-    if not isinstance(raw_relevant, list) or not raw_relevant:
-        raise ValueError(f"{location}: relevant 必须是非空数组")
+    relevant_doc = raw.get("relevant_doc")
+    if not isinstance(relevant_doc, str) or not relevant_doc.strip():
+        raise ValueError(f"{location}: relevant_doc 必须是非空字符串")
 
-    relevant = tuple(
-        _parse_relevant_chunk(item, f"{location}.relevant[{index}]")
-        for index, item in enumerate(raw_relevant)
-    )
-    if len({item.key for item in relevant}) != len(relevant):
-        raise ValueError(f"{location}: relevant 中存在重复 chunk")
+    raw_snippets = raw.get("relevant_snippets")
+    if not isinstance(raw_snippets, list) or not raw_snippets:
+        raise ValueError(f"{location}: relevant_snippets 必须是非空数组")
+
+    snippets: list[str] = []
+    normalized_snippets: set[str] = set()
+    for index, raw_snippet in enumerate(raw_snippets):
+        if not isinstance(raw_snippet, str) or not raw_snippet.strip():
+            raise ValueError(
+                f"{location}.relevant_snippets[{index}]: snippet 必须是非空字符串"
+            )
+        snippet = raw_snippet.strip()
+        normalized = normalize_match_text(snippet)
+        if normalized in normalized_snippets:
+            raise ValueError(f"{location}: relevant_snippets 中存在重复片段")
+        normalized_snippets.add(normalized)
+        snippets.append(snippet)
 
     return RetrievalCase(
         case_id=case_id.strip(),
         question=question.strip(),
-        relevant=relevant,
+        relevant_doc=normalize_doc_key(relevant_doc),
+        relevant_snippets=tuple(snippets),
     )
 
 
 def load_cases(path: Path) -> tuple[RetrievalCase, ...]:
-    """从 JSONL 或 JSON 数组加载评测集。"""
+    """从 JSONL 或 JSON 数组加载内容锚点评测集。"""
     try:
         text = path.read_text(encoding="utf-8-sig")
     except OSError as exc:
@@ -168,11 +189,11 @@ def load_cases(path: Path) -> tuple[RetrievalCase, ...]:
         try:
             raw_cases = json.loads(text)
         except json.JSONDecodeError as exc:
-            raise ValueError(f"评测集 JSON 格式错误: {exc}") from exc
+            raise ValueError(f"JSON 格式错误: {exc}") from exc
         if not isinstance(raw_cases, list):
-            raise ValueError("评测集 JSON 顶层必须是数组")
+            raise ValueError("JSON 评测集必须是数组")
         located_cases = [
-            (raw_case, f"case[{index}]")
+            (raw_case, f"item {index}")
             for index, raw_case in enumerate(raw_cases)
         ]
     else:
@@ -199,78 +220,47 @@ def load_cases(path: Path) -> tuple[RetrievalCase, ...]:
     return cases
 
 
-def result_key(result: SearchResult) -> ChunkKey | None:
-    """从检索结果中提取稳定的文件名和 chunk 序号。"""
-    metadata = result.metadata or {}
-    filename = metadata.get("filename")
-    raw_index = metadata.get("chunk_index")
-
-    if not isinstance(filename, str) or not filename.strip():
-        return None
-    if isinstance(raw_index, bool):
-        return None
-    try:
-        chunk_index = int(raw_index)
-    except (TypeError, ValueError):
-        return None
-    if chunk_index < 0:
-        return None
-
-    return normalize_filename(filename), chunk_index
-
-
 def recall_at_k(
-    ranked: Sequence[ChunkKey],
-    relevant: Sequence[ChunkKey],
+    ranked_matches: Sequence[set[int]],
+    snippet_count: int,
     k: int,
 ) -> float:
-    """top-k 中命中的相关 chunk 占全部相关 chunk 的比例。"""
-    if k <= 0 or not relevant:
+    """top-k 覆盖的不同 snippet 占全部 snippet 的比例。"""
+    if k <= 0 or snippet_count <= 0:
         return 0.0
-    relevant_set = set(relevant)
-    return len(set(ranked[:k]) & relevant_set) / len(relevant_set)
+    covered: set[int] = set()
+    for matches in ranked_matches[:k]:
+        covered.update(matches)
+    return len(covered) / snippet_count
 
 
-def hit_at_k(
-    ranked: Sequence[ChunkKey],
-    relevant: Sequence[ChunkKey],
-    k: int,
-) -> float:
-    """top-k 中是否至少命中一个相关 chunk。"""
-    if k <= 0 or not relevant:
+def hit_at_k(ranked_matches: Sequence[set[int]], k: int) -> float:
+    if k <= 0:
         return 0.0
-    return float(bool(set(ranked[:k]) & set(relevant)))
+    return float(any(ranked_matches[:k]))
 
 
-def mrr_at_k(
-    ranked: Sequence[ChunkKey],
-    relevant: Sequence[ChunkKey],
-    k: int,
-) -> float:
-    """第一个相关结果的倒数排名。"""
-    relevant_set = set(relevant)
-    for rank, key in enumerate(ranked[:k], start=1):
-        if key in relevant_set:
+def mrr_at_k(ranked_matches: Sequence[set[int]], k: int) -> float:
+    for rank, matches in enumerate(ranked_matches[:k], start=1):
+        if matches:
             return 1.0 / rank
     return 0.0
 
 
 def ndcg_at_k(
-    ranked: Sequence[ChunkKey],
-    relevant: Sequence[ChunkKey],
+    ranked_matches: Sequence[set[int]],
+    snippet_count: int,
     k: int,
 ) -> float:
-    """二值相关性下的 nDCG@k。"""
-    if k <= 0 or not relevant:
+    """将包含任意相关 snippet 的结果视为二值相关。"""
+    if k <= 0 or snippet_count <= 0:
         return 0.0
-
-    relevant_set = set(relevant)
     dcg = sum(
         1.0 / math.log2(rank + 1)
-        for rank, key in enumerate(ranked[:k], start=1)
-        if key in relevant_set
+        for rank, matches in enumerate(ranked_matches[:k], start=1)
+        if matches
     )
-    ideal_hits = min(len(relevant_set), k)
+    ideal_hits = min(snippet_count, k)
     idcg = sum(1.0 / math.log2(rank + 1) for rank in range(1, ideal_hits + 1))
     return dcg / idcg if idcg else 0.0
 
@@ -281,7 +271,7 @@ def evaluate_retriever(
     top_k: int,
     mode: str | None = None,
 ) -> ModeEvaluation:
-    """在同一批问题上评测一个 Retriever。"""
+    """在同一批内容锚点问题上评测一个 Retriever。"""
     if top_k <= 0:
         raise ValueError("top_k 必须大于 0")
     if not cases:
@@ -295,38 +285,55 @@ def evaluate_retriever(
         hits = retriever.search(case.question, top_k=top_k)
         latency_ms = (perf_counter() - query_started_at) * 1000
 
-        seen_keys: set[ChunkKey] = set()
-        ranked_keys: list[ChunkKey] = []
-        for hit in hits:
-            key = result_key(hit)
-            if key is None or key in seen_keys:
-                continue
-            seen_keys.add(key)
-            ranked_keys.append(key)
+        ranked_ids: list[str] = []
+        ranked_docs: list[str] = []
+        ranked_matches: list[set[int]] = []
+        seen_ids: set[str] = set()
 
-        relevant_keys = [item.key for item in case.relevant]
-        relevant_set = set(relevant_keys)
+        for hit in hits:
+            if hit.id in seen_ids:
+                continue
+            seen_ids.add(hit.id)
+            ranked_ids.append(hit.id)
+            ranked_docs.append(result_doc_name(hit) or "")
+            ranked_matches.append(matched_snippet_indexes(hit, case))
+
+        covered = set().union(*ranked_matches) if ranked_matches else set()
         first_relevant_rank = next(
             (
                 rank
-                for rank, key in enumerate(ranked_keys[:top_k], start=1)
-                if key in relevant_set
+                for rank, matches in enumerate(ranked_matches[:top_k], start=1)
+                if matches
             ),
             None,
+        )
+        matched_snippets = tuple(
+            snippet
+            for index, snippet in enumerate(case.relevant_snippets)
+            if index in covered
         )
 
         evaluations.append(
             QueryEvaluation(
                 case_id=case.case_id,
                 question=case.question,
-                retrieved_ids=tuple(hit.id for hit in hits),
-                retrieved_keys=tuple(ranked_keys),
-                relevant_keys=tuple(relevant_keys),
+                retrieved_ids=tuple(ranked_ids),
+                retrieved_docs=tuple(ranked_docs),
+                relevant_snippets=case.relevant_snippets,
+                matched_snippets=matched_snippets,
                 first_relevant_rank=first_relevant_rank,
-                recall=recall_at_k(ranked_keys, relevant_keys, top_k),
-                hit=hit_at_k(ranked_keys, relevant_keys, top_k),
-                mrr=mrr_at_k(ranked_keys, relevant_keys, top_k),
-                ndcg=ndcg_at_k(ranked_keys, relevant_keys, top_k),
+                recall=recall_at_k(
+                    ranked_matches,
+                    len(case.relevant_snippets),
+                    top_k,
+                ),
+                hit=hit_at_k(ranked_matches, top_k),
+                mrr=mrr_at_k(ranked_matches, top_k),
+                ndcg=ndcg_at_k(
+                    ranked_matches,
+                    len(case.relevant_snippets),
+                    top_k,
+                ),
                 latency_ms=latency_ms,
             )
         )

@@ -1,6 +1,7 @@
 import unicodedata
-from hashlib import sha256,sha1
+from hashlib import sha1, sha256
 from pathlib import Path
+
 from pydantic import BaseModel
 
 from app.config import get_settings
@@ -19,9 +20,17 @@ class IngestResult(BaseModel):
     chunk_count: int
 
 
+def normalize_doc_name(doc_name: str) -> str:
+    """统一语料库相对路径，避免同名文件和不同路径分隔符造成 ID 冲突。"""
+    normalized = unicodedata.normalize("NFKC", doc_name.strip()).replace("\\", "/")
+    while normalized.startswith("./"):
+        normalized = normalized[2:]
+    return normalized.casefold()
+
+
 def normalize_filename(filename: str) -> str:
-    """统一大小写和 Unicode，避免 README.md / readme.md 被当成两个文档。"""
-    return unicodedata.normalize("NFKC", filename.strip()).casefold()
+    """兼容旧调用；filename 也按文档名规则规范化。"""
+    return normalize_doc_name(filename)
 
 # 创建chunk锚点
 def build_anchor_id(
@@ -59,7 +68,8 @@ def build_chunk_records(
         )
 
     filename = file_meta["filename"]
-    identity_key = normalize_filename(filename)
+    doc_name = file_meta.get("doc_name") or filename
+    identity_key = normalize_doc_name(doc_name)
     document_id = sha256(identity_key.encode("utf-8")).hexdigest()[:32]
     content_hash = sha256(text.encode("utf-8")).hexdigest()
 
@@ -81,7 +91,7 @@ def build_chunk_records(
                 embedding=embedding,
                 metadata={
                     "anchor_id": anchor_id,
-                    "doc_name": filename,
+                    "doc_name": doc_name,
                     "chunk_hash": chunk_hash,
                     "document_id": document_id,
                     "content_hash": content_hash,
@@ -134,6 +144,7 @@ class IngestionService:
         self,
         path: Path,
         original_filename: str | None = None,
+        doc_name: str | None = None,
     ) -> IngestResult:
         parsed = parse_document(path)
         # 原始文本在页级清洗前保存，用于记录真实的 raw_num_chars。
@@ -167,8 +178,15 @@ class IngestionService:
             safe_filename = Path(original_filename).name
             file_meta["filename"] = safe_filename
             source = safe_filename
-        else:
+            if doc_name is None:
+                doc_name = safe_filename
+        elif doc_name is None:
+            doc_name = file_meta["filename"]
             source = str(path.resolve())
+        else:
+            source = doc_name
+
+        file_meta["doc_name"] = doc_name
 
         # 增加源数据
         file_meta["raw_num_chars"] = len(raw_text)

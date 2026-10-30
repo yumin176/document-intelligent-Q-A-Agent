@@ -1,0 +1,14 @@
+{"id":"vue-computed-001","question":"为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？","relevant_doc":"技术文档-Vue3中文/guide/essentials/computed.md","relevant_snippets":["计算属性值会基于其响应式依赖被缓存"],"category":"semantic","difficulty":"easy"}
+{"id":"vue-computed-002","question":"Vue 计算属性的 getter 为什么不能执行副作用？","relevant_doc":"技术文档-Vue3中文/guide/essentials/computed.md","relevant_snippets":["计算属性的 getter 应只做计算而没有任何其他的副作用"],"category":"semantic","difficulty":"medium"}
+{"id":"vue-props-001","question":"Vue 的 props 为什么遵循单向数据流？","relevant_doc":"技术文档-Vue3中文/guide/components/props.md","relevant_snippets":["所有的 props 都遵循着**单向绑定**原则"],"category":"semantic","difficulty":"easy"}
+{"id":"vue-props-002","question":"子组件为什么不应该直接修改父组件传入的 prop？","relevant_doc":"技术文档-Vue3中文/guide/components/props.md","relevant_snippets":["这意味着你**不应该**在子组件中去更改一个 prop"],"category":"semantic","difficulty":"medium"}
+{"id":"jimo-001","question":"极米科技 2025 年营业收入是多少？","relevant_doc":"上市公司年报/极米科技_2025年年度报告.pdf","relevant_snippets":["2025 年,极米科技实现营业收入34.67 亿元"],"category":"numeric","difficulty":"easy"}
+{"id":"jimo-002","question":"极米科技 2025 年归属于上市公司股东的净利润是多少？","relevant_doc":"上市公司年报/极米科技_2025年年度报告.pdf","relevant_snippets":["实现归属于母公司所有者的净利润1.43 亿元"],"category":"numeric","difficulty":"medium"}
+{"id":"jimo-003","question":"极米科技 2025 年研发投入占营业收入的比例是多少？","relevant_doc":"上市公司年报/极米科技_2025年年度报告.pdf","relevant_snippets":["研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"],"category":"numeric","difficulty":"medium"}
+{"id":"jimo-004","question":"极米科技的主营业务是什么？","relevant_doc":"上市公司年报/极米科技_2025年年度报告.pdf","relevant_snippets":["公司主营业务是智能投影产品的研发、生产及销售"],"category":"semantic","difficulty":"easy"}
+{"id":"jimo-005","question":"极米科技在传统智能投影之外拓展了哪些新业务？","relevant_doc":"上市公司年报/极米科技_2025年年度报告.pdf","relevant_snippets":["快速切入车载光学、行业显示等新业务"],"category":"semantic","difficulty":"medium"}
+{"id":"iflytek-001","question":"科大讯飞 2025 年营业收入是多少？","relevant_doc":"上市公司年报/科大讯飞_2025年年度报告.pdf","relevant_snippets":["营业收入合计 27,105,390,547.66"],"category":"numeric","difficulty":"easy"}
+{"id":"iflytek-002","question":"科大讯飞 2025 年归属于上市公司股东的净利润是多少？","relevant_doc":"上市公司年报/科大讯飞_2025年年度报告.pdf","relevant_snippets":["归属于上市公司股东的净利润 (元) 839,390,861.36"],"category":"numeric","difficulty":"medium"}
+{"id":"iflytek-003","question":"科大讯飞 2025 年研发投入金额是多少？","relevant_doc":"上市公司年报/科大讯飞_2025年年度报告.pdf","relevant_snippets":["研发投入金额(元) 5,364,151,772.27"],"category":"numeric","difficulty":"medium"}
+{"id":"iflytek-004","question":"科大讯飞 2025 年研发投入占营业收入比例是多少？","relevant_doc":"上市公司年报/科大讯飞_2025年年度报告.pdf","relevant_snippets":["研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"],"category":"numeric","difficulty":"medium"}
+{"id":"iflytek-005","question":"科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？","relevant_doc":"上市公司年报/科大讯飞_2025年年度报告.pdf","relevant_snippets":["形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系","基于全国产算力集群训练的全栈自主可控的通用大模型"],"category":"multi_snippet","difficulty":"hard"}
