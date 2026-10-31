@@ -9,6 +9,7 @@ from app.embedding.base import Embedder
 from app.ingestion.cleaning import CleanerPipeline
 from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
 from app.ingestion.cleaning.pdf_page_noise import PdfPageNoiseCleaner
+from app.ingestion.context import build_chunk_header, nearest_heading
 from app.ingestion.loader import parse_document
 from app.ingestion.pdf_text import dewrap_pdf_pages, join_pdf_pages
 from app.ingestion.splitter import ChunkStrategy, split_text
@@ -53,26 +54,51 @@ def build_chunk_records(
     chunk_strategy: ChunkStrategy = "fixed",
     chunk_size: int = 500,
     chunk_overlap: int = 50,
+    header_context: bool = False,
 ) -> list[ChunkRecord]:
-    """把文档分块、向量化并组装成可入库记录。"""
+    """把文档分块、向量化并组装成可入库记录。
+
+    header_context 为 True 时，每个块前会加上 `【公司｜年份｜页码】`
+    （正文块用最近章节标题），再送去 embedding。见 app/ingestion/context.py。
+    """
     chunks = split_text(
         text=text,
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
         strategy=chunk_strategy,
     )
-    embeddings = embedder.embed_batch(chunks)
-
-    if len(chunks) != len(embeddings):
-        raise RuntimeError(
-            f"分块数量 {len(chunks)} 与向量数量 {len(embeddings)} 不一致"
-        )
 
     filename = file_meta["filename"]
     doc_name = file_meta.get("doc_name") or filename
     identity_key = normalize_doc_name(doc_name)
     document_id = sha256(identity_key.encode("utf-8")).hexdigest()[:32]
     content_hash = sha256(text.encode("utf-8")).hexdigest()
+
+    # 待向量化的文本；开启上下文时与入库文本一致，否则就是原始块
+    embed_texts: list[str] = []
+    if header_context:
+        cursor = 0
+        for chunk in chunks:
+            position = text.find(chunk, cursor)
+            if position < 0:
+                position = cursor
+            cursor = position + 1
+            embed_texts.append(
+                build_chunk_header(
+                    doc_name,
+                    heading=nearest_heading(text, position),
+                )
+                + chunk
+            )
+    else:
+        embed_texts = list(chunks)
+
+    embeddings = embedder.embed_batch(embed_texts)
+
+    if len(chunks) != len(embeddings):
+        raise RuntimeError(
+            f"分块数量 {len(chunks)} 与向量数量 {len(embeddings)} 不一致"
+        )
 
     # 兼容直接调用该函数的测试或脚本；没有清洗摘要时回退到当前文本长度。
     raw_num_chars = file_meta.get("raw_num_chars", len(text))
@@ -82,14 +108,17 @@ def build_chunk_records(
     embedding_dimension = len(embeddings[0]) if embeddings else 0
 
     records: list[ChunkRecord] = []
-    for index, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+    for index, (chunk, embed_text, embedding) in enumerate(
+        zip(chunks, embed_texts, embeddings)
+    ):
+        # 锚点 id 与哈希仍基于原始块，保证开关上下文前后 id 稳定可比。
         anchor_id = build_anchor_id(document_id, index, chunk)
         chunk_hash = sha256(chunk.encode("utf-8")).hexdigest()
         records.append(
             ChunkRecord(
                 # 主键改成稳定、可定位的锚点 id。
                 id=anchor_id,
-                text=chunk,
+                text=embed_text,
                 embedding=embedding,
                 metadata={
                     "anchor_id": anchor_id,
@@ -108,6 +137,7 @@ def build_chunk_records(
                     "chunk_strategy": chunk_strategy,
                     "chunk_size": chunk_size,
                     "chunk_overlap": chunk_overlap,
+                    "header_context": header_context,
                     "embedding_model": file_meta.get("embedding_model", ""),
                     "embedding_base_url": file_meta.get("embedding_base_url", ""),
                     "embedding_dimension": embedding_dimension,
@@ -129,6 +159,7 @@ class IngestionService:
         chunk_strategy: ChunkStrategy | None = None,
         chunk_size: int | None = None,
         chunk_overlap: int | None = None,
+        header_context: bool = False,
     ) -> None:
         settings = get_settings()
         self.embedder = embedder
@@ -144,6 +175,7 @@ class IngestionService:
         self.chunk_overlap = (
             settings.chunk_overlap if chunk_overlap is None else chunk_overlap
         )
+        self.header_context = header_context
 
     def ingest_file(
         self,
@@ -217,6 +249,7 @@ class IngestionService:
             chunk_strategy=self.chunk_strategy,
             chunk_size=self.chunk_size,
             chunk_overlap=self.chunk_overlap,
+            header_context=self.header_context,
         )
         self.vector_store.upsert(records)
 

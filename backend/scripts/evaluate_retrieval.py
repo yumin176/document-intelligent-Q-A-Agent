@@ -26,7 +26,8 @@ from app.evaluation.retrieval import (
     evaluate_retriever,
     load_cases,
 )
-from app.rerank.cohere import CohereReranker
+from app.rerank.base import Reranker
+from app.rerank.dashscope import DashScopeReranker
 from app.retrieval.base import Retriever
 from app.retrieval.bm25 import BM25Retriever
 from app.retrieval.hybrid import HybridRetriever
@@ -83,7 +84,7 @@ def build_retriever(
     embedder: OpenAIEmbedder,
     store: MilvusStore,
     candidate_k: int,
-) -> tuple[Retriever, CohereReranker | None]:
+) -> tuple[Retriever, Reranker | None]:
     vector_retriever = VectorRetriever(embedder, store)
 
     if mode == "vector":
@@ -101,7 +102,10 @@ def build_retriever(
     if mode == "hybrid":
         return hybrid_retriever, None
 
-    reranker = CohereReranker(max_candidates=candidate_k)
+    # 只重排候选池的前段：实测 30 条已饱和，再加深只涨延迟。
+    reranker = DashScopeReranker(
+        max_candidates=min(candidate_k, get_settings().rerank_max_candidates)
+    )
     return (
         RerankedRetriever(
             base_retriever=hybrid_retriever,
@@ -161,10 +165,11 @@ def main() -> int:
     store = MilvusStore()
     results: dict[str, ModeEvaluation] = {}
     errors: dict[str, str] = {}
+    diagnostics: dict[str, dict[str, object]] = {}
 
     try:
         for mode in args.modes:
-            reranker: CohereReranker | None = None
+            reranker: Reranker | None = None
             try:
                 retriever, reranker = build_retriever(
                     mode=mode,
@@ -180,6 +185,18 @@ def main() -> int:
                 )
                 results[mode] = evaluation
                 print_summary(mode, evaluation, args.top_k)
+                if reranker is not None:
+                    diagnostics[mode] = {
+                        "rerank_fallback_count": reranker.fallback_count,
+                        "last_fallback_error": reranker.last_fallback_error,
+                    }
+                    if reranker.fallback_count:
+                        print(
+                            f"{mode:<16}警告: {reranker.fallback_count}/{len(evaluation.queries)} "
+                            f"条请求 rerank 失败并静默回退，本次结果等同于未重排。"
+                            f"原因: {reranker.last_fallback_error}",
+                            file=sys.stderr,
+                        )
             except Exception as exc:
                 errors[mode] = str(exc)
                 print(f"{mode:<16}SKIP: {exc}", file=sys.stderr)
@@ -200,6 +217,7 @@ def main() -> int:
     if args.output is not None:
         report = {
             "dataset": str(args.dataset),
+            "collection": store.collection_name,
             "case_count": len(cases),
             "top_k": args.top_k,
             "candidate_k": args.candidate_k,
@@ -207,6 +225,7 @@ def main() -> int:
                 mode: evaluation.to_dict()
                 for mode, evaluation in results.items()
             },
+            "diagnostics": diagnostics,
             "errors": errors,
         }
         args.output.parent.mkdir(parents=True, exist_ok=True)

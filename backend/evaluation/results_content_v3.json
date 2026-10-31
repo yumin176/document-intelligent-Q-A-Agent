@@ -1,0 +1,2740 @@
+{
+  "dataset": "E:\\01-学习\\01-项目练习\\document-intelligent-Q-A-Agent\\backend\\evaluation\\retrieval_cases_content.jsonl",
+  "collection": "qa_chunks_prod_v3",
+  "case_count": 45,
+  "top_k": 5,
+  "candidate_k": 50,
+  "results": {
+    "hybrid": {
+      "mode": "hybrid",
+      "summary": {
+        "recall": 0.9333333333333333,
+        "hit": 0.9333333333333333,
+        "mrr": 0.7618518518518518,
+        "ndcg": 0.8330706670482066,
+        "latency_ms": 460.59543332085013
+      },
+      "elapsed_ms": 20755.67250000313,
+      "queries": [
+        {
+          "case_id": "vue-ref-001",
+          "question": "在组合式 API 中，ref() 返回的对象通过什么属性访问内部值？",
+          "retrieved_ids": [
+            "8c0394d8063b2a77e59fa138994bc371#4:981a3ddc",
+            "8c0394d8063b2a77e59fa138994bc371#3:ff144af6",
+            "208be56376cb1aca78a347f190af3c19#14:c5060a45",
+            "208be56376cb1aca78a347f190af3c19#15:fb5263e1",
+            "8c0394d8063b2a77e59fa138994bc371#18:992343c7"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md"
+          ],
+          "relevant_snippets": [
+            "`ref()` 接收参数，并将其包裹在一个带有 `.value` 属性的 ref 对象中返回"
+          ],
+          "matched_snippets": [
+            "`ref()` 接收参数，并将其包裹在一个带有 `.value` 属性的 ref 对象中返回"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 778.66439986974
+        },
+        {
+          "case_id": "vue-ref-002",
+          "question": "Vue 模板中使用 ref 时是否需要手动写 .value？",
+          "retrieved_ids": [
+            "8c0394d8063b2a77e59fa138994bc371#5:8c9e6b97",
+            "8c0394d8063b2a77e59fa138994bc371#9:8218a692",
+            "8c0394d8063b2a77e59fa138994bc371#8:d5679691",
+            "8c0394d8063b2a77e59fa138994bc371#24:6ff14126",
+            "8c0394d8063b2a77e59fa138994bc371#4:981a3ddc"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md"
+          ],
+          "relevant_snippets": [
+            "当在模板中使用时，ref 会自动解包"
+          ],
+          "matched_snippets": [
+            "当在模板中使用时，ref 会自动解包"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 376.9093002192676
+        },
+        {
+          "case_id": "vue-computed-001",
+          "question": "为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#8:f40da8bf",
+            "9190ce9c818122687a5aaff9ba71cc89#9:8f437767",
+            "9190ce9c818122687a5aaff9ba71cc89#15:f9bdfdf9",
+            "9190ce9c818122687a5aaff9ba71cc89#6:a5ec3179",
+            "9190ce9c818122687a5aaff9ba71cc89#16:d24c88de"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "matched_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 420.4586998093873
+        },
+        {
+          "case_id": "vue-computed-002",
+          "question": "Vue 计算属性的 getter 为什么不能执行副作用？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#15:f9bdfdf9",
+            "9190ce9c818122687a5aaff9ba71cc89#9:8f437767",
+            "9190ce9c818122687a5aaff9ba71cc89#16:d24c88de",
+            "9190ce9c818122687a5aaff9ba71cc89#8:f40da8bf",
+            "94a65a8ea424fd350246263cf49287a5#10:95220895"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md"
+          ],
+          "relevant_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "matched_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 390.54420008324087
+        },
+        {
+          "case_id": "vue-props-001",
+          "question": "Vue 的 props 为什么遵循单向数据流？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:22ad981e",
+            "e652d1226b608e19e403a753373aa5f8#18:4479aec5",
+            "e652d1226b608e19e403a753373aa5f8#19:d9c8aedb",
+            "e652d1226b608e19e403a753373aa5f8#17:ff49aaae",
+            "e652d1226b608e19e403a753373aa5f8#20:84c7ee8f"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "matched_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 382.0492001250386
+        },
+        {
+          "case_id": "vue-props-002",
+          "question": "子组件为什么不应该直接修改父组件传入的 prop？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#20:84c7ee8f",
+            "e652d1226b608e19e403a753373aa5f8#16:22ad981e",
+            "94a65a8ea424fd350246263cf49287a5#8:1b439f67",
+            "e652d1226b608e19e403a753373aa5f8#19:d9c8aedb",
+            "2f7985565cbf80a707fc0bc5a951de59#0:e57dcfbb"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md"
+          ],
+          "relevant_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "matched_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 409.10549997352064
+        },
+        {
+          "case_id": "vue-events-001",
+          "question": "Vue 组件触发的事件会像原生 DOM 事件一样冒泡吗？",
+          "retrieved_ids": [
+            "268d245d058fe34996dd59e563073ecc#2:a1040a75",
+            "268d245d058fe34996dd59e563073ecc#9:2a59e415",
+            "268d245d058fe34996dd59e563073ecc#3:ab96957e",
+            "268d245d058fe34996dd59e563073ecc#1:1008dd5e",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#12:506657d4"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md"
+          ],
+          "relevant_snippets": [
+            "组件触发的事件**没有冒泡机制**"
+          ],
+          "matched_snippets": [
+            "组件触发的事件**没有冒泡机制**"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 391.25930005684495
+        },
+        {
+          "case_id": "vue-events-002",
+          "question": "defineEmits() 可以放在普通的子函数里调用吗？",
+          "retrieved_ids": [
+            "268d245d058fe34996dd59e563073ecc#6:d17b0933",
+            "268d245d058fe34996dd59e563073ecc#5:5417cdf5",
+            "5db014362e3700b1c8be96f1c09b16ab#8:08975ca5",
+            "5db014362e3700b1c8be96f1c09b16ab#9:0b3e0517",
+            "208be56376cb1aca78a347f190af3c19#16:07acb72f"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/reusability/composables.md"
+          ],
+          "relevant_snippets": [
+            "`defineEmits()` 宏**不能**在子函数中使用"
+          ],
+          "matched_snippets": [
+            "`defineEmits()` 宏**不能**在子函数中使用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 603.5499998833984
+        },
+        {
+          "case_id": "vue-slots-001",
+          "question": "Vue 插槽内容能否访问子组件的数据？",
+          "retrieved_ids": [
+            "34ee3d4d685276a4ef4a2482d9d47434#4:7a3f03a4",
+            "34ee3d4d685276a4ef4a2482d9d47434#15:9a6af5e9",
+            "34ee3d4d685276a4ef4a2482d9d47434#17:1dd4e165",
+            "34ee3d4d685276a4ef4a2482d9d47434#16:06837170",
+            "34ee3d4d685276a4ef4a2482d9d47434#21:91efd285"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md"
+          ],
+          "relevant_snippets": [
+            "插槽内容**无法访问**子组件的数据"
+          ],
+          "matched_snippets": [
+            "插槽内容**无法访问**子组件的数据"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 401.2854997999966
+        },
+        {
+          "case_id": "vue-slots-002",
+          "question": "没有显式 name 的 slot 出口默认叫什么名字？",
+          "retrieved_ids": [
+            "34ee3d4d685276a4ef4a2482d9d47434#7:f7dd122c",
+            "34ee3d4d685276a4ef4a2482d9d47434#20:5d596af3",
+            "34ee3d4d685276a4ef4a2482d9d47434#19:68475976",
+            "34ee3d4d685276a4ef4a2482d9d47434#5:af3d9066",
+            "34ee3d4d685276a4ef4a2482d9d47434#8:83481f36"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md"
+          ],
+          "relevant_snippets": [
+            "这类带 `name` 的插槽被称为具名插槽 (named slots)"
+          ],
+          "matched_snippets": [
+            "这类带 `name` 的插槽被称为具名插槽 (named slots)"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 401.987100020051
+        },
+        {
+          "case_id": "vue-keepalive-001",
+          "question": "KeepAlive 设置 max 后采用什么缓存淘汰策略？",
+          "retrieved_ids": [
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#4:dcd41c7c",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#3:a23b8fb7",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#2:5766c1b6",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#0:949d52bd",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#7:f9d82a17"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md"
+          ],
+          "relevant_snippets": [
+            "如果缓存的实例数量即将超过指定的那个最大数量，则最久没有被访问的缓存实例将被销毁"
+          ],
+          "matched_snippets": [
+            "如果缓存的实例数量即将超过指定的那个最大数量，则最久没有被访问的缓存实例将被销毁"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 598.7891999538988
+        },
+        {
+          "case_id": "vue-keepalive-002",
+          "question": "被 KeepAlive 缓存而从 DOM 移除的组件处于什么状态？",
+          "retrieved_ids": [
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#5:97509798",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#0:949d52bd",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#1:d3795085",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#4:dcd41c7c",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#6:429f650f"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md"
+          ],
+          "relevant_snippets": [
+            "它将变为**不活跃**状态而不是被卸载"
+          ],
+          "matched_snippets": [
+            "它将变为**不活跃**状态而不是被卸载"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 390.88810002431273
+        },
+        {
+          "case_id": "vue-provide-001",
+          "question": "provide 和 inject 主要解决 Vue 中的什么问题？",
+          "retrieved_ids": [
+            "2f7985565cbf80a707fc0bc5a951de59#5:2225c514",
+            "2f7985565cbf80a707fc0bc5a951de59#1:e16e305e",
+            "2f7985565cbf80a707fc0bc5a951de59#11:c0553de9",
+            "2f7985565cbf80a707fc0bc5a951de59#2:5810d6d4",
+            "2f7985565cbf80a707fc0bc5a951de59#15:b0aeb59c"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md"
+          ],
+          "relevant_snippets": [
+            "`provide` 和 `inject` 可以帮助我们解决这一问题"
+          ],
+          "matched_snippets": [
+            "`provide` 和 `inject` 可以帮助我们解决这一问题"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 600.2289999742061
+        },
+        {
+          "case_id": "vue-provide-002",
+          "question": "使用 inject 时，如果祖先组件从未提供对应 key，会发生什么？",
+          "retrieved_ids": [
+            "2f7985565cbf80a707fc0bc5a951de59#8:25aef8a4",
+            "2f7985565cbf80a707fc0bc5a951de59#7:72154c85",
+            "2f7985565cbf80a707fc0bc5a951de59#9:1f038abb",
+            "5db014362e3700b1c8be96f1c09b16ab#15:9479d8e0",
+            "2f7985565cbf80a707fc0bc5a951de59#0:e57dcfbb"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md"
+          ],
+          "relevant_snippets": [
+            "如果该注入名的确没有任何组件提供，则会抛出一个运行时警告"
+          ],
+          "matched_snippets": [
+            "如果该注入名的确没有任何组件提供，则会抛出一个运行时警告"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 402.59620011784136
+        },
+        {
+          "case_id": "vue-composable-001",
+          "question": "Vue 组合式函数的主要职责是什么？",
+          "retrieved_ids": [
+            "208be56376cb1aca78a347f190af3c19#0:2b0e317e",
+            "208be56376cb1aca78a347f190af3c19#1:0d15223a",
+            "208be56376cb1aca78a347f190af3c19#17:4c2f1a7d",
+            "208be56376cb1aca78a347f190af3c19#22:b2dcf709",
+            "208be56376cb1aca78a347f190af3c19#3:589fb675"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md"
+          ],
+          "relevant_snippets": [
+            "一个利用 Vue 的组合式 API 来封装和复用**有状态逻辑**的函数"
+          ],
+          "matched_snippets": [
+            "一个利用 Vue 的组合式 API 来封装和复用**有状态逻辑**的函数"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 596.7235001735389
+        },
+        {
+          "case_id": "vue-composable-002",
+          "question": "Vue 组合式函数命名有什么约定？",
+          "retrieved_ids": [
+            "208be56376cb1aca78a347f190af3c19#13:bcd844b5",
+            "208be56376cb1aca78a347f190af3c19#0:2b0e317e",
+            "208be56376cb1aca78a347f190af3c19#1:0d15223a",
+            "208be56376cb1aca78a347f190af3c19#5:2a029aed",
+            "208be56376cb1aca78a347f190af3c19#20:0af4df18"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md"
+          ],
+          "relevant_snippets": [
+            "组合式函数约定用驼峰命名法命名，并以“use”作为开头"
+          ],
+          "matched_snippets": [
+            "组合式函数约定用驼峰命名法命名，并以“use”作为开头"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 397.3849001340568
+        },
+        {
+          "case_id": "vue-testing-001",
+          "question": "Vue 组件测试主要验证哪些内容？",
+          "retrieved_ids": [
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#7:e7e94a55",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#2:caab2fed",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#1:d42d6d38",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#15:ee15ed7e",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#13:5c6b440f"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md"
+          ],
+          "relevant_snippets": [
+            "检查你的组件是否正常挂载和渲染、是否可以与之互动，以及表现是否符合预期"
+          ],
+          "matched_snippets": [
+            "检查你的组件是否正常挂载和渲染、是否可以与之互动，以及表现是否符合预期"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 611.185000045225
+        },
+        {
+          "case_id": "vue-perf-001",
+          "question": "Vue 的 v-once 指令适合什么场景？",
+          "retrieved_ids": [
+            "94a65a8ea424fd350246263cf49287a5#9:7287ff2d",
+            "268d245d058fe34996dd59e563073ecc#2:a1040a75",
+            "94a65a8ea424fd350246263cf49287a5#8:1b439f67",
+            "94a65a8ea424fd350246263cf49287a5#0:2bf19d33",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#0:949d52bd"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md"
+          ],
+          "relevant_snippets": [
+            "`v-once` 是一个内置的指令，可以用来渲染依赖运行时数据但无需再更新的内容"
+          ],
+          "matched_snippets": [
+            "`v-once` 是一个内置的指令，可以用来渲染依赖运行时数据但无需再更新的内容"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 396.2514998856932
+        },
+        {
+          "case_id": "vue-perf-002",
+          "question": "shallowRef 和 shallowReactive 创建的响应式状态有什么特点？",
+          "retrieved_ids": [
+            "94a65a8ea424fd350246263cf49287a5#13:c0cd4fb7",
+            "94a65a8ea424fd350246263cf49287a5#14:c1ce03d3",
+            "8c0394d8063b2a77e59fa138994bc371#18:992343c7",
+            "8c0394d8063b2a77e59fa138994bc371#14:b60bb628",
+            "8c0394d8063b2a77e59fa138994bc371#3:ff144af6"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md"
+          ],
+          "relevant_snippets": [
+            "浅层式 API 创建的状态只在其顶层是响应式的"
+          ],
+          "matched_snippets": [
+            "浅层式 API 创建的状态只在其顶层是响应式的"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 396.4402999263257
+        },
+        {
+          "case_id": "vue-ts-001",
+          "question": "在 TypeScript 的 script setup 中，defineProps 支持哪两种主要类型声明方式？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#1:0ec976c5",
+            "5db014362e3700b1c8be96f1c09b16ab#1:9218566d",
+            "5db014362e3700b1c8be96f1c09b16ab#7:a66c5fa3",
+            "5db014362e3700b1c8be96f1c09b16ab#0:8df401ae",
+            "e652d1226b608e19e403a753373aa5f8#4:b1045c71"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "通过泛型参数来定义 props 的类型通常更直接"
+          ],
+          "matched_snippets": [
+            "通过泛型参数来定义 props 的类型通常更直接"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 604.7596000134945
+        },
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#72:526e4d46",
+            "7c9d1cd8b156e231a6985e991a14337b#188:967f807f",
+            "7c9d1cd8b156e231a6985e991a14337b#183:ef41a2c2",
+            "7c9d1cd8b156e231a6985e991a14337b#69:5adcae60",
+            "7c9d1cd8b156e231a6985e991a14337b#70:52e5123b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 398.34899990819395
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "7c9d1cd8b156e231a6985e991a14337b#186:2f60db00",
+            "7c9d1cd8b156e231a6985e991a14337b#13:27edca24",
+            "7c9d1cd8b156e231a6985e991a14337b#69:5adcae60",
+            "7c9d1cd8b156e231a6985e991a14337b#398:7b646267"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 600.0580000691116
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#56:9ef5b245",
+            "7c9d1cd8b156e231a6985e991a14337b#13:27edca24",
+            "7c9d1cd8b156e231a6985e991a14337b#123:fd7f0e31",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "7c9d1cd8b156e231a6985e991a14337b#69:5adcae60"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 407.49539993703365
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#19:0caafcaf",
+            "7c9d1cd8b156e231a6985e991a14337b#24:7ce275f8",
+            "7c9d1cd8b156e231a6985e991a14337b#72:526e4d46",
+            "7c9d1cd8b156e231a6985e991a14337b#8:b9ddbc4c",
+            "7c9d1cd8b156e231a6985e991a14337b#209:6e53fe02"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 388.3100999519229
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#19:0caafcaf",
+            "7c9d1cd8b156e231a6985e991a14337b#37:be60de93",
+            "7c9d1cd8b156e231a6985e991a14337b#86:ec01486f",
+            "7c9d1cd8b156e231a6985e991a14337b#85:8c0d48fa",
+            "7c9d1cd8b156e231a6985e991a14337b#87:28abbfd2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 404.8774999100715
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#90:4e57f625",
+            "83ccaf4b309454a458d3378d8fb81b29#89:1e9fa10b",
+            "83ccaf4b309454a458d3378d8fb81b29#87:dc0dd5d6",
+            "83ccaf4b309454a458d3378d8fb81b29#11:7cb252c8",
+            "83ccaf4b309454a458d3378d8fb81b29#9:47d82b04"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 406.44930000416934
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#9:47d82b04",
+            "83ccaf4b309454a458d3378d8fb81b29#11:7cb252c8",
+            "83ccaf4b309454a458d3378d8fb81b29#277:a224b1ec",
+            "83ccaf4b309454a458d3378d8fb81b29#10:833cde4b",
+            "83ccaf4b309454a458d3378d8fb81b29#94:df482798"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 388.35679995827377
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#122:cd173629",
+            "83ccaf4b309454a458d3378d8fb81b29#192:e1d00769",
+            "83ccaf4b309454a458d3378d8fb81b29#101:e9a470d4",
+            "83ccaf4b309454a458d3378d8fb81b29#123:ff7ada66",
+            "83ccaf4b309454a458d3378d8fb81b29#538:4341c43e"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 398.0843999888748
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#122:cd173629",
+            "83ccaf4b309454a458d3378d8fb81b29#192:e1d00769",
+            "83ccaf4b309454a458d3378d8fb81b29#87:dc0dd5d6",
+            "83ccaf4b309454a458d3378d8fb81b29#123:ff7ada66",
+            "83ccaf4b309454a458d3378d8fb81b29#90:4e57f625"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 391.8153999838978
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#14:fbba68fb",
+            "83ccaf4b309454a458d3378d8fb81b29#88:017a1af9",
+            "83ccaf4b309454a458d3378d8fb81b29#116:a74adf50",
+            "83ccaf4b309454a458d3378d8fb81b29#119:6d0c99d2",
+            "83ccaf4b309454a458d3378d8fb81b29#141:7dd8815b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 607.8893998637795
+        },
+        {
+          "case_id": "chengdu-bank-001",
+          "question": "成都银行 2025 年营业收入是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#51:7143ea75",
+            "637c88bf27641987f0ec09f9368afc8a#20:42891fe8",
+            "637c88bf27641987f0ec09f9368afc8a#218:ccb9a8af",
+            "637c88bf27641987f0ec09f9368afc8a#30:6967605b",
+            "637c88bf27641987f0ec09f9368afc8a#4:c0779374"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "matched_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 392.89569994434714
+        },
+        {
+          "case_id": "chengdu-bank-002",
+          "question": "成都银行 2025 年归属于母公司股东的净利润是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#20:42891fe8",
+            "637c88bf27641987f0ec09f9368afc8a#219:f38875b2",
+            "637c88bf27641987f0ec09f9368afc8a#456:a0504067",
+            "637c88bf27641987f0ec09f9368afc8a#30:6967605b",
+            "637c88bf27641987f0ec09f9368afc8a#221:12527cca"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "matched_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 405.50739993341267
+        },
+        {
+          "case_id": "chengdu-bank-003",
+          "question": "成都银行 2025 年不良贷款率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#59:738e37c9",
+            "637c88bf27641987f0ec09f9368afc8a#60:ef49a256",
+            "637c88bf27641987f0ec09f9368afc8a#62:3195b861",
+            "637c88bf27641987f0ec09f9368afc8a#81:540cfad4",
+            "637c88bf27641987f0ec09f9368afc8a#80:397ee00a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 393.10469990596175
+        },
+        {
+          "case_id": "chengdu-bank-004",
+          "question": "成都银行 2025 年净息差是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#86:b50a1d29",
+            "637c88bf27641987f0ec09f9368afc8a#4:c0779374",
+            "637c88bf27641987f0ec09f9368afc8a#107:f045c09a",
+            "637c88bf27641987f0ec09f9368afc8a#55:c973613c",
+            "637c88bf27641987f0ec09f9368afc8a#219:f38875b2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "matched_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 400.0232999678701
+        },
+        {
+          "case_id": "chengdu-bank-005",
+          "question": "成都银行 2025 年资本充足率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#27:12e95d17",
+            "637c88bf27641987f0ec09f9368afc8a#28:91f1fc45",
+            "637c88bf27641987f0ec09f9368afc8a#454:c2aaeef6",
+            "637c88bf27641987f0ec09f9368afc8a#4:c0779374",
+            "637c88bf27641987f0ec09f9368afc8a#25:44139165"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "matched_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 605.8872998692095
+        },
+        {
+          "case_id": "tongwei-001",
+          "question": "通威股份 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#211:fb1166ee",
+            "4af8abdbde8fc675aa438eb4b2a81f80#437:3d3089b5",
+            "4af8abdbde8fc675aa438eb4b2a81f80#532:60e85745",
+            "4af8abdbde8fc675aa438eb4b2a81f80#51:6760ac17",
+            "4af8abdbde8fc675aa438eb4b2a81f80#478:e22fe00d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 84,128,281,703.14 91,994,404,333.54 -8.55"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 396.24059991911054
+        },
+        {
+          "case_id": "tongwei-002",
+          "question": "通威股份 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "4af8abdbde8fc675aa438eb4b2a81f80#13:ba702aef",
+            "4af8abdbde8fc675aa438eb4b2a81f80#11:b0764450",
+            "4af8abdbde8fc675aa438eb4b2a81f80#216:de631382",
+            "4af8abdbde8fc675aa438eb4b2a81f80#214:0622e5ab"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 398.76100001856685
+        },
+        {
+          "case_id": "tongwei-003",
+          "question": "通威股份在农业方面的主营业务是什么？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#44:3fcc0ec8",
+            "4af8abdbde8fc675aa438eb4b2a81f80#17:ec8ced29",
+            "4af8abdbde8fc675aa438eb4b2a81f80#20:bd5d3ca4"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 403.73110002838075
+        },
+        {
+          "case_id": "tongwei-004",
+          "question": "通威股份在新能源方面主要经营哪些产品？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#472:38bdc510",
+            "4af8abdbde8fc675aa438eb4b2a81f80#45:3820b1e2",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#44:3fcc0ec8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "matched_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 390.24290000088513
+        },
+        {
+          "case_id": "tongwei-005",
+          "question": "截至 2025 年底，通威股份电池板块累计持有多少件有效专利？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#37:7ca63b23",
+            "4af8abdbde8fc675aa438eb4b2a81f80#42:56742858",
+            "4af8abdbde8fc675aa438eb4b2a81f80#41:a6ae576d",
+            "4af8abdbde8fc675aa438eb4b2a81f80#36:4f6dfcfb",
+            "4af8abdbde8fc675aa438eb4b2a81f80#35:fa66aa96"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "matched_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 602.9720001388341
+        },
+        {
+          "case_id": "wuliangye-001",
+          "question": "五粮液 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#106:6454cced",
+            "1d695ac7fe940685c086542cbe747c90#5:410ae64c",
+            "1d695ac7fe940685c086542cbe747c90#23:4be8fcf8",
+            "1d695ac7fe940685c086542cbe747c90#21:36d40392",
+            "1d695ac7fe940685c086542cbe747c90#119:628a3b4a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "matched_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 599.4890001602471
+        },
+        {
+          "case_id": "wuliangye-002",
+          "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#5:410ae64c",
+            "1d695ac7fe940685c086542cbe747c90#6:a37bb711",
+            "1d695ac7fe940685c086542cbe747c90#319:623469f8",
+            "1d695ac7fe940685c086542cbe747c90#121:214c88dc",
+            "1d695ac7fe940685c086542cbe747c90#19:b2387578"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.93779989890754
+        },
+        {
+          "case_id": "wuliangye-003",
+          "question": "五粮液 2025 年五粮液产品的毛利率是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:80f7c57c",
+            "1d695ac7fe940685c086542cbe747c90#23:4be8fcf8",
+            "1d695ac7fe940685c086542cbe747c90#10:ef0ac9ff",
+            "1d695ac7fe940685c086542cbe747c90#15:074128ae",
+            "1d695ac7fe940685c086542cbe747c90#5:410ae64c"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "matched_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 512.5539000146091
+        },
+        {
+          "case_id": "wuliangye-004",
+          "question": "五粮液经销模式和直销模式的毛利率分别是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:80f7c57c",
+            "1d695ac7fe940685c086542cbe747c90#24:82b6d7d3",
+            "1d695ac7fe940685c086542cbe747c90#22:1cfc86a5",
+            "1d695ac7fe940685c086542cbe747c90#12:2b00c927",
+            "1d695ac7fe940685c086542cbe747c90#14:5db2f330"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "matched_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 485.88990001007915
+        },
+        {
+          "case_id": "wuliangye-005",
+          "question": "五粮液 2025 年推出了哪些代表性产品？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#11:04e2a391",
+            "1d695ac7fe940685c086542cbe747c90#10:ef0ac9ff",
+            "1d695ac7fe940685c086542cbe747c90#47:7bf960db",
+            "1d695ac7fe940685c086542cbe747c90#21:36d40392",
+            "1d695ac7fe940685c086542cbe747c90#20:058f0b45"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "matched_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 396.8120999634266
+        }
+      ]
+    },
+    "hybrid_rerank": {
+      "mode": "hybrid_rerank",
+      "summary": {
+        "recall": 0.9666666666666667,
+        "hit": 0.9777777777777777,
+        "mrr": 0.798148148148148,
+        "ndcg": 0.8831398304625929,
+        "latency_ms": 751.6085244301293
+      },
+      "elapsed_ms": 33871.90130003728,
+      "queries": [
+        {
+          "case_id": "vue-ref-001",
+          "question": "在组合式 API 中，ref() 返回的对象通过什么属性访问内部值？",
+          "retrieved_ids": [
+            "8c0394d8063b2a77e59fa138994bc371#4:981a3ddc",
+            "8c0394d8063b2a77e59fa138994bc371#3:ff144af6",
+            "8c0394d8063b2a77e59fa138994bc371#8:d5679691",
+            "8c0394d8063b2a77e59fa138994bc371#14:b60bb628",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#24:fba108ef"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md"
+          ],
+          "relevant_snippets": [
+            "`ref()` 接收参数，并将其包裹在一个带有 `.value` 属性的 ref 对象中返回"
+          ],
+          "matched_snippets": [
+            "`ref()` 接收参数，并将其包裹在一个带有 `.value` 属性的 ref 对象中返回"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 1098.7009999807924
+        },
+        {
+          "case_id": "vue-ref-002",
+          "question": "Vue 模板中使用 ref 时是否需要手动写 .value？",
+          "retrieved_ids": [
+            "8c0394d8063b2a77e59fa138994bc371#5:8c9e6b97",
+            "8c0394d8063b2a77e59fa138994bc371#4:981a3ddc",
+            "8c0394d8063b2a77e59fa138994bc371#24:6ff14126",
+            "8c0394d8063b2a77e59fa138994bc371#9:8218a692",
+            "8c0394d8063b2a77e59fa138994bc371#6:6484971b"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md"
+          ],
+          "relevant_snippets": [
+            "当在模板中使用时，ref 会自动解包"
+          ],
+          "matched_snippets": [
+            "当在模板中使用时，ref 会自动解包"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 610.9759001992643
+        },
+        {
+          "case_id": "vue-computed-001",
+          "question": "为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#8:f40da8bf",
+            "9190ce9c818122687a5aaff9ba71cc89#9:8f437767",
+            "94a65a8ea424fd350246263cf49287a5#10:95220895",
+            "94a65a8ea424fd350246263cf49287a5#11:4cf12e00",
+            "9190ce9c818122687a5aaff9ba71cc89#15:f9bdfdf9"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "matched_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 723.1495999731123
+        },
+        {
+          "case_id": "vue-computed-002",
+          "question": "Vue 计算属性的 getter 为什么不能执行副作用？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#15:f9bdfdf9",
+            "9190ce9c818122687a5aaff9ba71cc89#16:d24c88de",
+            "94a65a8ea424fd350246263cf49287a5#10:95220895",
+            "9190ce9c818122687a5aaff9ba71cc89#8:f40da8bf",
+            "9190ce9c818122687a5aaff9ba71cc89#9:8f437767"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "matched_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 592.4730999395251
+        },
+        {
+          "case_id": "vue-props-001",
+          "question": "Vue 的 props 为什么遵循单向数据流？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:22ad981e",
+            "e652d1226b608e19e403a753373aa5f8#17:ff49aaae",
+            "e652d1226b608e19e403a753373aa5f8#20:84c7ee8f",
+            "e652d1226b608e19e403a753373aa5f8#19:d9c8aedb",
+            "e652d1226b608e19e403a753373aa5f8#18:4479aec5"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "matched_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 655.005699954927
+        },
+        {
+          "case_id": "vue-props-002",
+          "question": "子组件为什么不应该直接修改父组件传入的 prop？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:22ad981e",
+            "e652d1226b608e19e403a753373aa5f8#20:84c7ee8f",
+            "e652d1226b608e19e403a753373aa5f8#17:ff49aaae",
+            "e652d1226b608e19e403a753373aa5f8#19:d9c8aedb",
+            "94a65a8ea424fd350246263cf49287a5#8:1b439f67"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md"
+          ],
+          "relevant_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "matched_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 790.0002999231219
+        },
+        {
+          "case_id": "vue-events-001",
+          "question": "Vue 组件触发的事件会像原生 DOM 事件一样冒泡吗？",
+          "retrieved_ids": [
+            "268d245d058fe34996dd59e563073ecc#2:a1040a75",
+            "268d245d058fe34996dd59e563073ecc#1:1008dd5e",
+            "268d245d058fe34996dd59e563073ecc#9:2a59e415",
+            "268d245d058fe34996dd59e563073ecc#3:ab96957e",
+            "268d245d058fe34996dd59e563073ecc#10:0d97434d"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md"
+          ],
+          "relevant_snippets": [
+            "组件触发的事件**没有冒泡机制**"
+          ],
+          "matched_snippets": [
+            "组件触发的事件**没有冒泡机制**"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 743.5925998724997
+        },
+        {
+          "case_id": "vue-events-002",
+          "question": "defineEmits() 可以放在普通的子函数里调用吗？",
+          "retrieved_ids": [
+            "268d245d058fe34996dd59e563073ecc#6:d17b0933",
+            "268d245d058fe34996dd59e563073ecc#5:5417cdf5",
+            "268d245d058fe34996dd59e563073ecc#1:1008dd5e",
+            "268d245d058fe34996dd59e563073ecc#4:524713c0",
+            "268d245d058fe34996dd59e563073ecc#11:67da0561"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/components/events.md"
+          ],
+          "relevant_snippets": [
+            "`defineEmits()` 宏**不能**在子函数中使用"
+          ],
+          "matched_snippets": [
+            "`defineEmits()` 宏**不能**在子函数中使用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 647.1770000644028
+        },
+        {
+          "case_id": "vue-slots-001",
+          "question": "Vue 插槽内容能否访问子组件的数据？",
+          "retrieved_ids": [
+            "34ee3d4d685276a4ef4a2482d9d47434#4:7a3f03a4",
+            "34ee3d4d685276a4ef4a2482d9d47434#15:9a6af5e9",
+            "34ee3d4d685276a4ef4a2482d9d47434#14:75e34ff4",
+            "34ee3d4d685276a4ef4a2482d9d47434#17:1dd4e165",
+            "34ee3d4d685276a4ef4a2482d9d47434#18:0a7c548c"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md"
+          ],
+          "relevant_snippets": [
+            "插槽内容**无法访问**子组件的数据"
+          ],
+          "matched_snippets": [
+            "插槽内容**无法访问**子组件的数据"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 784.3720000237226
+        },
+        {
+          "case_id": "vue-slots-002",
+          "question": "没有显式 name 的 slot 出口默认叫什么名字？",
+          "retrieved_ids": [
+            "34ee3d4d685276a4ef4a2482d9d47434#7:f7dd122c",
+            "34ee3d4d685276a4ef4a2482d9d47434#13:52498f50",
+            "34ee3d4d685276a4ef4a2482d9d47434#9:2c227f45",
+            "34ee3d4d685276a4ef4a2482d9d47434#21:91efd285",
+            "34ee3d4d685276a4ef4a2482d9d47434#19:68475976"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md",
+            "技术文档-vue3中文/guide/components/slots.md"
+          ],
+          "relevant_snippets": [
+            "这类带 `name` 的插槽被称为具名插槽 (named slots)"
+          ],
+          "matched_snippets": [
+            "这类带 `name` 的插槽被称为具名插槽 (named slots)"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1045.3085999470204
+        },
+        {
+          "case_id": "vue-keepalive-001",
+          "question": "KeepAlive 设置 max 后采用什么缓存淘汰策略？",
+          "retrieved_ids": [
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#4:dcd41c7c",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#3:a23b8fb7",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#2:5766c1b6",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#0:949d52bd",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#1:d3795085"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md"
+          ],
+          "relevant_snippets": [
+            "如果缓存的实例数量即将超过指定的那个最大数量，则最久没有被访问的缓存实例将被销毁"
+          ],
+          "matched_snippets": [
+            "如果缓存的实例数量即将超过指定的那个最大数量，则最久没有被访问的缓存实例将被销毁"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 802.73999995552
+        },
+        {
+          "case_id": "vue-keepalive-002",
+          "question": "被 KeepAlive 缓存而从 DOM 移除的组件处于什么状态？",
+          "retrieved_ids": [
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#4:dcd41c7c",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#6:429f650f",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#5:97509798",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#7:f9d82a17",
+            "c0ba11bab815dd6aa62e5a5bd4246a5a#1:d3795085"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md",
+            "技术文档-vue3中文/guide/built-ins/keep-alive.md"
+          ],
+          "relevant_snippets": [
+            "它将变为**不活跃**状态而不是被卸载"
+          ],
+          "matched_snippets": [
+            "它将变为**不活跃**状态而不是被卸载"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 772.920599905774
+        },
+        {
+          "case_id": "vue-provide-001",
+          "question": "provide 和 inject 主要解决 Vue 中的什么问题？",
+          "retrieved_ids": [
+            "2f7985565cbf80a707fc0bc5a951de59#1:e16e305e",
+            "2f7985565cbf80a707fc0bc5a951de59#0:e57dcfbb",
+            "2f7985565cbf80a707fc0bc5a951de59#3:b95a41ff",
+            "2f7985565cbf80a707fc0bc5a951de59#5:2225c514",
+            "2f7985565cbf80a707fc0bc5a951de59#4:2277cf4e"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md"
+          ],
+          "relevant_snippets": [
+            "`provide` 和 `inject` 可以帮助我们解决这一问题"
+          ],
+          "matched_snippets": [
+            "`provide` 和 `inject` 可以帮助我们解决这一问题"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 859.2312000691891
+        },
+        {
+          "case_id": "vue-provide-002",
+          "question": "使用 inject 时，如果祖先组件从未提供对应 key，会发生什么？",
+          "retrieved_ids": [
+            "2f7985565cbf80a707fc0bc5a951de59#9:1f038abb",
+            "2f7985565cbf80a707fc0bc5a951de59#8:25aef8a4",
+            "2f7985565cbf80a707fc0bc5a951de59#5:2225c514",
+            "2f7985565cbf80a707fc0bc5a951de59#7:72154c85",
+            "5db014362e3700b1c8be96f1c09b16ab#16:fcafcf80"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/components/provide-inject.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md"
+          ],
+          "relevant_snippets": [
+            "如果该注入名的确没有任何组件提供，则会抛出一个运行时警告"
+          ],
+          "matched_snippets": [
+            "如果该注入名的确没有任何组件提供，则会抛出一个运行时警告"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 700.2159999683499
+        },
+        {
+          "case_id": "vue-composable-001",
+          "question": "Vue 组合式函数的主要职责是什么？",
+          "retrieved_ids": [
+            "208be56376cb1aca78a347f190af3c19#0:2b0e317e",
+            "208be56376cb1aca78a347f190af3c19#1:0d15223a",
+            "208be56376cb1aca78a347f190af3c19#17:4c2f1a7d",
+            "208be56376cb1aca78a347f190af3c19#5:2a029aed",
+            "208be56376cb1aca78a347f190af3c19#21:98df5af1"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md"
+          ],
+          "relevant_snippets": [
+            "一个利用 Vue 的组合式 API 来封装和复用**有状态逻辑**的函数"
+          ],
+          "matched_snippets": [
+            "一个利用 Vue 的组合式 API 来封装和复用**有状态逻辑**的函数"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 609.8889999557287
+        },
+        {
+          "case_id": "vue-composable-002",
+          "question": "Vue 组合式函数命名有什么约定？",
+          "retrieved_ids": [
+            "208be56376cb1aca78a347f190af3c19#13:bcd844b5",
+            "208be56376cb1aca78a347f190af3c19#2:8470cea2",
+            "208be56376cb1aca78a347f190af3c19#17:4c2f1a7d",
+            "208be56376cb1aca78a347f190af3c19#8:512f66f7",
+            "208be56376cb1aca78a347f190af3c19#5:2a029aed"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md",
+            "技术文档-vue3中文/guide/reusability/composables.md"
+          ],
+          "relevant_snippets": [
+            "组合式函数约定用驼峰命名法命名，并以“use”作为开头"
+          ],
+          "matched_snippets": [
+            "组合式函数约定用驼峰命名法命名，并以“use”作为开头"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 601.0471000336111
+        },
+        {
+          "case_id": "vue-testing-001",
+          "question": "Vue 组件测试主要验证哪些内容？",
+          "retrieved_ids": [
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#7:e7e94a55",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#8:37a257f0",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#2:caab2fed",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#11:00b71086",
+            "5d4dc2beca8cdd6c552f46edeeacf1e1#13:5c6b440f"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md",
+            "技术文档-vue3中文/guide/scaling-up/testing.md"
+          ],
+          "relevant_snippets": [
+            "检查你的组件是否正常挂载和渲染、是否可以与之互动，以及表现是否符合预期"
+          ],
+          "matched_snippets": [
+            "检查你的组件是否正常挂载和渲染、是否可以与之互动，以及表现是否符合预期"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 621.0216998588294
+        },
+        {
+          "case_id": "vue-perf-001",
+          "question": "Vue 的 v-once 指令适合什么场景？",
+          "retrieved_ids": [
+            "94a65a8ea424fd350246263cf49287a5#9:7287ff2d",
+            "268d245d058fe34996dd59e563073ecc#2:a1040a75",
+            "94a65a8ea424fd350246263cf49287a5#15:b8f65d7b",
+            "94a65a8ea424fd350246263cf49287a5#8:1b439f67",
+            "e652d1226b608e19e403a753373aa5f8#11:94c91efd"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/components/events.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "`v-once` 是一个内置的指令，可以用来渲染依赖运行时数据但无需再更新的内容"
+          ],
+          "matched_snippets": [
+            "`v-once` 是一个内置的指令，可以用来渲染依赖运行时数据但无需再更新的内容"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 763.1843998096883
+        },
+        {
+          "case_id": "vue-perf-002",
+          "question": "shallowRef 和 shallowReactive 创建的响应式状态有什么特点？",
+          "retrieved_ids": [
+            "94a65a8ea424fd350246263cf49287a5#13:c0cd4fb7",
+            "94a65a8ea424fd350246263cf49287a5#14:c1ce03d3",
+            "8c0394d8063b2a77e59fa138994bc371#14:b60bb628",
+            "8c0394d8063b2a77e59fa138994bc371#18:992343c7",
+            "8c0394d8063b2a77e59fa138994bc371#17:fe7d257c"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/best-practices/performance.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md",
+            "技术文档-vue3中文/guide/essentials/reactivity-fundamentals.md"
+          ],
+          "relevant_snippets": [
+            "浅层式 API 创建的状态只在其顶层是响应式的"
+          ],
+          "matched_snippets": [
+            "浅层式 API 创建的状态只在其顶层是响应式的"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 634.9542997777462
+        },
+        {
+          "case_id": "vue-ts-001",
+          "question": "在 TypeScript 的 script setup 中，defineProps 支持哪两种主要类型声明方式？",
+          "retrieved_ids": [
+            "5db014362e3700b1c8be96f1c09b16ab#1:9218566d",
+            "5db014362e3700b1c8be96f1c09b16ab#2:ca9b031f",
+            "e652d1226b608e19e403a753373aa5f8#4:b1045c71",
+            "5db014362e3700b1c8be96f1c09b16ab#6:831e4b8b",
+            "5db014362e3700b1c8be96f1c09b16ab#3:1db791e9"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md",
+            "技术文档-vue3中文/guide/typescript/composition-api.md"
+          ],
+          "relevant_snippets": [
+            "通过泛型参数来定义 props 的类型通常更直接"
+          ],
+          "matched_snippets": [
+            "通过泛型参数来定义 props 的类型通常更直接"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 584.4185000751168
+        },
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#70:52e5123b",
+            "7c9d1cd8b156e231a6985e991a14337b#183:ef41a2c2",
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#126:9e98c26a",
+            "7c9d1cd8b156e231a6985e991a14337b#188:967f807f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 939.023399958387
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "7c9d1cd8b156e231a6985e991a14337b#11:1f9d74fe",
+            "7c9d1cd8b156e231a6985e991a14337b#36:ddd46ea0",
+            "7c9d1cd8b156e231a6985e991a14337b#69:5adcae60",
+            "7c9d1cd8b156e231a6985e991a14337b#186:2f60db00"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.9306765580733931,
+          "latency_ms": 711.7163999937475
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#56:9ef5b245",
+            "7c9d1cd8b156e231a6985e991a14337b#13:27edca24",
+            "7c9d1cd8b156e231a6985e991a14337b#123:fd7f0e31",
+            "7c9d1cd8b156e231a6985e991a14337b#69:5adcae60",
+            "7c9d1cd8b156e231a6985e991a14337b#188:967f807f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 757.8964999411255
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#19:0caafcaf",
+            "7c9d1cd8b156e231a6985e991a14337b#209:6e53fe02",
+            "7c9d1cd8b156e231a6985e991a14337b#24:7ce275f8",
+            "7c9d1cd8b156e231a6985e991a14337b#71:f9fb53ad",
+            "7c9d1cd8b156e231a6985e991a14337b#88:679ea6af"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 614.5230000838637
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#37:be60de93",
+            "7c9d1cd8b156e231a6985e991a14337b#19:0caafcaf",
+            "7c9d1cd8b156e231a6985e991a14337b#41:ea133f27",
+            "7c9d1cd8b156e231a6985e991a14337b#35:afa0e0f7",
+            "7c9d1cd8b156e231a6985e991a14337b#88:679ea6af"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 593.584599904716
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#156:e1de5685",
+            "83ccaf4b309454a458d3378d8fb81b29#90:4e57f625",
+            "83ccaf4b309454a458d3378d8fb81b29#148:976a91ee",
+            "83ccaf4b309454a458d3378d8fb81b29#8:cd613fb7",
+            "83ccaf4b309454a458d3378d8fb81b29#9:47d82b04"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 877.4415999650955
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#156:e1de5685",
+            "83ccaf4b309454a458d3378d8fb81b29#9:47d82b04",
+            "83ccaf4b309454a458d3378d8fb81b29#87:dc0dd5d6",
+            "83ccaf4b309454a458d3378d8fb81b29#11:7cb252c8",
+            "83ccaf4b309454a458d3378d8fb81b29#277:a224b1ec"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 738.3121000602841
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#122:cd173629",
+            "83ccaf4b309454a458d3378d8fb81b29#192:e1d00769",
+            "83ccaf4b309454a458d3378d8fb81b29#87:dc0dd5d6",
+            "83ccaf4b309454a458d3378d8fb81b29#191:66487845",
+            "83ccaf4b309454a458d3378d8fb81b29#537:9276026c"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 828.957200050354
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#192:e1d00769",
+            "83ccaf4b309454a458d3378d8fb81b29#122:cd173629",
+            "83ccaf4b309454a458d3378d8fb81b29#87:dc0dd5d6",
+            "83ccaf4b309454a458d3378d8fb81b29#123:ff7ada66",
+            "83ccaf4b309454a458d3378d8fb81b29#279:d4e5f28c"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 755.4299999028444
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#14:fbba68fb",
+            "83ccaf4b309454a458d3378d8fb81b29#108:8ff9c077",
+            "83ccaf4b309454a458d3378d8fb81b29#13:a6317747",
+            "83ccaf4b309454a458d3378d8fb81b29#84:f5e2a99f",
+            "83ccaf4b309454a458d3378d8fb81b29#41:d2ce7e83"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.3065735963827292,
+          "latency_ms": 786.757200025022
+        },
+        {
+          "case_id": "chengdu-bank-001",
+          "question": "成都银行 2025 年营业收入是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#20:42891fe8",
+            "637c88bf27641987f0ec09f9368afc8a#48:e539e9ff",
+            "637c88bf27641987f0ec09f9368afc8a#215:62bd1cd4",
+            "637c88bf27641987f0ec09f9368afc8a#30:6967605b",
+            "637c88bf27641987f0ec09f9368afc8a#51:7143ea75"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "matched_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 840.6652000267059
+        },
+        {
+          "case_id": "chengdu-bank-002",
+          "question": "成都银行 2025 年归属于母公司股东的净利润是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#20:42891fe8",
+            "637c88bf27641987f0ec09f9368afc8a#219:f38875b2",
+            "637c88bf27641987f0ec09f9368afc8a#49:ed633170",
+            "637c88bf27641987f0ec09f9368afc8a#48:e539e9ff",
+            "637c88bf27641987f0ec09f9368afc8a#30:6967605b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "matched_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 765.5966999009252
+        },
+        {
+          "case_id": "chengdu-bank-003",
+          "question": "成都银行 2025 年不良贷款率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#81:540cfad4",
+            "637c88bf27641987f0ec09f9368afc8a#23:2b84ac42",
+            "637c88bf27641987f0ec09f9368afc8a#4:c0779374",
+            "637c88bf27641987f0ec09f9368afc8a#62:3195b861",
+            "637c88bf27641987f0ec09f9368afc8a#59:738e37c9"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "matched_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 772.681999951601
+        },
+        {
+          "case_id": "chengdu-bank-004",
+          "question": "成都银行 2025 年净息差是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#86:b50a1d29",
+            "637c88bf27641987f0ec09f9368afc8a#216:da31df1a",
+            "637c88bf27641987f0ec09f9368afc8a#53:2dd9a9e4",
+            "637c88bf27641987f0ec09f9368afc8a#351:e62e9a48",
+            "637c88bf27641987f0ec09f9368afc8a#368:217ca103"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "matched_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 829.1159002110362
+        },
+        {
+          "case_id": "chengdu-bank-005",
+          "question": "成都银行 2025 年资本充足率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#27:12e95d17",
+            "637c88bf27641987f0ec09f9368afc8a#45:d92ef2bd",
+            "637c88bf27641987f0ec09f9368afc8a#26:351b65a5",
+            "637c88bf27641987f0ec09f9368afc8a#28:91f1fc45",
+            "637c88bf27641987f0ec09f9368afc8a#25:44139165"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "matched_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 802.6359998621047
+        },
+        {
+          "case_id": "tongwei-001",
+          "question": "通威股份 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#30:f6b3ffed",
+            "4af8abdbde8fc675aa438eb4b2a81f80#211:fb1166ee",
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "4af8abdbde8fc675aa438eb4b2a81f80#216:de631382",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 84,128,281,703.14 91,994,404,333.54 -8.55"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 690.6215001363307
+        },
+        {
+          "case_id": "tongwei-002",
+          "question": "通威股份 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#30:f6b3ffed",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "4af8abdbde8fc675aa438eb4b2a81f80#13:ba702aef",
+            "4af8abdbde8fc675aa438eb4b2a81f80#214:0622e5ab",
+            "4af8abdbde8fc675aa438eb4b2a81f80#436:6aa04b37"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 719.9848000891507
+        },
+        {
+          "case_id": "tongwei-003",
+          "question": "通威股份在农业方面的主营业务是什么？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#17:ec8ced29",
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#44:3fcc0ec8",
+            "4af8abdbde8fc675aa438eb4b2a81f80#79:4a74e8d0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 590.0131999514997
+        },
+        {
+          "case_id": "tongwei-004",
+          "question": "通威股份在新能源方面主要经营哪些产品？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#44:3fcc0ec8",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#472:38bdc510",
+            "4af8abdbde8fc675aa438eb4b2a81f80#20:bd5d3ca4"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "matched_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 812.325700186193
+        },
+        {
+          "case_id": "tongwei-005",
+          "question": "截至 2025 年底，通威股份电池板块累计持有多少件有效专利？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#37:7ca63b23",
+            "4af8abdbde8fc675aa438eb4b2a81f80#42:56742858",
+            "4af8abdbde8fc675aa438eb4b2a81f80#41:a6ae576d",
+            "4af8abdbde8fc675aa438eb4b2a81f80#108:1fb1d239",
+            "4af8abdbde8fc675aa438eb4b2a81f80#35:fa66aa96"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "matched_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 752.6171000208706
+        },
+        {
+          "case_id": "wuliangye-001",
+          "question": "五粮液 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#106:6454cced",
+            "1d695ac7fe940685c086542cbe747c90#42:1c75b6bb",
+            "1d695ac7fe940685c086542cbe747c90#21:36d40392",
+            "1d695ac7fe940685c086542cbe747c90#5:410ae64c",
+            "1d695ac7fe940685c086542cbe747c90#118:9bc25b48"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "matched_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 670.4789998475462
+        },
+        {
+          "case_id": "wuliangye-002",
+          "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#19:b2387578",
+            "1d695ac7fe940685c086542cbe747c90#5:410ae64c",
+            "1d695ac7fe940685c086542cbe747c90#121:214c88dc",
+            "1d695ac7fe940685c086542cbe747c90#319:623469f8",
+            "1d695ac7fe940685c086542cbe747c90#7:b63ebe68"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 847.2204001154751
+        },
+        {
+          "case_id": "wuliangye-003",
+          "question": "五粮液 2025 年五粮液产品的毛利率是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:80f7c57c",
+            "1d695ac7fe940685c086542cbe747c90#23:4be8fcf8",
+            "1d695ac7fe940685c086542cbe747c90#22:1cfc86a5",
+            "1d695ac7fe940685c086542cbe747c90#14:5db2f330",
+            "1d695ac7fe940685c086542cbe747c90#246:21c5690f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "matched_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 768.6202998738736
+        },
+        {
+          "case_id": "wuliangye-004",
+          "question": "五粮液经销模式和直销模式的毛利率分别是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:80f7c57c",
+            "1d695ac7fe940685c086542cbe747c90#24:82b6d7d3",
+            "1d695ac7fe940685c086542cbe747c90#22:1cfc86a5",
+            "1d695ac7fe940685c086542cbe747c90#25:69fd3176",
+            "1d695ac7fe940685c086542cbe747c90#23:4be8fcf8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "matched_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.264068122572591,
+          "latency_ms": 836.656800005585
+        },
+        {
+          "case_id": "wuliangye-005",
+          "question": "五粮液 2025 年推出了哪些代表性产品？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#11:04e2a391",
+            "1d695ac7fe940685c086542cbe747c90#47:7bf960db",
+            "1d695ac7fe940685c086542cbe747c90#85:9f57a7a6",
+            "1d695ac7fe940685c086542cbe747c90#10:ef0ac9ff",
+            "1d695ac7fe940685c086542cbe747c90#84:8c9ca9ea"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "matched_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 879.1284000035375
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "hybrid_rerank": {
+      "rerank_fallback_count": 0,
+      "last_fallback_error": null
+    }
+  },
+  "errors": {}
+}

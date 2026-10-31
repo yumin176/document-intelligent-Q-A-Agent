@@ -49,6 +49,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="使用 FakeEmbedder + InMemoryVectorStore，不连接 Milvus",
     )
     parser.add_argument(
+        "--context-header",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="给每个 chunk 加【文档｜章节｜页码】前缀后再向量化（默认开启）",
+    )
+    parser.add_argument(
         "--manifest",
         type=Path,
         default=BACKEND_ROOT / "evaluation" / "corpus_manifest.json",
@@ -94,11 +100,13 @@ def main(argv: list[str] | None = None) -> int:
         chunk_strategy=args.strategy,
         chunk_size=args.chunk_size,
         chunk_overlap=args.chunk_overlap,
+        header_context=args.context_header,
     )
 
     print(
         f"mode={mode} strategy={args.strategy} "
-        f"chunk_size={args.chunk_size} chunk_overlap={args.chunk_overlap}"
+        f"chunk_size={args.chunk_size} chunk_overlap={args.chunk_overlap} "
+        f"context_header={args.context_header}"
     )
     total_chunks = 0
     documents = []

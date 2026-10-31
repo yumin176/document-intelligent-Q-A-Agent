@@ -193,12 +193,12 @@ LLM_BASE_URL=你的 LLM 服务地址
 LLM_API_KEY=你的 LLM Key
 LLM_MODEL=你的 LLM 模型名
 
-RERANK_API_URL=https://aihubmix.com/v1/rerank
-RERANK_API_KEY=你的 Rerank Key
-RERANK_MODEL=cohere-rerank-v4.0-fast
+RERANK_API_URL=https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank
+RERANK_API_KEY=你的百炼 Key（可与 Embedding 共用）
+RERANK_MODEL=qwen3.7-text-rerank
 
 RETRIEVAL_MODE=hybrid_rerank
-RETRIEVAL_CANDIDATE_K=10
+RETRIEVAL_CANDIDATE_K=50
 AGENT_MAX_REWRITES=1
 ```
 
@@ -401,14 +401,15 @@ cd backend
 | `LLM_TEMPERATURE` | `0` | 生成温度，知识问答建议 0 |
 | `LLM_TIMEOUT` | `30` | LLM 请求超时（秒） |
 | `MILVUS_URI` | `http://127.0.0.1:19530` | Milvus 连接地址 |
-| `MILVUS_COLLECTION_NAME` | `qa_chunks_prod_v1` | 默认 Collection 名称 |
+| `MILVUS_COLLECTION_NAME` | `qa_chunks_prod_v3` | 默认 Collection 名称 |
 | `MILVUS_TIMEOUT` | `10` | Milvus 请求超时（秒） |
-| `RERANK_API_URL` | `https://aihubmix.com/v1/rerank` | Rerank 接口地址 |
+| `RERANK_API_URL` | `https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank` | Rerank 接口地址（百炼 text-rerank） |
 | `RERANK_API_KEY` | 空 | Rerank API Key |
-| `RERANK_MODEL` | `cohere-rerank-v4.0-fast` | Rerank 模型名 |
+| `RERANK_MODEL` | `qwen3.7-text-rerank` | Rerank 模型名 |
 | `RERANK_TIMEOUT` | `30` | Rerank 请求超时（秒） |
+| `RERANK_MAX_CANDIDATES` | `30` | 送精排的候选数（实测 30 已饱和） |
 | `RETRIEVAL_MODE` | `hybrid_rerank` | `vector` / `bm25` / `hybrid` / `hybrid_rerank` |
-| `RETRIEVAL_CANDIDATE_K` | `10` | 混合检索与 Rerank 前的候选数量 |
+| `RETRIEVAL_CANDIDATE_K` | `50` | 混合检索与 Rerank 前的候选数量 |
 | `AGENT_MAX_REWRITES` | `1` | Grader 无相关结果时的最大查询改写次数 |
 
 ## 测试

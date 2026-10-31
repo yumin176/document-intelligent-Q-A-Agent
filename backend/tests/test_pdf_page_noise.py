@@ -178,3 +178,88 @@ def test_invalid_configuration_is_rejected() -> None:
         PdfPageNoiseCleaner(top_lines=1.5)  # type: ignore[arg-type]
     with pytest.raises(TypeError, match="布尔值"):
         PdfPageNoiseCleaner(remove_page_numbers="yes")  # type: ignore[arg-type]
+
+
+def test_segmented_headers_are_removed_without_global_ratio() -> None:
+    """年报分章节换页眉时，两套页眉各自不到 60% 也要能识别。"""
+    first = "成都银行股份有限公司2025年年度报告"
+    second = "截至2025年12月31日止年度财务报表"
+    pages = tuple(
+        ParsedPage(
+            page_number=index,
+            text=(
+                f"{first if index <= 12 else second}\n"
+                f"正文第{index}页\n"
+                f"补充内容一{index}\n"
+                f"补充内容二{index}\n"
+                f"补充内容三{index}"
+            ),
+        )
+        for index in range(1, 25)
+    )
+
+    result = PdfPageNoiseCleaner().clean_pages(pages)
+
+    assert set(result.removed_header_keys) == {first, second}
+    assert first not in result.text
+    assert second not in result.text
+    assert "补充内容一1" in result.text
+
+
+def test_short_header_run_is_preserved() -> None:
+    """只在少数连续页出现的行，不按页眉处理。"""
+    pages = tuple(
+        ParsedPage(
+            page_number=index,
+            text=(
+                f"{HEADER if index <= 6 else '另一份文件使用的页眉内容'}\n"
+                f"正文第{index}页\n补充内容一{index}\n"
+                f"补充内容二{index}\n补充内容三{index}"
+            ),
+        )
+        for index in range(1, 21)
+    )
+
+    result = PdfPageNoiseCleaner(min_run=8).clean_pages(pages)
+
+    assert result.removed_header_keys == ("另一份文件使用的页眉内容",)
+    assert HEADER in result.text
+
+
+def test_header_with_glued_page_number_is_removed() -> None:
+    """`...年度报告7` 这类页码粘在页眉尾部的行，要能跟随页眉一起删掉。"""
+    pages = tuple(
+        ParsedPage(
+            page_number=index,
+            text=(
+                f"{HEADER if index != 7 else f'{HEADER}7'}\n"
+                f"正文第{index}页\n补充内容一{index}\n"
+                f"补充内容二{index}\n补充内容三{index}"
+            ),
+        )
+        for index in range(1, 12)
+    )
+
+    result = PdfPageNoiseCleaner().clean_pages(pages)
+
+    assert HEADER not in result.text
+    assert "正文第7页" in result.text
+
+
+def test_bare_page_numbers_are_removed_when_header_detected() -> None:
+    """页眉已确认时，页边界的裸数字按页码删除，避免拼接进正文。"""
+    pages = tuple(
+        ParsedPage(
+            page_number=index,
+            text=(
+                f"{HEADER}\n{index}\n正文第{index}页\n"
+                f"补充内容一{index}\n补充内容二{index}"
+            ),
+        )
+        for index in range(1, 11)
+    )
+
+    result = PdfPageNoiseCleaner().clean_pages(pages)
+
+    assert result.removed_page_numbers == 10
+    assert result.pages[0].text.strip().startswith("正文第1页")

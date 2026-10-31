@@ -1,0 +1,78 @@
+{
+  "dataset": "evaluation/retrieval_cases_pdf.jsonl",
+  "model": "gte-rerank-v2",
+  "mode": "maxp",
+  "pool": 10,
+  "top_k": 5,
+  "case_count": 25,
+  "before_recall": 0.84,
+  "after_recall": 0.6,
+  "before_mrr": 0.638,
+  "after_mrr": 0.38733333333333336,
+  "changes": [
+    {
+      "case_id": "jimo-001",
+      "question": "极米科技 2025 年营业收入是多少？",
+      "before": false,
+      "after": true,
+      "rank_before": null,
+      "rank_after": 4
+    },
+    {
+      "case_id": "jimo-002",
+      "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+      "before": true,
+      "after": false,
+      "rank_before": 5,
+      "rank_after": null
+    },
+    {
+      "case_id": "jimo-003",
+      "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+      "before": true,
+      "after": false,
+      "rank_before": 2,
+      "rank_after": null
+    },
+    {
+      "case_id": "jimo-004",
+      "question": "极米科技的主营业务是什么？",
+      "before": true,
+      "after": false,
+      "rank_before": 1,
+      "rank_after": null
+    },
+    {
+      "case_id": "iflytek-001",
+      "question": "科大讯飞 2025 年营业收入是多少？",
+      "before": true,
+      "after": false,
+      "rank_before": 2,
+      "rank_after": null
+    },
+    {
+      "case_id": "tongwei-003",
+      "question": "通威股份在农业方面的主营业务是什么？",
+      "before": true,
+      "after": false,
+      "rank_before": 4,
+      "rank_after": null
+    },
+    {
+      "case_id": "wuliangye-001",
+      "question": "五粮液 2025 年营业收入是多少？",
+      "before": true,
+      "after": false,
+      "rank_before": 2,
+      "rank_after": null
+    },
+    {
+      "case_id": "wuliangye-002",
+      "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+      "before": true,
+      "after": false,
+      "rank_before": 1,
+      "rank_after": null
+    }
+  ]
+}

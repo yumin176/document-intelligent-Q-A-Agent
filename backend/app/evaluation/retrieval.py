@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
@@ -100,9 +101,21 @@ def normalize_doc_key(value: str) -> str:
     return normalized.casefold()
 
 
+# 表格分隔行（|---|:--:|）去掉竖线后只剩连字符，会插进表头与数据行之间，
+# 导致跨行的内容片段永远匹配不上，必须在比较前清掉。
+_TABLE_SEPARATOR = re.compile(r"-{3,}|:?-{2,}:-?")
+
+
 def normalize_match_text(text: str) -> str:
-    """匹配时忽略 Unicode 兼容差异和所有空白字符。"""
+    """匹配时忽略 Unicode 兼容差异、空白和表格排版字符。
+
+    表格感知分块会把单元格用 `|` 串起来，答案虽然在块里，
+    但 `11.55 | 10.80` 与标注的 `11.55 10.80` 字符串并不相等。
+    因此判定前需去掉竖线与分隔线，否则会把命中误判为未命中。
+    """
     normalized = unicodedata.normalize("NFKC", text)
+    normalized = normalized.replace("|", "")
+    normalized = _TABLE_SEPARATOR.sub("", normalized)
     return "".join(normalized.split())
 
 

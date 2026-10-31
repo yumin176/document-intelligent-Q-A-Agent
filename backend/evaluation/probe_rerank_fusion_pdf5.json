@@ -1,0 +1,289 @@
+{
+  "dataset": "evaluation/retrieval_cases_pdf.jsonl",
+  "model": "gte-rerank-v2",
+  "pool": 10,
+  "top_k": 5,
+  "case_count": 25,
+  "summary": {
+    "baseline": {
+      "recall": 0.84,
+      "mrr": 0.638
+    },
+    "pure": {
+      "recall": 0.76,
+      "mrr": 0.6113333333333333
+    },
+    "w0.2": {
+      "recall": 0.84,
+      "mrr": 0.638
+    },
+    "w0.4": {
+      "recall": 0.84,
+      "mrr": 0.6366666666666667
+    },
+    "w0.6": {
+      "recall": 0.84,
+      "mrr": 0.6613333333333332
+    },
+    "w0.8": {
+      "recall": 0.8,
+      "mrr": 0.6546666666666667
+    },
+    "tail": {
+      "recall": 0.8,
+      "mrr": 0.63
+    }
+  },
+  "cases": [
+    {
+      "case_id": "jimo-001",
+      "baseline": false,
+      "pure": false,
+      "w0.2": false,
+      "w0.4": false,
+      "w0.6": false,
+      "w0.8": false,
+      "tail": false
+    },
+    {
+      "case_id": "jimo-002",
+      "baseline": true,
+      "pure": false,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": false
+    },
+    {
+      "case_id": "jimo-003",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "jimo-004",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "jimo-005",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "iflytek-001",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "iflytek-002",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "iflytek-003",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "iflytek-004",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "iflytek-005",
+      "baseline": false,
+      "pure": false,
+      "w0.2": false,
+      "w0.4": false,
+      "w0.6": false,
+      "w0.8": false,
+      "tail": false
+    },
+    {
+      "case_id": "chengdu-bank-001",
+      "baseline": true,
+      "pure": false,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": false,
+      "tail": true
+    },
+    {
+      "case_id": "chengdu-bank-002",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "chengdu-bank-003",
+      "baseline": false,
+      "pure": false,
+      "w0.2": false,
+      "w0.4": false,
+      "w0.6": false,
+      "w0.8": false,
+      "tail": false
+    },
+    {
+      "case_id": "chengdu-bank-004",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "chengdu-bank-005",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "tongwei-001",
+      "baseline": false,
+      "pure": false,
+      "w0.2": false,
+      "w0.4": false,
+      "w0.6": false,
+      "w0.8": false,
+      "tail": false
+    },
+    {
+      "case_id": "tongwei-002",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "tongwei-003",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "tongwei-004",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "tongwei-005",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "wuliangye-001",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "wuliangye-002",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "wuliangye-003",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "wuliangye-004",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    },
+    {
+      "case_id": "wuliangye-005",
+      "baseline": true,
+      "pure": true,
+      "w0.2": true,
+      "w0.4": true,
+      "w0.6": true,
+      "w0.8": true,
+      "tail": true
+    }
+  ]
+}

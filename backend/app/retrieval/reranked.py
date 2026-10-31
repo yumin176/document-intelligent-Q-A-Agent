@@ -1,7 +1,7 @@
 """
 HybridRetriever
 → 召回 candidate_k 条
-→ CohereReranker 精排
+→ 精排（DashScopeReranker）
 → 返回最终 top_k
 """
 

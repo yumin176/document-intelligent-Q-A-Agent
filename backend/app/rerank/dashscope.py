@@ -1,3 +1,15 @@
+"""阿里云百炼（DashScope）文本重排。
+
+协议要点：
+- 请求体是 ``{"model", "input": {"query", "documents"}, "parameters": {"top_n"}}``
+- 响应分数在 ``output.results[].relevance_score``
+
+失败一律回退原始顺序，但会记录 ``fallback_count``，避免把
+"未重排的结果"当成精排结果统计。
+"""
+
+from __future__ import annotations
+
 import logging
 
 import httpx
@@ -10,8 +22,8 @@ settings = get_settings()
 logger = logging.getLogger(__name__)
 
 
-class CohereReranker(Reranker):
-    """通过 Cohere 兼容的 Rerank API 对候选 chunk 进行重排。"""
+class DashScopeReranker(Reranker):
+    """通过百炼 text-rerank 接口对候选 chunk 重排。"""
 
     def __init__(
         self,
@@ -19,7 +31,7 @@ class CohereReranker(Reranker):
         api_key: str | None = settings.rerank_api_key,
         model: str | None = settings.rerank_model,
         timeout: float | None = settings.rerank_timeout,
-        max_candidates: int = 10,
+        max_candidates: int = 30,
         client: httpx.Client | None = None,
     ) -> None:
         if not (api_url and api_key and model):
@@ -34,6 +46,8 @@ class CohereReranker(Reranker):
         self.max_candidates = max_candidates
         self.client = client or httpx.Client(timeout=timeout)
         self._owns_client = client is None
+        self.fallback_count = 0
+        self.last_fallback_error: str | None = None
 
     def rerank(
         self,
@@ -49,10 +63,14 @@ class CohereReranker(Reranker):
 
         payload = {
             "model": self.model,
-            "query": query,
-            "documents": [candidate.text for candidate in limited_candidates],
-            "top_n": expected_count,
-            "return_documents": False,
+            "input": {
+                "query": query,
+                "documents": [candidate.text for candidate in limited_candidates],
+            },
+            "parameters": {
+                "return_documents": False,
+                "top_n": expected_count,
+            },
         }
         headers = {
             "Content-Type": "application/json",
@@ -60,21 +78,18 @@ class CohereReranker(Reranker):
         }
 
         try:
-            response = self.client.post(
-                self.api_url,
-                headers=headers,
-                json=payload,
-            )
+            response = self.client.post(self.api_url, headers=headers, json=payload)
             response.raise_for_status()
-            # Response对象的json方法，用于将响应内容从json格式转换为python字典
             data = response.json()
             scored_candidates = self._parse_and_validate(
-                data["results"],
+                data["output"]["results"],
                 limited_candidates,
                 expected_count,
             )
         except Exception as exc:
-            logger.warning("Rerank 请求或输出无效，回退原始顺序: %s", exc)
+            self.fallback_count += 1
+            self.last_fallback_error = f"{type(exc).__name__}: {exc}"
+            logger.warning("DashScope Rerank 请求或输出无效，回退原始顺序: %s", exc)
             return candidates[:top_k]
 
         return scored_candidates[:top_k]
@@ -115,9 +130,6 @@ class CohereReranker(Reranker):
                 score = float(item.get("relevance_score"))
             except (TypeError, ValueError) as exc:
                 raise ValueError("score 不是数字") from exc
-
-            if not 0 <= score <= 1:
-                raise ValueError("score 超出 0-1 范围")
 
             candidate = candidates[target_index]
             results.append(

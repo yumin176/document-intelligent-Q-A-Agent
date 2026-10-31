@@ -15,9 +15,7 @@ from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
 from app.ingestion.loader import parse_document
 
 
-def normalize_match_text(text: str) -> str:
-    normalized = unicodedata.normalize("NFKC", text)
-    return "".join(normalized.split())
+from app.evaluation.retrieval import normalize_match_text
 
 
 def load_cases(path: Path) -> list[dict]:
