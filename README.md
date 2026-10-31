@@ -401,13 +401,13 @@ cd backend
 | `LLM_TEMPERATURE` | `0` | 生成温度，知识问答建议 0 |
 | `LLM_TIMEOUT` | `30` | LLM 请求超时（秒） |
 | `MILVUS_URI` | `http://127.0.0.1:19530` | Milvus 连接地址 |
-| `MILVUS_COLLECTION_NAME` | `qa_chunks` | 默认 Collection 名称 |
+| `MILVUS_COLLECTION_NAME` | `qa_chunks_prod_v1` | 默认 Collection 名称 |
 | `MILVUS_TIMEOUT` | `10` | Milvus 请求超时（秒） |
 | `RERANK_API_URL` | `https://aihubmix.com/v1/rerank` | Rerank 接口地址 |
 | `RERANK_API_KEY` | 空 | Rerank API Key |
 | `RERANK_MODEL` | `cohere-rerank-v4.0-fast` | Rerank 模型名 |
 | `RERANK_TIMEOUT` | `30` | Rerank 请求超时（秒） |
-| `RETRIEVAL_MODE` | `vector` | `vector` / `bm25` / `hybrid` / `hybrid_rerank` |
+| `RETRIEVAL_MODE` | `hybrid_rerank` | `vector` / `bm25` / `hybrid` / `hybrid_rerank` |
 | `RETRIEVAL_CANDIDATE_K` | `10` | 混合检索与 Rerank 前的候选数量 |
 | `AGENT_MAX_REWRITES` | `1` | Grader 无相关结果时的最大查询改写次数 |
 

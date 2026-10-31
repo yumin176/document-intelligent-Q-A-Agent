@@ -16,7 +16,7 @@ class ParsedDocument:
     # @property用来把方法变成属性访问，直接使用.text就可以获取到text（）执行后的结果
     @property
     def text(self) -> str:
-        return "\n".join(page.text for page in self.pages)
+        return "\n\n".join(page.text.rstrip("\r\n") for page in self.pages)
 
 def load_document(path: Path) -> tuple[str, dict]:
     parse_data=parse_document(path)

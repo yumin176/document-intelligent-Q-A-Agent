@@ -1,0 +1,2969 @@
+{
+  "dataset": "evaluation\\retrieval_cases_pdf.jsonl",
+  "case_count": 25,
+  "top_k": 5,
+  "candidate_k": 10,
+  "results": {
+    "vector": {
+      "mode": "vector",
+      "summary": {
+        "recall": 0.24,
+        "hit": 0.24,
+        "mrr": 0.18333333333333332,
+        "ndcg": 0.217552865079316,
+        "latency_ms": 427.3126039933413
+      },
+      "elapsed_ms": 10687.424200121313,
+      "queries": [
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "7c9d1cd8b156e231a6985e991a14337b#0:19153786",
+            "7c9d1cd8b156e231a6985e991a14337b#208:8283f5fa",
+            "7c9d1cd8b156e231a6985e991a14337b#179:11c1d279"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 689.205199945718
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#0:19153786",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#208:8283f5fa",
+            "7c9d1cd8b156e231a6985e991a14337b#179:11c1d279",
+            "7c9d1cd8b156e231a6985e991a14337b#200:c431d794"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 396.2248000316322
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#0:19153786",
+            "7c9d1cd8b156e231a6985e991a14337b#200:c431d794",
+            "7c9d1cd8b156e231a6985e991a14337b#55:bd360ea8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 403.954999987036
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "7c9d1cd8b156e231a6985e991a14337b#43:55d9426c",
+            "7c9d1cd8b156e231a6985e991a14337b#5:c4c852c3",
+            "7c9d1cd8b156e231a6985e991a14337b#356:dfaa0933"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 390.6943998299539
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "7c9d1cd8b156e231a6985e991a14337b#37:be60de93",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#41:ea133f27",
+            "7c9d1cd8b156e231a6985e991a14337b#58:0283efcb"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 409.53609999269247
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#260:59235a0d",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2",
+            "83ccaf4b309454a458d3378d8fb81b29#0:37dee982",
+            "83ccaf4b309454a458d3378d8fb81b29#72:17b31410",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 385.7691001612693
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#0:37dee982",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "83ccaf4b309454a458d3378d8fb81b29#156:096cf651",
+            "83ccaf4b309454a458d3378d8fb81b29#257:98ea2424"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 401.0924999602139
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#661:197a3b11",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "83ccaf4b309454a458d3378d8fb81b29#0:37dee982",
+            "83ccaf4b309454a458d3378d8fb81b29#260:59235a0d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 606.5613999962807
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "83ccaf4b309454a458d3378d8fb81b29#260:59235a0d",
+            "83ccaf4b309454a458d3378d8fb81b29#101:c9ab22dc",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.3868528072345416,
+          "latency_ms": 429.3155998457223
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#14:5b3227e6",
+            "83ccaf4b309454a458d3378d8fb81b29#117:810f9a5b",
+            "83ccaf4b309454a458d3378d8fb81b29#23:c954257c",
+            "83ccaf4b309454a458d3378d8fb81b29#5:f1557897",
+            "83ccaf4b309454a458d3378d8fb81b29#144:d170efa8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8772153153380493,
+          "latency_ms": 565.1986000593752
+        },
+        {
+          "case_id": "chengdu-bank-001",
+          "question": "成都银行 2025 年营业收入是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#365:31e339e6",
+            "637c88bf27641987f0ec09f9368afc8a#53:e27833db",
+            "637c88bf27641987f0ec09f9368afc8a#5:d7256aad",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 409.0652000159025
+        },
+        {
+          "case_id": "chengdu-bank-002",
+          "question": "成都银行 2025 年归属于母公司股东的净利润是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#226:7e2a1f5e",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474",
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#370:f9ed835d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 387.92099989950657
+        },
+        {
+          "case_id": "chengdu-bank-003",
+          "question": "成都银行 2025 年不良贷款率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#14:dd646a40",
+            "637c88bf27641987f0ec09f9368afc8a#61:ed00164a",
+            "637c88bf27641987f0ec09f9368afc8a#43:c3d7b971"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 404.3454001657665
+        },
+        {
+          "case_id": "chengdu-bank-004",
+          "question": "成都银行 2025 年净息差是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#437:2a3050c2",
+            "637c88bf27641987f0ec09f9368afc8a#365:31e339e6",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 396.6622001025826
+        },
+        {
+          "case_id": "chengdu-bank-005",
+          "question": "成都银行 2025 年资本充足率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#29:2b829c15",
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#26:57999257",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 406.31089988164604
+        },
+        {
+          "case_id": "tongwei-001",
+          "question": "通威股份 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#0:dc4dabc9",
+            "4af8abdbde8fc675aa438eb4b2a81f80#206:b6b603c4",
+            "4af8abdbde8fc675aa438eb4b2a81f80#33:c3094221",
+            "4af8abdbde8fc675aa438eb4b2a81f80#509:08ff7d86"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 84,128,281,703.14 91,994,404,333.54 -8.55"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 397.09199988283217
+        },
+        {
+          "case_id": "tongwei-002",
+          "question": "通威股份 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#0:dc4dabc9",
+            "4af8abdbde8fc675aa438eb4b2a81f80#206:b6b603c4",
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#166:f28f7f9c",
+            "4af8abdbde8fc675aa438eb4b2a81f80#33:c3094221"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 394.48529994115233
+        },
+        {
+          "case_id": "tongwei-003",
+          "question": "通威股份在农业方面的主营业务是什么？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#80:b619339a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#44:3fcc0ec8",
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#473:98586de6"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 404.3527999892831
+        },
+        {
+          "case_id": "tongwei-004",
+          "question": "通威股份在新能源方面主要经营哪些产品？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#472:38bdc510",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#20:bd5d3ca4",
+            "4af8abdbde8fc675aa438eb4b2a81f80#45:3820b1e2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 398.08870013803244
+        },
+        {
+          "case_id": "tongwei-005",
+          "question": "截至 2025 年底，通威股份电池板块累计持有多少件有效专利？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#43:91e0133a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#36:4f6dfcfb",
+            "4af8abdbde8fc675aa438eb4b2a81f80#166:f28f7f9c",
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#206:b6b603c4"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 398.7269999925047
+        },
+        {
+          "case_id": "wuliangye-001",
+          "question": "五粮液 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "1d695ac7fe940685c086542cbe747c90#0:4624d89f",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#17:103cfd36",
+            "1d695ac7fe940685c086542cbe747c90#293:7a2c21e5"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 400.6950999610126
+        },
+        {
+          "case_id": "wuliangye-002",
+          "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#0:4624d89f",
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "1d695ac7fe940685c086542cbe747c90#17:103cfd36",
+            "1d695ac7fe940685c086542cbe747c90#148:7a10282d",
+            "1d695ac7fe940685c086542cbe747c90#271:1cb7629b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 399.674299871549
+        },
+        {
+          "case_id": "wuliangye-003",
+          "question": "五粮液 2025 年五粮液产品的毛利率是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#0:4624d89f",
+            "1d695ac7fe940685c086542cbe747c90#10:40d5c8e8",
+            "1d695ac7fe940685c086542cbe747c90#26:d50c0724"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "matched_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 399.3872001301497
+        },
+        {
+          "case_id": "wuliangye-004",
+          "question": "五粮液经销模式和直销模式的毛利率分别是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#14:cc710c9c",
+            "1d695ac7fe940685c086542cbe747c90#15:9a97fa42",
+            "1d695ac7fe940685c086542cbe747c90#12:213d3744"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "matched_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 400.0228999648243
+        },
+        {
+          "case_id": "wuliangye-005",
+          "question": "五粮液 2025 年推出了哪些代表性产品？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#48:329c6c9d",
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "1d695ac7fe940685c086542cbe747c90#20:499c052b",
+            "1d695ac7fe940685c086542cbe747c90#11:213e20e2",
+            "1d695ac7fe940685c086542cbe747c90#10:40d5c8e8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "matched_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 408.43240008689463
+        }
+      ]
+    },
+    "bm25": {
+      "mode": "bm25",
+      "summary": {
+        "recall": 0.54,
+        "hit": 0.56,
+        "mrr": 0.366,
+        "ndcg": 0.41543849875334316,
+        "latency_ms": 10.608260007575154
+      },
+      "elapsed_ms": 268.8438999466598,
+      "queries": [
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#8:b9ddbc4c",
+            "7c9d1cd8b156e231a6985e991a14337b#155:11b95447",
+            "7c9d1cd8b156e231a6985e991a14337b#70:52e5123b",
+            "7c9d1cd8b156e231a6985e991a14337b#156:1b4cb4bb"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 11.760199908167124
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#122:d06a82e5"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 12.149699963629246
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#58:280946cc",
+            "1d695ac7fe940685c086542cbe747c90#34:49311f4d",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "1d695ac7fe940685c086542cbe747c90#33:843557e4",
+            "7c9d1cd8b156e231a6985e991a14337b#56:9ef5b245"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 12.775900075212121
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#171:fd652ee6",
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#155:11b95447",
+            "7c9d1cd8b156e231a6985e991a14337b#170:8e2a4f37",
+            "83ccaf4b309454a458d3378d8fb81b29#430:9db13044"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 4.8882002010941505
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#86:ec01486f",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#27:6de4639e",
+            "7c9d1cd8b156e231a6985e991a14337b#37:be60de93",
+            "7c9d1cd8b156e231a6985e991a14337b#85:8c0d48fa"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 11.138099944218993
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#260:59235a0d",
+            "83ccaf4b309454a458d3378d8fb81b29#259:b4232548",
+            "83ccaf4b309454a458d3378d8fb81b29#258:2eb6ecc1",
+            "83ccaf4b309454a458d3378d8fb81b29#148:feba74e7",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 8.18719994276762
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#122:d06a82e5"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 12.072500074282289
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#192:d5be2b02",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#81:ff55f4dc",
+            "83ccaf4b309454a458d3378d8fb81b29#154:1428645b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 12.335299979895353
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#58:280946cc",
+            "1d695ac7fe940685c086542cbe747c90#34:49311f4d",
+            "83ccaf4b309454a458d3378d8fb81b29#192:d5be2b02",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 15.124199911952019
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#153:b9d5e4d7",
+            "83ccaf4b309454a458d3378d8fb81b29#154:1428645b",
+            "83ccaf4b309454a458d3378d8fb81b29#14:5b3227e6",
+            "83ccaf4b309454a458d3378d8fb81b29#152:fe63b194",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.3065735963827292,
+          "latency_ms": 15.976800117641687
+        },
+        {
+          "case_id": "chengdu-bank-001",
+          "question": "成都银行 2025 年营业收入是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#53:e27833db",
+            "637c88bf27641987f0ec09f9368afc8a#51:9433f1dd",
+            "637c88bf27641987f0ec09f9368afc8a#225:ec9a57ca",
+            "637c88bf27641987f0ec09f9368afc8a#222:37933e63",
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 9.708300000056624
+        },
+        {
+          "case_id": "chengdu-bank-002",
+          "question": "成都银行 2025 年归属于母公司股东的净利润是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#474:c1a2e1d0",
+            "637c88bf27641987f0ec09f9368afc8a#226:7e2a1f5e",
+            "637c88bf27641987f0ec09f9368afc8a#371:be2135a0",
+            "637c88bf27641987f0ec09f9368afc8a#31:9f1c2fc4",
+            "637c88bf27641987f0ec09f9368afc8a#50:8a80a14e"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 13.334200019016862
+        },
+        {
+          "case_id": "chengdu-bank-003",
+          "question": "成都银行 2025 年不良贷款率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f",
+            "637c88bf27641987f0ec09f9368afc8a#61:ed00164a",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#43:c3d7b971",
+            "637c88bf27641987f0ec09f9368afc8a#64:c96ffe7e"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 10.294799925759435
+        },
+        {
+          "case_id": "chengdu-bank-004",
+          "question": "成都银行 2025 年净息差是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#111:0d79de18",
+            "637c88bf27641987f0ec09f9368afc8a#110:eedc6719",
+            "637c88bf27641987f0ec09f9368afc8a#89:c2c95ec3",
+            "7c9d1cd8b156e231a6985e991a14337b#8:b9ddbc4c",
+            "637c88bf27641987f0ec09f9368afc8a#177:0018a6ff"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "matched_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 6.956200115382671
+        },
+        {
+          "case_id": "chengdu-bank-005",
+          "question": "成都银行 2025 年资本充足率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#28:22bce211",
+            "637c88bf27641987f0ec09f9368afc8a#472:b369bb5f",
+            "637c88bf27641987f0ec09f9368afc8a#177:0018a6ff",
+            "637c88bf27641987f0ec09f9368afc8a#137:99c00fd0",
+            "637c88bf27641987f0ec09f9368afc8a#196:9147baf1"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "matched_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 8.956700097769499
+        },
+        {
+          "case_id": "tongwei-001",
+          "question": "通威股份 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "4af8abdbde8fc675aa438eb4b2a81f80#195:edf5adca",
+            "1d695ac7fe940685c086542cbe747c90#106:aca280e6",
+            "4af8abdbde8fc675aa438eb4b2a81f80#139:b7799c90",
+            "7c9d1cd8b156e231a6985e991a14337b#126:9e98c26a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 84,128,281,703.14 91,994,404,333.54 -8.55"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 7.228699978441
+        },
+        {
+          "case_id": "tongwei-002",
+          "question": "通威股份 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#122:d06a82e5",
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 17.00140000320971
+        },
+        {
+          "case_id": "tongwei-003",
+          "question": "通威股份在农业方面的主营业务是什么？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#17:ec8ced29",
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "4af8abdbde8fc675aa438eb4b2a81f80#139:b7799c90",
+            "4af8abdbde8fc675aa438eb4b2a81f80#137:5c8c3381",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 9.213099954649806
+        },
+        {
+          "case_id": "tongwei-004",
+          "question": "通威股份在新能源方面主要经营哪些产品？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#248:7f808e88",
+            "4af8abdbde8fc675aa438eb4b2a81f80#4:a50103f0",
+            "4af8abdbde8fc675aa438eb4b2a81f80#472:38bdc510",
+            "4af8abdbde8fc675aa438eb4b2a81f80#199:994467cd"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "matched_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 10.387999936938286
+        },
+        {
+          "case_id": "tongwei-005",
+          "question": "截至 2025 年底，通威股份电池板块累计持有多少件有效专利？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#37:7ca63b23",
+            "4af8abdbde8fc675aa438eb4b2a81f80#41:a6ae576d",
+            "4af8abdbde8fc675aa438eb4b2a81f80#42:56742858",
+            "4af8abdbde8fc675aa438eb4b2a81f80#108:1fb1d239",
+            "7c9d1cd8b156e231a6985e991a14337b#55:bd360ea8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "matched_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 12.098399922251701
+        },
+        {
+          "case_id": "wuliangye-001",
+          "question": "五粮液 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#107:4d209c4a",
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "1d695ac7fe940685c086542cbe747c90#106:aca280e6"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 7.146199932321906
+        },
+        {
+          "case_id": "wuliangye-002",
+          "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#122:d06a82e5"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 9.45989997126162
+        },
+        {
+          "case_id": "wuliangye-003",
+          "question": "五粮液 2025 年五粮液产品的毛利率是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#15:9a97fa42",
+            "1d695ac7fe940685c086542cbe747c90#264:b39c092f",
+            "1d695ac7fe940685c086542cbe747c90#104:1766f771"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "matched_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 8.283799979835749
+        },
+        {
+          "case_id": "wuliangye-004",
+          "question": "五粮液经销模式和直销模式的毛利率分别是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#14:cc710c9c",
+            "7c9d1cd8b156e231a6985e991a14337b#250:35be47f4",
+            "1d695ac7fe940685c086542cbe747c90#22:a3aab0e7"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "matched_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 10.247900150716305
+        },
+        {
+          "case_id": "wuliangye-005",
+          "question": "五粮液 2025 年推出了哪些代表性产品？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#11:213e20e2",
+            "1d695ac7fe940685c086542cbe747c90#47:6b6e4cbd",
+            "83ccaf4b309454a458d3378d8fb81b29#154:1428645b",
+            "7c9d1cd8b156e231a6985e991a14337b#34:31949957",
+            "7c9d1cd8b156e231a6985e991a14337b#38:f4fcefbb"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "matched_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 8.48080008290708
+        }
+      ]
+    },
+    "hybrid": {
+      "mode": "hybrid",
+      "summary": {
+        "recall": 0.54,
+        "hit": 0.56,
+        "mrr": 0.326,
+        "ndcg": 0.39540288521730466,
+        "latency_ms": 630.2432199846953
+      },
+      "elapsed_ms": 15760.101800085977,
+      "queries": [
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#70:52e5123b",
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#8:b9ddbc4c",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1965.4009998776019
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "7c9d1cd8b156e231a6985e991a14337b#0:19153786",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1625.582000007853
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#56:9ef5b245",
+            "4af8abdbde8fc675aa438eb4b2a81f80#58:280946cc",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "1d695ac7fe940685c086542cbe747c90#34:49311f4d",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 971.4804999530315
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#5:c4c852c3",
+            "7c9d1cd8b156e231a6985e991a14337b#171:fd652ee6",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 400.0248999800533
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#37:be60de93",
+            "7c9d1cd8b156e231a6985e991a14337b#19:0caafcaf",
+            "7c9d1cd8b156e231a6985e991a14337b#86:ec01486f",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 600.3634999506176
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#260:59235a0d",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#259:b4232548",
+            "83ccaf4b309454a458d3378d8fb81b29#258:2eb6ecc1"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 602.2751000709832
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "83ccaf4b309454a458d3378d8fb81b29#0:37dee982",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 395.6363999750465
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "83ccaf4b309454a458d3378d8fb81b29#192:d5be2b02",
+            "83ccaf4b309454a458d3378d8fb81b29#101:c9ab22dc",
+            "83ccaf4b309454a458d3378d8fb81b29#661:197a3b11"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 602.1034000441432
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#192:d5be2b02",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2",
+            "1d695ac7fe940685c086542cbe747c90#34:49311f4d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 1.0616063116448506,
+          "latency_ms": 397.6483999285847
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#14:5b3227e6",
+            "83ccaf4b309454a458d3378d8fb81b29#153:b9d5e4d7",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#116:9ed5366f",
+            "83ccaf4b309454a458d3378d8fb81b29#154:1428645b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 605.132499942556
+        },
+        {
+          "case_id": "chengdu-bank-001",
+          "question": "成都银行 2025 年营业收入是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#53:e27833db",
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f",
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#51:9433f1dd",
+            "637c88bf27641987f0ec09f9368afc8a#365:31e339e6"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 598.2482000254095
+        },
+        {
+          "case_id": "chengdu-bank-002",
+          "question": "成都银行 2025 年归属于母公司股东的净利润是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#226:7e2a1f5e",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474",
+            "637c88bf27641987f0ec09f9368afc8a#228:f0dbecd4",
+            "637c88bf27641987f0ec09f9368afc8a#51:9433f1dd",
+            "637c88bf27641987f0ec09f9368afc8a#474:c1a2e1d0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 596.2791000492871
+        },
+        {
+          "case_id": "chengdu-bank-003",
+          "question": "成都银行 2025 年不良贷款率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#61:ed00164a",
+            "637c88bf27641987f0ec09f9368afc8a#14:dd646a40",
+            "637c88bf27641987f0ec09f9368afc8a#43:c3d7b971"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 601.9178000278771
+        },
+        {
+          "case_id": "chengdu-bank-004",
+          "question": "成都银行 2025 年净息差是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#111:0d79de18",
+            "637c88bf27641987f0ec09f9368afc8a#437:2a3050c2",
+            "637c88bf27641987f0ec09f9368afc8a#110:eedc6719",
+            "637c88bf27641987f0ec09f9368afc8a#365:31e339e6",
+            "637c88bf27641987f0ec09f9368afc8a#89:c2c95ec3"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "matched_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 611.5328001324087
+        },
+        {
+          "case_id": "chengdu-bank-005",
+          "question": "成都银行 2025 年资本充足率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#26:57999257",
+            "637c88bf27641987f0ec09f9368afc8a#28:22bce211",
+            "637c88bf27641987f0ec09f9368afc8a#29:2b829c15",
+            "637c88bf27641987f0ec09f9368afc8a#472:b369bb5f",
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "matched_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 588.4455000050366
+        },
+        {
+          "case_id": "tongwei-001",
+          "question": "通威股份 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#195:edf5adca",
+            "4af8abdbde8fc675aa438eb4b2a81f80#0:dc4dabc9",
+            "1d695ac7fe940685c086542cbe747c90#106:aca280e6"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 84,128,281,703.14 91,994,404,333.54 -8.55"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 396.4171998668462
+        },
+        {
+          "case_id": "tongwei-002",
+          "question": "通威股份 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#122:d06a82e5",
+            "4af8abdbde8fc675aa438eb4b2a81f80#0:dc4dabc9",
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "4af8abdbde8fc675aa438eb4b2a81f80#206:b6b603c4",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 403.48779992200434
+        },
+        {
+          "case_id": "tongwei-003",
+          "question": "通威股份在农业方面的主营业务是什么？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#473:98586de6",
+            "4af8abdbde8fc675aa438eb4b2a81f80#20:bd5d3ca4",
+            "4af8abdbde8fc675aa438eb4b2a81f80#17:ec8ced29",
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 398.73980008997023
+        },
+        {
+          "case_id": "tongwei-004",
+          "question": "通威股份在新能源方面主要经营哪些产品？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#472:38bdc510",
+            "4af8abdbde8fc675aa438eb4b2a81f80#45:3820b1e2",
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#529:aef9bcf1",
+            "4af8abdbde8fc675aa438eb4b2a81f80#248:7f808e88"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "matched_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 398.3521000482142
+        },
+        {
+          "case_id": "tongwei-005",
+          "question": "截至 2025 年底，通威股份电池板块累计持有多少件有效专利？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#36:4f6dfcfb",
+            "4af8abdbde8fc675aa438eb4b2a81f80#8:c91c0587",
+            "4af8abdbde8fc675aa438eb4b2a81f80#37:7ca63b23",
+            "4af8abdbde8fc675aa438eb4b2a81f80#43:91e0133a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#41:a6ae576d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "matched_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 401.3191999401897
+        },
+        {
+          "case_id": "wuliangye-001",
+          "question": "五粮液 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#271:1cb7629b",
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "1d695ac7fe940685c086542cbe747c90#107:4d209c4a",
+            "1d695ac7fe940685c086542cbe747c90#0:4624d89f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 600.8227998390794
+        },
+        {
+          "case_id": "wuliangye-002",
+          "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "7c9d1cd8b156e231a6985e991a14337b#14:b4ac2a98",
+            "1d695ac7fe940685c086542cbe747c90#0:4624d89f",
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 596.4981999713928
+        },
+        {
+          "case_id": "wuliangye-003",
+          "question": "五粮液 2025 年五粮液产品的毛利率是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#10:40d5c8e8",
+            "1d695ac7fe940685c086542cbe747c90#15:9a97fa42",
+            "1d695ac7fe940685c086542cbe747c90#0:4624d89f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "matched_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 398.57459999620914
+        },
+        {
+          "case_id": "wuliangye-004",
+          "question": "五粮液经销模式和直销模式的毛利率分别是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#14:cc710c9c",
+            "1d695ac7fe940685c086542cbe747c90#15:9a97fa42",
+            "4af8abdbde8fc675aa438eb4b2a81f80#52:e6865773"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "matched_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 602.1153999026865
+        },
+        {
+          "case_id": "wuliangye-005",
+          "question": "五粮液 2025 年推出了哪些代表性产品？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#11:213e20e2",
+            "1d695ac7fe940685c086542cbe747c90#48:329c6c9d",
+            "1d695ac7fe940685c086542cbe747c90#47:6b6e4cbd",
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "83ccaf4b309454a458d3378d8fb81b29#154:1428645b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "matched_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 397.6823000703007
+        }
+      ]
+    },
+    "hybrid_rerank": {
+      "mode": "hybrid_rerank",
+      "summary": {
+        "recall": 0.52,
+        "hit": 0.52,
+        "mrr": 0.4,
+        "ndcg": 0.46280717276728434,
+        "latency_ms": 1366.1415599752218
+      },
+      "elapsed_ms": 34157.822699984536,
+      "queries": [
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#70:52e5123b",
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#0:19153786",
+            "7c9d1cd8b156e231a6985e991a14337b#179:11c1d279",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 2376.343599986285
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#0:19153786",
+            "7c9d1cd8b156e231a6985e991a14337b#208:8283f5fa"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1621.9518999569118
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#33:843557e4",
+            "1d695ac7fe940685c086542cbe747c90#34:49311f4d",
+            "7c9d1cd8b156e231a6985e991a14337b#56:9ef5b245",
+            "4af8abdbde8fc675aa438eb4b2a81f80#58:280946cc",
+            "7c9d1cd8b156e231a6985e991a14337b#55:bd360ea8"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 808.7895000353456
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#43:55d9426c",
+            "7c9d1cd8b156e231a6985e991a14337b#39:5d92aa38",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f",
+            "7c9d1cd8b156e231a6985e991a14337b#169:95f0a17d",
+            "7c9d1cd8b156e231a6985e991a14337b#356:dfaa0933"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1599.721500184387
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#37:be60de93",
+            "7c9d1cd8b156e231a6985e991a14337b#19:0caafcaf",
+            "7c9d1cd8b156e231a6985e991a14337b#41:ea133f27",
+            "7c9d1cd8b156e231a6985e991a14337b#58:0283efcb",
+            "7c9d1cd8b156e231a6985e991a14337b#33:e988f85f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 1224.7029999271035
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#260:59235a0d",
+            "83ccaf4b309454a458d3378d8fb81b29#148:feba74e7",
+            "83ccaf4b309454a458d3378d8fb81b29#259:b4232548",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1770.9915000014007
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#156:096cf651",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "4af8abdbde8fc675aa438eb4b2a81f80#13:ba702aef"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 997.7598998229951
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#192:d5be2b02",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#101:c9ab22dc",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a",
+            "83ccaf4b309454a458d3378d8fb81b29#81:ff55f4dc"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 1158.4351998753846
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#192:d5be2b02",
+            "1d695ac7fe940685c086542cbe747c90#33:843557e4",
+            "83ccaf4b309454a458d3378d8fb81b29#87:8f0053e2",
+            "83ccaf4b309454a458d3378d8fb81b29#123:5e1be35a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.4306765580733931,
+          "latency_ms": 1128.1139999628067
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#14:5b3227e6",
+            "83ccaf4b309454a458d3378d8fb81b29#116:9ed5366f",
+            "83ccaf4b309454a458d3378d8fb81b29#88:0f962bf2",
+            "83ccaf4b309454a458d3378d8fb81b29#5:f1557897",
+            "83ccaf4b309454a458d3378d8fb81b29#117:810f9a5b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8772153153380493,
+          "latency_ms": 1571.5969000011683
+        },
+        {
+          "case_id": "chengdu-bank-001",
+          "question": "成都银行 2025 年营业收入是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#222:37933e63",
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#53:e27833db",
+            "637c88bf27641987f0ec09f9368afc8a#225:ec9a57ca",
+            "637c88bf27641987f0ec09f9368afc8a#51:9433f1dd"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 23,602,625 22,981,527 2.70% 21,702,189"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1126.6158998478204
+        },
+        {
+          "case_id": "chengdu-bank-002",
+          "question": "成都银行 2025 年归属于母公司股东的净利润是多少（千元）？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#226:7e2a1f5e",
+            "637c88bf27641987f0ec09f9368afc8a#51:9433f1dd",
+            "637c88bf27641987f0ec09f9368afc8a#31:9f1c2fc4"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于母公司股东的净利润 13,283,492 12,858,380 3.31% 11,671,118"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1279.510899912566
+        },
+        {
+          "case_id": "chengdu-bank-003",
+          "question": "成都银行 2025 年不良贷款率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#24:b6351b2f",
+            "637c88bf27641987f0ec09f9368afc8a#61:ed00164a",
+            "637c88bf27641987f0ec09f9368afc8a#43:c3d7b971",
+            "637c88bf27641987f0ec09f9368afc8a#64:c96ffe7e"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "不良贷款率控制在 0.68%的低位"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1456.516700098291
+        },
+        {
+          "case_id": "chengdu-bank-004",
+          "question": "成都银行 2025 年净息差是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699",
+            "637c88bf27641987f0ec09f9368afc8a#437:2a3050c2",
+            "637c88bf27641987f0ec09f9368afc8a#9:2bca4e42",
+            "637c88bf27641987f0ec09f9368afc8a#365:31e339e6",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "净利差 1.55%净息差 1.59%"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1762.6570998691022
+        },
+        {
+          "case_id": "chengdu-bank-005",
+          "question": "成都银行 2025 年资本充足率是多少？",
+          "retrieved_ids": [
+            "637c88bf27641987f0ec09f9368afc8a#26:57999257",
+            "637c88bf27641987f0ec09f9368afc8a#29:2b829c15",
+            "637c88bf27641987f0ec09f9368afc8a#472:b369bb5f",
+            "637c88bf27641987f0ec09f9368afc8a#22:71b48474",
+            "637c88bf27641987f0ec09f9368afc8a#46:15ac9699"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf",
+            "上市公司年报/成都银行_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "资本充足率 13.81% 13.78% 13.88%"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1127.793800085783
+        },
+        {
+          "case_id": "tongwei-001",
+          "question": "通威股份 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "4af8abdbde8fc675aa438eb4b2a81f80#509:08ff7d86",
+            "1d695ac7fe940685c086542cbe747c90#106:aca280e6",
+            "7c9d1cd8b156e231a6985e991a14337b#126:9e98c26a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#33:c3094221"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入 84,128,281,703.14 91,994,404,333.54 -8.55"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1268.312499858439
+        },
+        {
+          "case_id": "tongwei-002",
+          "question": "通威股份 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "4af8abdbde8fc675aa438eb4b2a81f80#206:b6b603c4",
+            "4af8abdbde8fc675aa438eb4b2a81f80#33:c3094221"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润 -9,553,425,884.06 -7,038,757,392.54 -35.73"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 1235.5744999367744
+        },
+        {
+          "case_id": "tongwei-003",
+          "question": "通威股份在农业方面的主营业务是什么？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#17:ec8ced29",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa",
+            "4af8abdbde8fc675aa438eb4b2a81f80#80:b619339a",
+            "4af8abdbde8fc675aa438eb4b2a81f80#193:74fe3577",
+            "4af8abdbde8fc675aa438eb4b2a81f80#473:98586de6"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "matched_snippets": [
+            "公司主营业务为水产饲料、畜禽饲料等产品的研究、生产和销售"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1219.414700055495
+        },
+        {
+          "case_id": "tongwei-004",
+          "question": "通威股份在新能源方面主要经营哪些产品？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#18:679caf6f",
+            "4af8abdbde8fc675aa438eb4b2a81f80#248:7f808e88",
+            "4af8abdbde8fc675aa438eb4b2a81f80#45:3820b1e2",
+            "4af8abdbde8fc675aa438eb4b2a81f80#472:38bdc510",
+            "4af8abdbde8fc675aa438eb4b2a81f80#19:8916e0aa"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "matched_snippets": [
+            "公司以高纯晶硅、太阳能电池、组件等产品的研发、生产、销售为主"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1169.8682999704033
+        },
+        {
+          "case_id": "tongwei-005",
+          "question": "截至 2025 年底，通威股份电池板块累计持有多少件有效专利？",
+          "retrieved_ids": [
+            "4af8abdbde8fc675aa438eb4b2a81f80#37:7ca63b23",
+            "4af8abdbde8fc675aa438eb4b2a81f80#41:a6ae576d",
+            "7c9d1cd8b156e231a6985e991a14337b#55:bd360ea8",
+            "4af8abdbde8fc675aa438eb4b2a81f80#42:56742858",
+            "4af8abdbde8fc675aa438eb4b2a81f80#8:c91c0587"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "matched_snippets": [
+            "公司电池板块累计持有有效专利 1,840 件"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1196.314200060442
+        },
+        {
+          "case_id": "wuliangye-001",
+          "question": "五粮液 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "1d695ac7fe940685c086542cbe747c90#106:aca280e6",
+            "1d695ac7fe940685c086542cbe747c90#17:103cfd36",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入(元) 40,528,509,770.23 89,175,178,322.70 -54.55% 83,272,067,317.19"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1139.907999895513
+        },
+        {
+          "case_id": "wuliangye-002",
+          "question": "五粮液 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300",
+            "4af8abdbde8fc675aa438eb4b2a81f80#12:f64cec96",
+            "7c9d1cd8b156e231a6985e991a14337b#12:eb5428ef",
+            "1d695ac7fe940685c086542cbe747c90#5:dcf2991a",
+            "1d695ac7fe940685c086542cbe747c90#17:103cfd36"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/通威股份_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "matched_snippets": [
+            "归属于上市公司股东的净利润(元) 8,954,257,202.51 31,853,172,533.98 -71.89% 30,210,585,269.30"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 1837.2485002037138
+        },
+        {
+          "case_id": "wuliangye-003",
+          "question": "五粮液 2025 年五粮液产品的毛利率是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#14:cc710c9c",
+            "1d695ac7fe940685c086542cbe747c90#11:213e20e2",
+            "1d695ac7fe940685c086542cbe747c90#26:d50c0724"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "matched_snippets": [
+            "五粮液产品 27,936,099,726.56 2,919,602,981.19 89.55%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.6309297535714575,
+          "latency_ms": 1384.0979998931289
+        },
+        {
+          "case_id": "wuliangye-004",
+          "question": "五粮液经销模式和直销模式的毛利率分别是多少？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#13:d3e235aa",
+            "1d695ac7fe940685c086542cbe747c90#23:844c2ebd",
+            "1d695ac7fe940685c086542cbe747c90#22:a3aab0e7",
+            "1d695ac7fe940685c086542cbe747c90#25:cd1ee5e3",
+            "1d695ac7fe940685c086542cbe747c90#14:cc710c9c"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "matched_snippets": [
+            "经销模式 22,592,358,076.84 4,629,379,397.34 79.51%",
+            "直销模式 14,511,634,155.75 1,398,428,728.21 90.36%"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.8772153153380493,
+          "latency_ms": 1251.3806999195367
+        },
+        {
+          "case_id": "wuliangye-005",
+          "question": "五粮液 2025 年推出了哪些代表性产品？",
+          "retrieved_ids": [
+            "1d695ac7fe940685c086542cbe747c90#47:6b6e4cbd",
+            "1d695ac7fe940685c086542cbe747c90#11:213e20e2",
+            "1d695ac7fe940685c086542cbe747c90#10:40d5c8e8",
+            "1d695ac7fe940685c086542cbe747c90#48:329c6c9d",
+            "1d695ac7fe940685c086542cbe747c90#19:e3957300"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf",
+            "上市公司年报/五粮液_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "matched_snippets": [
+            "推出五粮液·一见倾心、马年生肖造型酒、第八代五粮液世界杯联名款等产品"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 1439.918200019747
+        }
+      ]
+    }
+  },
+  "errors": {}
+}

@@ -1,0 +1,1691 @@
+{
+  "dataset": "evaluation\\retrieval_cases_pilot.jsonl",
+  "case_count": 14,
+  "top_k": 5,
+  "candidate_k": 10,
+  "results": {
+    "vector": {
+      "mode": "vector",
+      "summary": {
+        "recall": 0.39285714285714285,
+        "hit": 0.42857142857142855,
+        "mrr": 0.2523809523809524,
+        "ndcg": 0.2825204221971561,
+        "latency_ms": 450.27013573729033
+      },
+      "elapsed_ms": 6306.108199991286,
+      "queries": [
+        {
+          "case_id": "vue-computed-001",
+          "question": "为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#8:e596e38e",
+            "9190ce9c818122687a5aaff9ba71cc89#7:1c1d01fe",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#6:952b1541"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "matched_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 703.2433000858873
+        },
+        {
+          "case_id": "vue-computed-002",
+          "question": "Vue 计算属性的 getter 为什么不能执行副作用？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#17:220160f3",
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#10:34bab458",
+            "9190ce9c818122687a5aaff9ba71cc89#7:1c1d01fe"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "matched_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 404.83830007724464
+        },
+        {
+          "case_id": "vue-props-001",
+          "question": "Vue 的 props 为什么遵循单向数据流？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#17:e1ce7bb3",
+            "e652d1226b608e19e403a753373aa5f8#13:4e7fe18a",
+            "e652d1226b608e19e403a753373aa5f8#10:e16293f0"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "matched_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 394.07000015489757
+        },
+        {
+          "case_id": "vue-props-002",
+          "question": "子组件为什么不应该直接修改父组件传入的 prop？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#17:e1ce7bb3",
+            "e652d1226b608e19e403a753373aa5f8#19:ed9e77dd",
+            "e652d1226b608e19e403a753373aa5f8#18:1e24ad84"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "matched_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 403.6799999885261
+        },
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#33:05b86320",
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#418:1546b4ff"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 424.02199981734157
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#418:1546b4ff",
+            "7c9d1cd8b156e231a6985e991a14337b#44:ccf37159",
+            "7c9d1cd8b156e231a6985e991a14337b#78:d2437dc0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 575.0053999945521
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#131:d2b51076",
+            "7c9d1cd8b156e231a6985e991a14337b#44:ccf37159",
+            "7c9d1cd8b156e231a6985e991a14337b#94:238fa267"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 397.9735001921654
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#33:05b86320",
+            "7c9d1cd8b156e231a6985e991a14337b#44:ccf37159"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 406.45709983073175
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#94:238fa267",
+            "7c9d1cd8b156e231a6985e991a14337b#131:d2b51076"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 395.9839998278767
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a",
+            "83ccaf4b309454a458d3378d8fb81b29#106:1895aa00",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#80:2d5848b3",
+            "83ccaf4b309454a458d3378d8fb81b29#100:e29c462f"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 597.5911000277847
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a",
+            "83ccaf4b309454a458d3378d8fb81b29#564:e052e294",
+            "83ccaf4b309454a458d3378d8fb81b29#143:06846b89",
+            "7c9d1cd8b156e231a6985e991a14337b#373:8509457a",
+            "7c9d1cd8b156e231a6985e991a14337b#364:4afc3548"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 409.3341000843793
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#100:e29c462f",
+            "83ccaf4b309454a458d3378d8fb81b29#108:84b942ec",
+            "83ccaf4b309454a458d3378d8fb81b29#143:06846b89"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 388.4652000851929
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#143:06846b89",
+            "83ccaf4b309454a458d3378d8fb81b29#107:cd29df1b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 400.38600005209446
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#136:aa6df065",
+            "83ccaf4b309454a458d3378d8fb81b29#130:24f1f9fd",
+            "83ccaf4b309454a458d3378d8fb81b29#12:e626b632",
+            "83ccaf4b309454a458d3378d8fb81b29#145:5d30f0ba",
+            "83ccaf4b309454a458d3378d8fb81b29#108:84b942ec"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.3065735963827292,
+          "latency_ms": 402.7319001033902
+        }
+      ]
+    },
+    "bm25": {
+      "mode": "bm25",
+      "summary": {
+        "recall": 0.4642857142857143,
+        "hit": 0.5,
+        "mrr": 0.28214285714285714,
+        "ndcg": 0.3088189870562689,
+        "latency_ms": 13.40542856736907
+      },
+      "elapsed_ms": 191.1313000600785,
+      "queries": [
+        {
+          "case_id": "vue-computed-001",
+          "question": "为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#8:e596e38e",
+            "9190ce9c818122687a5aaff9ba71cc89#13:9002f0ba",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "e652d1226b608e19e403a753373aa5f8#7:395c7e6c"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "matched_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 17.939999932423234
+        },
+        {
+          "case_id": "vue-computed-002",
+          "question": "Vue 计算属性的 getter 为什么不能执行副作用？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#3:f6593db7",
+            "9190ce9c818122687a5aaff9ba71cc89#13:9002f0ba",
+            "9190ce9c818122687a5aaff9ba71cc89#10:34bab458"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "matched_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 9.204600006341934
+        },
+        {
+          "case_id": "vue-props-001",
+          "question": "Vue 的 props 为什么遵循单向数据流？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815",
+            "e652d1226b608e19e403a753373aa5f8#10:e16293f0",
+            "e652d1226b608e19e403a753373aa5f8#1:20e6555c"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "matched_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 5.836999975144863
+        },
+        {
+          "case_id": "vue-props-002",
+          "question": "子组件为什么不应该直接修改父组件传入的 prop？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#3:753b3788",
+            "e652d1226b608e19e403a753373aa5f8#17:e1ce7bb3",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "matched_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 12.346500065177679
+        },
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#115:310760c5",
+            "7c9d1cd8b156e231a6985e991a14337b#158:196ce648",
+            "83ccaf4b309454a458d3378d8fb81b29#556:ee00dda9",
+            "7c9d1cd8b156e231a6985e991a14337b#78:d2437dc0",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 10.210199980065227
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#550:7f205ebe",
+            "7c9d1cd8b156e231a6985e991a14337b#472:5c6c99fa",
+            "83ccaf4b309454a458d3378d8fb81b29#552:8453e9db",
+            "7c9d1cd8b156e231a6985e991a14337b#368:103e954e",
+            "7c9d1cd8b156e231a6985e991a14337b#364:4afc3548"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 14.55789990723133
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "7c9d1cd8b156e231a6985e991a14337b#367:ae8dafff",
+            "7c9d1cd8b156e231a6985e991a14337b#381:5de322cc",
+            "83ccaf4b309454a458d3378d8fb81b29#121:f21f79e0",
+            "83ccaf4b309454a458d3378d8fb81b29#678:02c8b4a2"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 17.506799893453717
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#509:2d65e390",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815",
+            "7c9d1cd8b156e231a6985e991a14337b#510:2d65e390",
+            "7c9d1cd8b156e231a6985e991a14337b#161:d7462680",
+            "7c9d1cd8b156e231a6985e991a14337b#508:2d65e390"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "技术文档-vue3中文/guide/components/props.md",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 6.549000041559339
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#29:8ebfbe7d",
+            "7c9d1cd8b156e231a6985e991a14337b#26:9daedf76",
+            "7c9d1cd8b156e231a6985e991a14337b#131:d2b51076",
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#90:6b74815d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 15.478299930691719
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#236:0d282ad0",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#842:a390bc6d",
+            "7c9d1cd8b156e231a6985e991a14337b#115:310760c5",
+            "83ccaf4b309454a458d3378d8fb81b29#556:ee00dda9"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 10.693500051274896
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#550:7f205ebe",
+            "7c9d1cd8b156e231a6985e991a14337b#472:5c6c99fa",
+            "83ccaf4b309454a458d3378d8fb81b29#552:8453e9db",
+            "7c9d1cd8b156e231a6985e991a14337b#368:103e954e",
+            "7c9d1cd8b156e231a6985e991a14337b#364:4afc3548"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 16.748799942433834
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#100:e29c462f",
+            "83ccaf4b309454a458d3378d8fb81b29#108:84b942ec",
+            "83ccaf4b309454a458d3378d8fb81b29#842:a390bc6d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 12.016599997878075
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "7c9d1cd8b156e231a6985e991a14337b#381:5de322cc",
+            "7c9d1cd8b156e231a6985e991a14337b#367:ae8dafff",
+            "83ccaf4b309454a458d3378d8fb81b29#107:cd29df1b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.2,
+          "ndcg": 0.38685280723454163,
+          "latency_ms": 14.359300024807453
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#12:e626b632",
+            "83ccaf4b309454a458d3378d8fb81b29#24:ce64ba30",
+            "83ccaf4b309454a458d3378d8fb81b29#89:1b0d807c",
+            "83ccaf4b309454a458d3378d8fb81b29#641:53400089",
+            "83ccaf4b309454a458d3378d8fb81b29#642:53400089"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 24.22750019468367
+        }
+      ]
+    },
+    "hybrid": {
+      "mode": "hybrid",
+      "summary": {
+        "recall": 0.5357142857142857,
+        "hit": 0.5714285714285714,
+        "mrr": 0.35714285714285715,
+        "ndcg": 0.38337782640190127,
+        "latency_ms": 437.67113572851355
+      },
+      "elapsed_ms": 6130.269599845633,
+      "queries": [
+        {
+          "case_id": "vue-computed-001",
+          "question": "为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#8:e596e38e",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#7:1c1d01fe",
+            "9190ce9c818122687a5aaff9ba71cc89#10:34bab458"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "matched_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 527.8992999810725
+        },
+        {
+          "case_id": "vue-computed-002",
+          "question": "Vue 计算属性的 getter 为什么不能执行副作用？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#10:34bab458",
+            "9190ce9c818122687a5aaff9ba71cc89#13:9002f0ba",
+            "9190ce9c818122687a5aaff9ba71cc89#7:1c1d01fe"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "matched_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 399.1221999749541
+        },
+        {
+          "case_id": "vue-props-001",
+          "question": "Vue 的 props 为什么遵循单向数据流？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#10:e16293f0",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815",
+            "e652d1226b608e19e403a753373aa5f8#9:2136a32f"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "matched_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 400.98059992305934
+        },
+        {
+          "case_id": "vue-props-002",
+          "question": "子组件为什么不应该直接修改父组件传入的 prop？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#17:e1ce7bb3",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "e652d1226b608e19e403a753373aa5f8#3:753b3788"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "matched_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 630.71159995161
+        },
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#78:d2437dc0",
+            "7c9d1cd8b156e231a6985e991a14337b#418:1546b4ff",
+            "7c9d1cd8b156e231a6985e991a14337b#115:310760c5",
+            "7c9d1cd8b156e231a6985e991a14337b#158:196ce648"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 566.7513001244515
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#550:7f205ebe",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#472:5c6c99fa",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "83ccaf4b309454a458d3378d8fb81b29#552:8453e9db"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 403.8132999558002
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#367:ae8dafff",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#381:5de322cc"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 397.17609994113445
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#176:c79f9d3c",
+            "7c9d1cd8b156e231a6985e991a14337b#509:2d65e390",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "技术文档-vue3中文/guide/components/props.md",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 399.9034999869764
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#131:d2b51076",
+            "7c9d1cd8b156e231a6985e991a14337b#46:49eeef50",
+            "7c9d1cd8b156e231a6985e991a14337b#15:7f839480",
+            "7c9d1cd8b156e231a6985e991a14337b#29:8ebfbe7d"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 401.1288001202047
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#634:f4069e77",
+            "83ccaf4b309454a458d3378d8fb81b29#236:0d282ad0",
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a",
+            "83ccaf4b309454a458d3378d8fb81b29#106:1895aa00"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 398.1294999830425
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#550:7f205ebe",
+            "7c9d1cd8b156e231a6985e991a14337b#364:4afc3548",
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a",
+            "7c9d1cd8b156e231a6985e991a14337b#472:5c6c99fa",
+            "83ccaf4b309454a458d3378d8fb81b29#564:e052e294"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 399.46760004386306
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#100:e29c462f",
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#108:84b942ec",
+            "83ccaf4b309454a458d3378d8fb81b29#107:cd29df1b"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 398.67300004698336
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "7c9d1cd8b156e231a6985e991a14337b#367:ae8dafff",
+            "83ccaf4b309454a458d3378d8fb81b29#107:cd29df1b",
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 4,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "latency_ms": 398.69370008818805
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#12:e626b632",
+            "83ccaf4b309454a458d3378d8fb81b29#136:aa6df065",
+            "83ccaf4b309454a458d3378d8fb81b29#24:ce64ba30",
+            "83ccaf4b309454a458d3378d8fb81b29#130:24f1f9fd",
+            "83ccaf4b309454a458d3378d8fb81b29#89:1b0d807c"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 404.9454000778496
+        }
+      ]
+    },
+    "hybrid_rerank": {
+      "mode": "hybrid_rerank",
+      "summary": {
+        "recall": 0.5357142857142857,
+        "hit": 0.5714285714285714,
+        "mrr": 0.4880952380952381,
+        "ndcg": 0.4817197818812083,
+        "latency_ms": 1120.3067071203675
+      },
+      "elapsed_ms": 15686.393999960274,
+      "queries": [
+        {
+          "case_id": "vue-computed-001",
+          "question": "为什么 Vue 计算属性的结果可以重复读取而不必反复执行 getter？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#8:e596e38e",
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#7:1c1d01fe",
+            "9190ce9c818122687a5aaff9ba71cc89#6:952b1541"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "matched_snippets": [
+            "计算属性值会基于其响应式依赖被缓存"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1606.9819000549614
+        },
+        {
+          "case_id": "vue-computed-002",
+          "question": "Vue 计算属性的 getter 为什么不能执行副作用？",
+          "retrieved_ids": [
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1",
+            "9190ce9c818122687a5aaff9ba71cc89#17:220160f3",
+            "9190ce9c818122687a5aaff9ba71cc89#9:7b7adb30",
+            "9190ce9c818122687a5aaff9ba71cc89#3:f6593db7",
+            "9190ce9c818122687a5aaff9ba71cc89#16:77b0f9e7"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "matched_snippets": [
+            "计算属性的 getter 应只做计算而没有任何其他的副作用"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1343.568200012669
+        },
+        {
+          "case_id": "vue-props-001",
+          "question": "Vue 的 props 为什么遵循单向数据流？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#17:e1ce7bb3",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815",
+            "e652d1226b608e19e403a753373aa5f8#14:590b35f8"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md"
+          ],
+          "relevant_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "matched_snippets": [
+            "所有的 props 都遵循着**单向绑定**原则"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 933.5068999789655
+        },
+        {
+          "case_id": "vue-props-002",
+          "question": "子组件为什么不应该直接修改父组件传入的 prop？",
+          "retrieved_ids": [
+            "e652d1226b608e19e403a753373aa5f8#16:8bd7aa8d",
+            "e652d1226b608e19e403a753373aa5f8#20:6349d5fe",
+            "e652d1226b608e19e403a753373aa5f8#17:e1ce7bb3",
+            "e652d1226b608e19e403a753373aa5f8#0:5007d815",
+            "9190ce9c818122687a5aaff9ba71cc89#18:81c1c9d1"
+          ],
+          "retrieved_docs": [
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/components/props.md",
+            "技术文档-vue3中文/guide/essentials/computed.md"
+          ],
+          "relevant_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "matched_snippets": [
+            "这意味着你**不应该**在子组件中去更改一个 prop"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 806.208899943158
+        },
+        {
+          "case_id": "jimo-001",
+          "question": "极米科技 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#78:d2437dc0",
+            "7c9d1cd8b156e231a6985e991a14337b#158:196ce648",
+            "7c9d1cd8b156e231a6985e991a14337b#115:310760c5",
+            "83ccaf4b309454a458d3378d8fb81b29#556:ee00dda9",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "matched_snippets": [
+            "2025 年,极米科技实现营业收入34.67 亿元"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "latency_ms": 1150.6785000674427
+        },
+        {
+          "case_id": "jimo-002",
+          "question": "极米科技 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#550:7f205ebe",
+            "7c9d1cd8b156e231a6985e991a14337b#364:4afc3548",
+            "7c9d1cd8b156e231a6985e991a14337b#78:d2437dc0",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "实现归属于母公司所有者的净利润1.43 亿元"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1071.274199988693
+        },
+        {
+          "case_id": "jimo-003",
+          "question": "极米科技 2025 年研发投入占营业收入的比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "7c9d1cd8b156e231a6985e991a14337b#367:ae8dafff",
+            "7c9d1cd8b156e231a6985e991a14337b#381:5de322cc",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "83ccaf4b309454a458d3378d8fb81b29#121:f21f79e0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入占营业收入的比例(%) 11.55 10.80 增加0.75 个百分点 10.72"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1328.7304998375475
+        },
+        {
+          "case_id": "jimo-004",
+          "question": "极米科技的主营业务是什么？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#176:c79f9d3c",
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#33:05b86320",
+            "7c9d1cd8b156e231a6985e991a14337b#43:16e9a4f0",
+            "7c9d1cd8b156e231a6985e991a14337b#0:087377d0"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "公司主营业务是智能投影产品的研发、生产及销售"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 1671.032999875024
+        },
+        {
+          "case_id": "jimo-005",
+          "question": "极米科技在传统智能投影之外拓展了哪些新业务？",
+          "retrieved_ids": [
+            "7c9d1cd8b156e231a6985e991a14337b#39:4ba93573",
+            "7c9d1cd8b156e231a6985e991a14337b#15:7f839480",
+            "7c9d1cd8b156e231a6985e991a14337b#46:49eeef50",
+            "7c9d1cd8b156e231a6985e991a14337b#131:d2b51076",
+            "7c9d1cd8b156e231a6985e991a14337b#94:238fa267"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "matched_snippets": [
+            "快速切入车载光学、行业显示等新业务"
+          ],
+          "first_relevant_rank": 2,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "latency_ms": 1062.7657000441104
+        },
+        {
+          "case_id": "iflytek-001",
+          "question": "科大讯飞 2025 年营业收入是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#236:0d282ad0",
+            "83ccaf4b309454a458d3378d8fb81b29#106:1895aa00",
+            "83ccaf4b309454a458d3378d8fb81b29#556:ee00dda9",
+            "7c9d1cd8b156e231a6985e991a14337b#115:310760c5",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "营业收入合计 27,105,390,547.66"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 925.5297998897731
+        },
+        {
+          "case_id": "iflytek-002",
+          "question": "科大讯飞 2025 年归属于上市公司股东的净利润是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#550:7f205ebe",
+            "7c9d1cd8b156e231a6985e991a14337b#364:4afc3548",
+            "83ccaf4b309454a458d3378d8fb81b29#564:e052e294",
+            "7c9d1cd8b156e231a6985e991a14337b#373:8509457a",
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "归属于上市公司股东的净利润 (元) 839,390,861.36"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 981.7661000415683
+        },
+        {
+          "case_id": "iflytek-003",
+          "question": "科大讯飞 2025 年研发投入金额是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#107:cd29df1b",
+            "83ccaf4b309454a458d3378d8fb81b29#100:e29c462f",
+            "83ccaf4b309454a458d3378d8fb81b29#0:82118c2a"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入金额(元) 5,364,151,772.27"
+          ],
+          "matched_snippets": [],
+          "first_relevant_rank": null,
+          "recall": 0.0,
+          "hit": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "latency_ms": 796.2402000557631
+        },
+        {
+          "case_id": "iflytek-004",
+          "question": "科大讯飞 2025 年研发投入占营业收入比例是多少？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#180:caac823c",
+            "83ccaf4b309454a458d3378d8fb81b29#609:64a2e513",
+            "83ccaf4b309454a458d3378d8fb81b29#107:cd29df1b",
+            "7c9d1cd8b156e231a6985e991a14337b#381:5de322cc",
+            "7c9d1cd8b156e231a6985e991a14337b#367:ae8dafff"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf",
+            "上市公司年报/极米科技_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "matched_snippets": [
+            "研发投入较上年同比增长 7.84亿元,占营业收入比重为 19.79%"
+          ],
+          "first_relevant_rank": 3,
+          "recall": 1.0,
+          "hit": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "latency_ms": 958.0063000321388
+        },
+        {
+          "case_id": "iflytek-005",
+          "question": "科大讯飞形成了哪些商业化落地体系，讯飞星火的技术定位是什么？",
+          "retrieved_ids": [
+            "83ccaf4b309454a458d3378d8fb81b29#12:e626b632",
+            "83ccaf4b309454a458d3378d8fb81b29#108:84b942ec",
+            "83ccaf4b309454a458d3378d8fb81b29#130:24f1f9fd",
+            "83ccaf4b309454a458d3378d8fb81b29#136:aa6df065",
+            "83ccaf4b309454a458d3378d8fb81b29#14:04bb6420"
+          ],
+          "retrieved_docs": [
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf",
+            "上市公司年报/科大讯飞_2025年年度报告.pdf"
+          ],
+          "relevant_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系",
+            "基于全国产算力集群训练的全栈自主可控的通用大模型"
+          ],
+          "matched_snippets": [
+            "形成 AI开放平台、AI行业应用、AI企业级应用、AI消费者应用四大商业化落地体系"
+          ],
+          "first_relevant_rank": 1,
+          "recall": 0.5,
+          "hit": 1.0,
+          "mrr": 1.0,
+          "ndcg": 0.6131471927654584,
+          "latency_ms": 1048.0036998633295
+        }
+      ]
+    }
+  },
+  "errors": {}
+}

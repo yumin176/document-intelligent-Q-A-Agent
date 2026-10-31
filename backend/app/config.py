@@ -40,11 +40,11 @@ class Settings(BaseSettings):
 
     # Milvus：本地 Docker Compose 默认地址
     milvus_uri: str = "http://127.0.0.1:19530"
-    milvus_collection_name: str = "qa_chunks"
+    milvus_collection_name: str = "qa_chunks_prod_v1"
     milvus_timeout: float = 10.0
 
     # Retrieval
-    retrieval_mode: Literal["vector", "bm25", "hybrid", "hybrid_rerank"] = "vector"
+    retrieval_mode: Literal["vector", "bm25", "hybrid", "hybrid_rerank"] = "hybrid_rerank"
     retrieval_candidate_k: int = 10
 
     # Agent

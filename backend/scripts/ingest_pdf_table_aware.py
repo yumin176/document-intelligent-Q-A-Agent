@@ -9,6 +9,7 @@ BACKEND_ROOT = Path(__file__).resolve().parents[1]
 if str(BACKEND_ROOT) not in sys.path:
     sys.path.insert(0, str(BACKEND_ROOT))
 
+from app.config import get_settings
 from app.embedding.fake import FakeEmbedder
 from app.embedding.openai import OpenAIEmbedder
 from app.ingestion.pdf_table_aware import parse_table_aware_pdf, split_table_aware_blocks
@@ -29,6 +30,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--collection", default="qa_chunks_pilot_tableaware")
     parser.add_argument("--chunk-size", type=int, default=500)
     parser.add_argument("--chunk-overlap", type=int, default=50)
+    parser.add_argument("--strategy", choices=("fixed", "recursive"), default="fixed")
     parser.add_argument("--docs", nargs="+", default=list(PILOT_PDFS))
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
@@ -42,18 +44,23 @@ def ingest_pdf(
     store,
     chunk_size: int,
     chunk_overlap: int,
+    strategy: str,
 ) -> dict:
     blocks = parse_table_aware_pdf(path)
     chunks = split_table_aware_blocks(
         blocks,
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
+        strategy=strategy,
     )
     if not chunks:
         raise ValueError(f"没有可入库内容: {doc_name}")
 
     texts = [chunk.text for chunk in chunks]
     embeddings = embedder.embed_batch(texts)
+    embedding_dimension = len(embeddings[0]) if embeddings else 0
+    embedding_model = getattr(embedder, "model", get_settings().embedding_model)
+    embedding_base_url = getattr(embedder, "base_url", get_settings().embedding_base_url)
     if len(texts) != len(embeddings):
         raise RuntimeError("chunk 数量与 embedding 数量不一致")
 
@@ -98,9 +105,12 @@ def ingest_pdf(
                         "enabled": True,
                         "parser": "pdfplumber_table_aware",
                     },
-                    "chunk_strategy": "table_aware_fixed",
+                    "chunk_strategy": f"table_aware_{strategy}",
                     "chunk_size": chunk_size,
                     "chunk_overlap": chunk_overlap,
+                    "embedding_model": embedding_model,
+                    "embedding_base_url": embedding_base_url,
+                    "embedding_dimension": embedding_dimension,
                     "block_type": chunk.block_type,
                     "page_number": chunk.page_number,
                     **chunk.metadata,
@@ -148,7 +158,7 @@ def main() -> int:
         mode = args.collection
 
     print(
-        f"mode={mode} parser=pdfplumber_table_aware "
+        f"mode={mode} parser=pdfplumber_table_aware strategy={args.strategy} "
         f"chunk_size={args.chunk_size} chunk_overlap={args.chunk_overlap}"
     )
     total = 0
@@ -161,6 +171,7 @@ def main() -> int:
                 store=store,
                 chunk_size=args.chunk_size,
                 chunk_overlap=args.chunk_overlap,
+                strategy=args.strategy,
             )
             total += summary["chunk_count"]
             print(

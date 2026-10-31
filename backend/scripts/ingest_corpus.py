@@ -1,15 +1,19 @@
-"""批量入库语料文件到指定 Milvus Collection。"""
+"""批量入库语料文件到指定 Milvus Collection，并生成 manifest。"""
 
 import argparse
 import sys
+from datetime import datetime, timezone
+from hashlib import sha256
 from pathlib import Path
 
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 if str(BACKEND_ROOT) not in sys.path:
     sys.path.insert(0, str(BACKEND_ROOT))
 
+from app.config import get_settings
 from app.embedding.fake import FakeEmbedder
 from app.embedding.openai import OpenAIEmbedder
+from app.ingestion.manifest import save_manifest
 from app.ingestion.service import IngestionService
 from app.vectorstore.memory import InMemoryVectorStore
 from app.vectorstore.milvus import MilvusStore
@@ -22,7 +26,7 @@ PILOT_DOCS = (
 )
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="批量入库语料")
     parser.add_argument("--corpus-root", type=Path, required=True)
     parser.add_argument("--collection", default="qa_chunks_pilot")
@@ -44,7 +48,13 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="使用 FakeEmbedder + InMemoryVectorStore，不连接 Milvus",
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=BACKEND_ROOT / "evaluation" / "corpus_manifest.json",
+        help="ingestion manifest 输出路径",
+    )
+    args = parser.parse_args(argv)
     if args.chunk_size <= 0:
         parser.error("--chunk-size 必须大于 0")
     if not 0 <= args.chunk_overlap < args.chunk_size:
@@ -54,13 +64,13 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     if hasattr(sys.stderr, "reconfigure"):
         sys.stderr.reconfigure(encoding="utf-8")
 
-    args = parse_args()
+    args = parse_args(argv)
     paths = [(doc_name, args.corpus_root / doc_name) for doc_name in args.docs]
     missing = [str(path) for _, path in paths if not path.exists()]
     if missing:
@@ -91,14 +101,45 @@ def main() -> int:
         f"chunk_size={args.chunk_size} chunk_overlap={args.chunk_overlap}"
     )
     total_chunks = 0
+    documents = []
     try:
         for doc_name, path in paths:
             result = service.ingest_file(path, doc_name=doc_name)
             total_chunks += result.chunk_count
+            documents.append(
+                {
+                    "doc_name": doc_name,
+                    "document_id": result.document_id,
+                    "chunk_count": result.chunk_count,
+                    "content_hash": sha256(path.read_bytes()).hexdigest(),
+                    "ingested_at": datetime.now(timezone.utc).isoformat(),
+                }
+            )
             print(
                 f"{doc_name} -> document_id={result.document_id} "
                 f"chunks={result.chunk_count}"
             )
+
+        records = store.all_chunks()
+        first_metadata = records[0].metadata if records else {}
+        manifest = save_manifest(
+            args.manifest,
+            collection_name=args.collection if not args.dry_run else "dry-run",
+            embedding_model=str(
+                first_metadata.get("embedding_model")
+                or getattr(embedder, "model", get_settings().embedding_model)
+            ),
+            embedding_base_url=str(
+                first_metadata.get("embedding_base_url")
+                or getattr(embedder, "base_url", get_settings().embedding_base_url)
+            ),
+            embedding_dimension=int(first_metadata.get("embedding_dimension") or 0),
+            chunk_strategy=args.strategy,
+            chunk_size=args.chunk_size,
+            chunk_overlap=args.chunk_overlap,
+            documents=documents,
+        )
+        print(f"manifest={args.manifest}")
     finally:
         if not args.dry_run:
             store.close()

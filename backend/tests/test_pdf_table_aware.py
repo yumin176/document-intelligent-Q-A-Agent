@@ -81,3 +81,16 @@ def test_split_blocks_keeps_text_and_table_types() -> None:
     assert any(chunk.block_type == "text" for chunk in chunks)
     assert any(chunk.block_type == "table" for chunk in chunks)
     assert all(len(chunk.text) <= 100 for chunk in chunks if chunk.block_type == "text")
+def test_table_aware_text_strategy_is_passed(monkeypatch) -> None:
+    calls = []
+
+    def fake_split_text(text, *, chunk_size, chunk_overlap, strategy):
+        calls.append(strategy)
+        return [text]
+
+    monkeypatch.setattr("app.ingestion.pdf_table_aware.split_text", fake_split_text)
+    blocks = (PdfBlock(block_type="text", text="正文", page_number=1),)
+
+    split_table_aware_blocks(blocks, strategy="recursive")
+
+    assert calls == ["recursive"]

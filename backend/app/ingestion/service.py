@@ -10,6 +10,7 @@ from app.ingestion.cleaning import CleanerPipeline
 from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
 from app.ingestion.cleaning.pdf_page_noise import PdfPageNoiseCleaner
 from app.ingestion.loader import parse_document
+from app.ingestion.pdf_text import dewrap_pdf_pages, join_pdf_pages
 from app.ingestion.splitter import ChunkStrategy, split_text
 from app.vectorstore.base import ChunkRecord, VectorStore
 
@@ -78,6 +79,7 @@ def build_chunk_records(
     num_chars = file_meta.get("num_chars", len(text))
     cleaning_steps = list(file_meta.get("cleaning_steps", []))
     page_cleaning = dict(file_meta.get("page_cleaning", {}))
+    embedding_dimension = len(embeddings[0]) if embeddings else 0
 
     records: list[ChunkRecord] = []
     for index, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
@@ -106,6 +108,9 @@ def build_chunk_records(
                     "chunk_strategy": chunk_strategy,
                     "chunk_size": chunk_size,
                     "chunk_overlap": chunk_overlap,
+                    "embedding_model": file_meta.get("embedding_model", ""),
+                    "embedding_base_url": file_meta.get("embedding_base_url", ""),
+                    "embedding_dimension": embedding_dimension,
                 },
             )
         )
@@ -159,7 +164,8 @@ class IngestionService:
 
         if file_meta["file_type"] == "pdf":
             page_clean_result = self.page_cleaner.clean_pages(parsed.pages)
-            text_before_generic_cleaning = page_clean_result.text
+            dewrapped_pages = dewrap_pdf_pages(page_clean_result.pages)
+            text_before_generic_cleaning = join_pdf_pages(dewrapped_pages)
             page_cleaning = {
                 "enabled": True,
                 "before_chars": len(raw_text),
@@ -187,6 +193,12 @@ class IngestionService:
             source = doc_name
 
         file_meta["doc_name"] = doc_name
+        file_meta["embedding_model"] = getattr(
+            self.embedder, "model", get_settings().embedding_model
+        )
+        file_meta["embedding_base_url"] = getattr(
+            self.embedder, "base_url", get_settings().embedding_base_url
+        )
 
         # 增加源数据
         file_meta["raw_num_chars"] = len(raw_text)
@@ -209,6 +221,17 @@ class IngestionService:
         self.vector_store.upsert(records)
 
         document_id = records[0].metadata["document_id"] if records else ""
+        if document_id:
+            # 安全替换：先写入新 chunk，再删除同一文档中已不存在的旧锚点。
+            new_ids = {record.id for record in records}
+            old_ids = {
+                record.id
+                for record in self.vector_store.all_chunks()
+                if record.metadata.get("document_id") == document_id
+            }
+            stale_ids = old_ids - new_ids
+            if stale_ids:
+                self.vector_store.delete_by_ids(list(stale_ids))
         return IngestResult(
             document_id=document_id,
             filename=file_meta["filename"],

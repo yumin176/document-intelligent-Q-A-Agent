@@ -57,3 +57,6 @@ class InMemoryVectorStore(VectorStore):
             ) for id,record in self._records.items()
         ]
         return result
+    def delete_by_ids(self, ids: list[str]) -> None:
+        for record_id in ids:
+            self._records.pop(record_id, None)

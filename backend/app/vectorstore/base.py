@@ -53,5 +53,19 @@ class VectorStore(ABC):
     def all_chunks(self) -> list[TextRecord]:
         """返回全部 chunk 的文本和元数据，用于构建 BM25 索引。"""
 
+    @abstractmethod
+    def delete_by_ids(self, ids: list[str]) -> None:
+        """按主键删除若干条 chunk。"""
+
+    def delete_by_document_id(self, document_id: str) -> None:
+        """删除属于指定文档的全部 chunk。"""
+        ids = [
+            record.id
+            for record in self.all_chunks()
+            if record.metadata.get("document_id") == document_id
+        ]
+        if ids:
+            self.delete_by_ids(ids)
+
     def close(self) -> None:
         """释放底层连接，子类按需实现。"""

@@ -1,0 +1,124 @@
+{
+  "collection_name": "qa_chunks_prod_v1",
+  "embedding_model": "qwen3.7-text-embedding",
+  "embedding_base_url": "https://ws-45ke6n89e0uxoj1m.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "embedding_dimension": 1024,
+  "chunk_strategy": "fixed",
+  "chunk_size": 500,
+  "chunk_overlap": 50,
+  "created_at": "2026-10-30T12:52:44.750890+00:00",
+  "documents": [
+    {
+      "doc_name": "上市公司年报/极米科技_2025年年度报告.pdf",
+      "document_id": "7c9d1cd8b156e231a6985e991a14337b",
+      "chunk_count": 400,
+      "content_hash": "202f285edde1f7bdbf0eafa95d5f870b1b7ca54ef863bfebd0019623dd5c7b15",
+      "ingested_at": "2026-10-30T12:43:42.201801+00:00"
+    },
+    {
+      "doc_name": "上市公司年报/科大讯飞_2025年年度报告.pdf",
+      "document_id": "83ccaf4b309454a458d3378d8fb81b29",
+      "chunk_count": 676,
+      "content_hash": "8504042c6e77ea787ad43a88e0b3a35b9a57992fd6cf3be51a59fde2fe498ade",
+      "ingested_at": "2026-10-30T12:46:00.216733+00:00"
+    },
+    {
+      "doc_name": "上市公司年报/成都银行_2025年年度报告.pdf",
+      "document_id": "637c88bf27641987f0ec09f9368afc8a",
+      "chunk_count": 476,
+      "content_hash": "8d0667415eb1dccb69034726221a0b92aeead3a2b7658d9a7856b66222ab4eb6",
+      "ingested_at": "2026-10-30T12:48:07.106585+00:00"
+    },
+    {
+      "doc_name": "上市公司年报/通威股份_2025年年度报告.pdf",
+      "document_id": "4af8abdbde8fc675aa438eb4b2a81f80",
+      "chunk_count": 537,
+      "content_hash": "f0bd49a42e0cc42ea8766a6a8b10c70b912904788c4e69a03a9051ff29f4c2e0",
+      "ingested_at": "2026-10-30T12:49:53.775260+00:00"
+    },
+    {
+      "doc_name": "上市公司年报/五粮液_2025年年度报告.pdf",
+      "document_id": "1d695ac7fe940685c086542cbe747c90",
+      "chunk_count": 321,
+      "content_hash": "09133e1f44b3bb4b2cebe211529ad68f5b04b6be10b43870f2a78c947d5910a4",
+      "ingested_at": "2026-10-30T12:50:49.746959+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/best-practices/performance.md",
+      "document_id": "94a65a8ea424fd350246263cf49287a5",
+      "chunk_count": 16,
+      "content_hash": "26cf5eb3516c509c9107c1872198d7f135832b70d1bb9544f26bde3e6b7408c0",
+      "ingested_at": "2026-10-30T12:50:59.562066+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/built-ins/keep-alive.md",
+      "document_id": "c0ba11bab815dd6aa62e5a5bd4246a5a",
+      "chunk_count": 8,
+      "content_hash": "8c839c0fcdd0461cb2189f052b91c38435455ec9c6e7ccbb72b5b35c945a0b20",
+      "ingested_at": "2026-10-30T12:51:05.756247+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/components/events.md",
+      "document_id": "268d245d058fe34996dd59e563073ecc",
+      "chunk_count": 13,
+      "content_hash": "f80528b40e8a6d910a6eba6f5302d1e20a4166f65137e8d62aa65e24bd537993",
+      "ingested_at": "2026-10-30T12:51:14.219843+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/components/props.md",
+      "document_id": "e652d1226b608e19e403a753373aa5f8",
+      "chunk_count": 33,
+      "content_hash": "761b1efcbbe84975510b88b0f53dec64b3e0d9d2f034987e89c4a670e60f414b",
+      "ingested_at": "2026-10-30T12:51:28.317971+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/components/provide-inject.md",
+      "document_id": "2f7985565cbf80a707fc0bc5a951de59",
+      "chunk_count": 17,
+      "content_hash": "2e3981f4685f0906461182e18bf5a281e8e7738185bbc8fcf041845218e29908",
+      "ingested_at": "2026-10-30T12:51:38.154484+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/components/slots.md",
+      "document_id": "34ee3d4d685276a4ef4a2482d9d47434",
+      "chunk_count": 25,
+      "content_hash": "78c4ee1ef3f145753ef72c04021bb981e708e95062714f3fb4cb0be9288dd39a",
+      "ingested_at": "2026-10-30T12:51:48.250331+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/essentials/computed.md",
+      "document_id": "9190ce9c818122687a5aaff9ba71cc89",
+      "chunk_count": 17,
+      "content_hash": "52a4897eadde66867ba3618821b7b0bb3cf3b3aca3a233b9c58602c58624f861",
+      "ingested_at": "2026-10-30T12:51:58.687488+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/essentials/reactivity-fundamentals.md",
+      "document_id": "8c0394d8063b2a77e59fa138994bc371",
+      "chunk_count": 28,
+      "content_hash": "34ad3944ca8584ac9f82adf96607139b57b7817652e24bf44c1098c18db3cb3b",
+      "ingested_at": "2026-10-30T12:52:11.903070+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/reusability/composables.md",
+      "document_id": "208be56376cb1aca78a347f190af3c19",
+      "chunk_count": 23,
+      "content_hash": "a14814d559a6623ace77f5ed3d7660cef7914adf43ec5cb5196b85aa360bd8bd",
+      "ingested_at": "2026-10-30T12:52:24.534107+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/scaling-up/testing.md",
+      "document_id": "5d4dc2beca8cdd6c552f46edeeacf1e1",
+      "chunk_count": 27,
+      "content_hash": "97f79a12d56c982daa4610f6a2376c9c0d20cfdae3e75f6981843a1d779bef99",
+      "ingested_at": "2026-10-30T12:52:33.364533+00:00"
+    },
+    {
+      "doc_name": "技术文档-Vue3中文/guide/typescript/composition-api.md",
+      "document_id": "5db014362e3700b1c8be96f1c09b16ab",
+      "chunk_count": 25,
+      "content_hash": "0b726902d23e442882542cb85067c02cd00bb7b20191de3892bf2f47864a130b",
+      "ingested_at": "2026-10-30T12:52:43.797663+00:00"
+    }
+  ]
+}

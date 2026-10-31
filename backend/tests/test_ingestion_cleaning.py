@@ -295,3 +295,21 @@ def test_doc_name_controls_document_identity(tmp_path: Path) -> None:
     assert api["source"] == "api/same.md"
     assert guide["document_id"] != api["document_id"]
     assert guide["anchor_id"] != api["anchor_id"]
+def test_reingest_same_document_removes_stale_chunks(tmp_path: Path) -> None:
+    path = tmp_path / "doc.md"
+    path.write_text("A" * 1200, encoding="utf-8")
+    service, store = make_service()
+
+    first = service.ingest_file(path, doc_name="docs/doc.md")
+    assert first.chunk_count > 1
+    first_ids = {chunk.id for chunk in store.all_chunks()}
+
+    path.write_text("B" * 100, encoding="utf-8")
+    second = service.ingest_file(path, doc_name="docs/doc.md")
+    chunks = store.all_chunks()
+    second_ids = {chunk.id for chunk in chunks}
+
+    assert second.chunk_count == 1
+    assert len(chunks) == 1
+    assert first_ids.isdisjoint(second_ids)
+    assert chunks[0].metadata["document_id"] == first.document_id == second.document_id

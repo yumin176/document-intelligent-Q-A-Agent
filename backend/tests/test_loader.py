@@ -45,7 +45,7 @@ def test_load_pdf(tmp_path: Path) -> None:
     with patch("app.ingestion.loader.PdfReader", return_value=FakeReader("ignored")):
         content, meta = load_document(path)
 
-    assert content == "Page one\nPage one"
+    assert content == "Page one\n\nPage one"
     assert meta["file_type"] == "pdf"
 
 

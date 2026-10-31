@@ -9,7 +9,8 @@ import pdfplumber
 from app.ingestion.cleaning import PdfPageNoiseCleaner
 from app.ingestion.cleaning.factory import build_default_cleaner_pipeline
 from app.ingestion.loader import ParsedPage
-from app.ingestion.splitter import split_text_fixed
+from app.ingestion.pdf_text import dewrap_pdf_pages
+from app.ingestion.splitter import ChunkStrategy, split_text
 
 
 @dataclass(frozen=True)
@@ -115,9 +116,10 @@ def parse_table_aware_pdf(path: Path) -> tuple[PdfBlock, ...]:
                     )
 
     page_clean_result = PdfPageNoiseCleaner().clean_pages(prose_pages)
+    dewrapped_pages = dewrap_pdf_pages(page_clean_result.pages)
     cleaner = build_default_cleaner_pipeline()
     blocks: list[PdfBlock] = []
-    for page in page_clean_result.pages:
+    for page in dewrapped_pages:
         cleaned = cleaner.clean(page.text).text.strip()
         if cleaned:
             blocks.append(
@@ -191,8 +193,9 @@ def split_table_aware_blocks(
     *,
     chunk_size: int = 500,
     chunk_overlap: int = 50,
+    strategy: ChunkStrategy = "fixed",
 ) -> list[TableAwareChunk]:
-    """正文按固定窗口切分，表格按行切分并重复表头。"""
+    """正文按指定策略切分，表格按行切分并重复表头。"""
     chunks: list[TableAwareChunk] = []
     for block in blocks:
         if block.block_type == "table":
@@ -208,10 +211,11 @@ def split_table_aware_blocks(
             )
             continue
 
-        for text in split_text_fixed(
+        for text in split_text(
             block.text,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            strategy=strategy,
         ):
             chunks.append(
                 TableAwareChunk(

@@ -107,6 +107,18 @@ class MilvusStore(VectorStore):
 
 
 
+    def delete_by_ids(self, ids: list[str]) -> None:
+        if not ids:
+            return
+        if not self._client.has_collection(self.collection_name):
+            return
+        self._client.delete(
+            collection_name=self.collection_name,
+            ids=ids,
+            timeout=self.timeout,
+        )
+        self._client.flush(self.collection_name)
+
     def close(self) -> None:
         self._client.close()
 

@@ -38,8 +38,8 @@ def make_case(
 def test_load_real_content_anchored_dataset() -> None:
     cases = load_cases(EVALUATION_DIR / "retrieval_cases_content.jsonl")
 
-    assert len(cases) == 30
-    assert len({case.case_id for case in cases}) == 30
+    assert len(cases) == 45
+    assert len({case.case_id for case in cases}) == 45
     assert all(case.relevant_doc for case in cases)
     assert all(case.relevant_snippets for case in cases)
 
