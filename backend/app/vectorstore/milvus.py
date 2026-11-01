@@ -96,14 +96,39 @@ class MilvusStore(VectorStore):
 
         records: list[TextRecord] = []
         for row in rows:
-            records.append(
-                TextRecord(
-                    id=str(row["id"]),
-                    text=str(row.get("text") or ""),
-                    metadata=json.loads(row.get("metadata_json") or "{}"),
-                )
-            )
+            records.append(self._row_to_text_record(row))
         return records
+
+    def get_by_ids(self, ids: list[str]) -> list[TextRecord]:
+        """按主键直查，避免为了单条记录扫全表。
+
+        这里刻意用默认（Bounded）一致性：``upsert`` 已同步 flush，
+        新数据对 Bounded 读立即可见；而 Strong 每次要多等约 200ms 的
+        时间戳对齐，对「读一条」这种请求不划算（实测 204ms vs 9ms）。
+        """
+        if not ids:
+            return []
+        if not self._client.has_collection(self.collection_name):
+            return []
+
+        rows = self._client.get(
+            collection_name=self.collection_name,
+            ids=ids,
+            output_fields=["id", "text", "metadata_json"],
+            timeout=self.timeout,
+        )
+
+        found = {str(row["id"]): self._row_to_text_record(row) for row in rows}
+        # 主键查询不保证返回顺序，这里按入参顺序还原
+        return [found[record_id] for record_id in ids if record_id in found]
+
+    @staticmethod
+    def _row_to_text_record(row: dict) -> TextRecord:
+        return TextRecord(
+            id=str(row["id"]),
+            text=str(row.get("text") or ""),
+            metadata=json.loads(row.get("metadata_json") or "{}"),
+        )
 
 
 

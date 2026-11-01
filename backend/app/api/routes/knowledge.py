@@ -9,6 +9,19 @@ from app.vectorstore.base import VectorStore
 router = APIRouter(prefix="/api/knowledge", tags=["knowledge"])
 
 
+def _to_chunk_summary(record) -> ChunkSummary:
+    metadata = record.metadata
+    return ChunkSummary(
+        anchor_id=str(record.id),
+        document_id=str(metadata.get("document_id") or ""),
+        chunk_index=int(metadata.get("chunk_index") or 0),
+        page_number=int(metadata.get("page_number") or 0),
+        block_type=str(metadata.get("block_type") or "text"),
+        text=record.text,
+        chunk_hash=str(metadata.get("chunk_hash") or ""),
+    )
+
+
 @router.get("/documents", response_model=list[DocumentSummary])
 def list_documents(
     store: VectorStore = Depends(get_vector_store),
@@ -46,14 +59,7 @@ def list_document_chunks(
     store: VectorStore = Depends(get_vector_store),
 ) -> list[ChunkSummary]:
     chunks = [
-        ChunkSummary(
-            anchor_id=str(record.id),
-            chunk_index=int(record.metadata.get("chunk_index") or 0),
-            page_number=int(record.metadata.get("page_number") or 0),
-            block_type=str(record.metadata.get("block_type") or "text"),
-            text=record.text,
-            chunk_hash=str(record.metadata.get("chunk_hash") or ""),
-        )
+        _to_chunk_summary(record)
         for record in store.all_chunks()
         if record.metadata.get("document_id") == document_id
     ]
@@ -67,15 +73,8 @@ def get_chunk_by_anchor(
     anchor_id: str,
     store: VectorStore = Depends(get_vector_store),
 ) -> ChunkSummary:
-    for record in store.all_chunks():
-        if record.id == anchor_id:
-            metadata = record.metadata
-            return ChunkSummary(
-                anchor_id=str(record.id),
-                chunk_index=int(metadata.get("chunk_index") or 0),
-                page_number=int(metadata.get("page_number") or 0),
-                block_type=str(metadata.get("block_type") or "text"),
-                text=record.text,
-                chunk_hash=str(metadata.get("chunk_hash") or ""),
-            )
-    raise HTTPException(status_code=404, detail="锚点不存在")
+    # anchor_id 就是 chunk 主键，主键直查即可，不必遍历整个知识库
+    records = store.get_by_ids([anchor_id])
+    if not records:
+        raise HTTPException(status_code=404, detail="锚点不存在")
+    return _to_chunk_summary(records[0])

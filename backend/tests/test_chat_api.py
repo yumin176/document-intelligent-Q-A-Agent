@@ -51,7 +51,13 @@ def test_chat_endpoint() -> None:
     assert response.status_code == 200
     data = response.json()
     assert data["answer"] == "fake answer"
-    assert data["sources"][0]["chunk_id"] == "doc:0"
+    source = data["sources"][0]
+    assert source["chunk_id"] == "doc:0"
+    # 定位字段缺失时回退：anchor_id 取 chunk_id，filename / chunk_index 从 metadata 带出
+    assert source["anchor_id"] == "doc:0"
+    assert source["filename"] == "员工手册.md"
+    assert source["chunk_index"] == 0
+    assert source["document_id"] == ""
 
 
 def test_chat_stream_endpoint() -> None:
@@ -66,5 +72,6 @@ def test_chat_stream_endpoint() -> None:
 
     assert "event: sources" in body
     assert '"chunk_id": "doc:0"' in body
+    assert '"anchor_id": "doc:0"' in body
     assert "event: delta" in body
     assert "event: done" in body

@@ -19,14 +19,7 @@ def chat(body:ChatRequest,service:AgentService=Depends(get_agent_service))->Chat
     )
     return ChatResponse(
         answer=result.answer,
-        sources=[
-            SourceOut(
-                chunk_id=source.chunk_id,
-                score=source.score,
-                text=source.text,
-                metadata=source.metadata
-            ) for source in result.sources
-        ]
+        sources=[SourceOut.from_source(source) for source in result.sources],
     )
 
 @router.post("/chat/stream")
@@ -41,13 +34,7 @@ def chat_stream(
             # 先发引用来源
             # model_dump 将模型实例转换为标准python字典
             source_payload = [
-                SourceOut(
-                    chunk_id=s.chunk_id,
-                    score=s.score,
-                    text=s.text,
-                    metadata=s.metadata,
-                ).model_dump()
-                for s in sources
+                SourceOut.from_source(s).model_dump() for s in sources
             ]
             yield _sse("sources", {"sources": source_payload})
 

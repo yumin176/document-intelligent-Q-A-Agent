@@ -47,3 +47,40 @@ def test_milvus_store_upsert_and_search() -> None:
     finally:
         store.drop_collection()
         store.close()
+
+
+@pytest.mark.integration
+def test_milvus_store_get_by_ids_uses_primary_key() -> None:
+    collection_name = f"test_chunks_{uuid.uuid4().hex[:8]}"
+    try:
+        store = MilvusStore(collection_name=collection_name)
+    except Exception as exc:
+        pytest.skip(f"Milvus 不可用，跳过集成测试: {exc}")
+
+    try:
+        store.upsert(
+            [
+                ChunkRecord(
+                    id="doc#0:aaaaaaaa",
+                    text="第一段",
+                    embedding=[1.0, 0.0, 0.0],
+                    metadata={"document_id": "doc", "chunk_index": 0},
+                ),
+                ChunkRecord(
+                    id="doc#1:bbbbbbbb",
+                    text="第二段",
+                    embedding=[0.0, 1.0, 0.0],
+                    metadata={"document_id": "doc", "chunk_index": 1},
+                ),
+            ]
+        )
+
+        records = store.get_by_ids(["doc#1:bbbbbbbb", "missing", "doc#0:aaaaaaaa"])
+
+        assert [record.id for record in records] == ["doc#1:bbbbbbbb", "doc#0:aaaaaaaa"]
+        assert records[0].text == "第二段"
+        assert records[0].metadata["chunk_index"] == 1
+        assert store.get_by_ids([]) == []
+    finally:
+        store.drop_collection()
+        store.close()

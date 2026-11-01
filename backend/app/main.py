@@ -1,22 +1,25 @@
 """FastAPI 应用入口。"""
 
-from fastapi import FastAPI
-
-from app.api.routes.health import router as health_router
-from app.api.routes.chat import router as chat_router
-from app.config import get_settings
-from app.api.routes.documents import router as documents_router
-from app.api.routes.knowledge import router as knowledge_router
 from pathlib import Path
 
+from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+
+from app.api.routes.chat import router as chat_router
+from app.api.routes.documents import router as documents_router
+from app.api.routes.health import router as health_router
+from app.api.routes.knowledge import router as knowledge_router
+from app.config import get_settings
+
+FRONTEND_DIR = Path(__file__).resolve().parents[2] / "frontend"
+
 
 def create_app() -> FastAPI:
     """创建应用实例。
 
-    使用工厂函数便于测试时创建独立实例，
-    后续接入检索、Agent 等路由时都从这里统一注册。
+    使用工厂函数便于测试时创建独立实例；
+    静态资源与页面路由也在这里注册，保证测试实例与生产实例行为一致。
     """
     settings = get_settings()
     app = FastAPI(
@@ -27,19 +30,23 @@ def create_app() -> FastAPI:
     app.include_router(chat_router)
     app.include_router(documents_router)
     app.include_router(knowledge_router)
+
+    app.mount(
+        "/static",
+        StaticFiles(directory=FRONTEND_DIR),
+        name="static",
+    )
+
+    @app.get("/")
+    async def index() -> FileResponse:
+        return FileResponse(FRONTEND_DIR / "index.html")
+
+    @app.get("/knowledge")
+    async def knowledge() -> FileResponse:
+        """知识库只读查看页面：文档列表 → chunk 列表 → 锚点定位。"""
+        return FileResponse(FRONTEND_DIR / "knowledge.html")
+
     return app
 
+
 app = create_app()
-
-
-FRONTEND_DIR = Path(__file__).resolve().parents[2] / "frontend"
-
-app.mount(
-    "/static",
-    StaticFiles(directory=FRONTEND_DIR),
-    name="static",
-)
-
-@app.get("/")
-async def index() -> FileResponse:
-    return FileResponse(FRONTEND_DIR / "index.html")

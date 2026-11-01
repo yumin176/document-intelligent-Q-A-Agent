@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识库 · 智答 Agent</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/css/knowledge.css">
+</head>
+<body>
+    <div class="kb_container">
+        <aside class="kb_sidebar">
+            <div class="kb_sidebar_head">
+                <div>
+                    <div class="kb_sidebar_title">知识库</div>
+                    <div class="kb_sidebar_stats" id="kb_stats">加载中…</div>
+                </div>
+                <a class="kb_back_link" href="/">返回对话</a>
+            </div>
+            <div class="kb_doc_list" id="kb_doc_list"></div>
+        </aside>
+        <main class="kb_main">
+            <header class="kb_main_head">
+                <div class="kb_main_title" id="kb_main_title">选择左侧文档查看分块</div>
+                <div class="kb_main_meta" id="kb_main_meta"></div>
+            </header>
+            <div class="kb_chunk_list" id="kb_chunk_list"></div>
+        </main>
+    </div>
+    <script src="/static/js/knowledge.js"></script>
+</body>
+</html>

@@ -57,6 +57,22 @@ class InMemoryVectorStore(VectorStore):
             ) for id,record in self._records.items()
         ]
         return result
+
+    def get_by_ids(self, ids: list[str]) -> list[TextRecord]:
+        result: list[TextRecord] = []
+        for record_id in ids:
+            record = self._records.get(record_id)
+            if record is None:
+                continue
+            result.append(
+                TextRecord(
+                    id=record.id,
+                    text=record.text,
+                    metadata=record.metadata,
+                )
+            )
+        return result
+
     def delete_by_ids(self, ids: list[str]) -> None:
         for record_id in ids:
             self._records.pop(record_id, None)

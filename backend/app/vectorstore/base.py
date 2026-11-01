@@ -53,6 +53,17 @@ class VectorStore(ABC):
     def all_chunks(self) -> list[TextRecord]:
         """返回全部 chunk 的文本和元数据，用于构建 BM25 索引。"""
 
+    def get_by_ids(self, ids: list[str]) -> list[TextRecord]:
+        """按主键批量取回 chunk，返回顺序与入参一致，查不到的 id 直接跳过。
+
+        默认实现退化为全量扫描；Milvus / 内存实现会覆盖成主键直查。
+        """
+        if not ids:
+            return []
+        wanted = set(ids)
+        found = {record.id: record for record in self.all_chunks() if record.id in wanted}
+        return [found[record_id] for record_id in ids if record_id in found]
+
     @abstractmethod
     def delete_by_ids(self, ids: list[str]) -> None:
         """按主键删除若干条 chunk。"""

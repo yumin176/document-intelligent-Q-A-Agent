@@ -100,6 +100,7 @@ def test_knowledge_document_chunks_are_sorted() -> None:
     chunks = response.json()
     assert [chunk["chunk_index"] for chunk in chunks] == [0, 1]
     assert chunks[0]["anchor_id"] == "doc1#0:aaaaaaaa"
+    assert chunks[0]["document_id"] == "doc1"
 
 
 def test_knowledge_chunk_by_anchor() -> None:
@@ -111,6 +112,8 @@ def test_knowledge_chunk_by_anchor() -> None:
     body = response.json()
     assert body["text"] == "第二段"
     assert body["chunk_index"] == 1
+    # 只给 anchor_id 时也要能反查文档，供「来源卡片只带锚点」的场景使用
+    assert body["document_id"] == "doc1"
 
 
 def test_knowledge_missing_document_returns_404() -> None:
@@ -127,3 +130,32 @@ def test_knowledge_missing_anchor_returns_404() -> None:
     response = client.get("/api/knowledge/chunks", params={"anchor_id": "missing"})
 
     assert response.status_code == 404
+
+
+class _NoFullScanStore(InMemoryVectorStore):
+    """禁止全表扫描的存储：用来守住「按锚点查单块」不该退化成遍历。"""
+
+    def all_chunks(self):
+        raise AssertionError("按锚点查单块不应触发 all_chunks() 全表扫描")
+
+
+def test_knowledge_chunk_by_anchor_does_not_scan_all_chunks() -> None:
+    app = create_app()
+    store = _NoFullScanStore()
+    store.upsert(
+        [
+            ChunkRecord(
+                id="doc1#0:aaaaaaaa",
+                text="第一段",
+                embedding=[1.0, 0.0],
+                metadata={"document_id": "doc1", "chunk_index": 0},
+            )
+        ]
+    )
+    app.dependency_overrides[get_vector_store] = lambda: store
+    client = TestClient(app)
+
+    response = client.get("/api/knowledge/chunks", params={"anchor_id": "doc1#0:aaaaaaaa"})
+
+    assert response.status_code == 200
+    assert response.json()["text"] == "第一段"

@@ -20,6 +20,29 @@ def test_search_returns_most_similar_record() -> None:
 def test_search_returns_empty_for_empty_store() -> None:
     store = InMemoryVectorStore()
     assert store.search([1.0, 0.0], top_k=1) == []
+
+
+def test_get_by_ids_keeps_input_order_and_skips_missing() -> None:
+    store = InMemoryVectorStore()
+    store.upsert([
+        ChunkRecord(id="doc#0:aa", text="第一段", embedding=[1.0, 0.0], metadata={"chunk_index": 0}),
+        ChunkRecord(id="doc#1:bb", text="第二段", embedding=[0.0, 1.0], metadata={"chunk_index": 1}),
+    ])
+
+    records = store.get_by_ids(["doc#1:bb", "missing", "doc#0:aa"])
+
+    assert [record.id for record in records] == ["doc#1:bb", "doc#0:aa"]
+    assert records[0].text == "第二段"
+    assert records[1].metadata["chunk_index"] == 0
+
+
+def test_get_by_ids_returns_empty_for_empty_input() -> None:
+    store = InMemoryVectorStore()
+    store.upsert([ChunkRecord(id="a", text="苹果", embedding=[1.0, 0.0])])
+
+    assert store.get_by_ids([]) == []
+    assert store.get_by_ids(["nope"]) == []
+
 def test_delete_by_document_id_removes_matching_chunks() -> None:
     store = InMemoryVectorStore()
     store.upsert(
