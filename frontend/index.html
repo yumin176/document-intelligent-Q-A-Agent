@@ -1,60 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>智答 Agent</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body style="margin: 0;">
-    <div class="container">
-        <div class="left">
-            <div class="left_title">知识库</div>
+<body>
+    <div class="app">
+        <!-- 左侧：知识库文档 + 上传 -->
+        <aside class="sidebar">
+            <div class="sidebar_head">
+                <div class="sidebar_brand">
+                    <div class="sidebar_title">智答 Agent</div>
+                    <div class="sidebar_sub">年报 · 技术文档问答</div>
+                </div>
+                <a class="sidebar_link" href="/knowledge">知识库 →</a>
+            </div>
+
+            <div class="sidebar_section">
+                <span class="sidebar_section_title">知识库文档</span>
+                <span class="sidebar_count" id="doc_count"></span>
+            </div>
+
             <div class="documents_wrap">
-                <!-- 文档上传状态 -->
-                <!-- <div class="document">
-                    <div>agent学习教程.pdf</div>
-                    <div>已上传</div>
-                </div> -->
+                <div class="documents_empty">加载中…</div>
             </div>
-            <div class="upload_files_wrap">
-                <input type="file" accept=".txt, .md, .pdf" id="document">
-                <button id="document_btn">上传</button>
+
+            <div class="sidebar_section sidebar_section--history" id="history_section" hidden>
+                <span class="sidebar_section_title">本次提问</span>
+                <span class="sidebar_count" id="history_count"></span>
             </div>
-        </div>
-        <div class="right">
+            <div class="history_list" id="history_list" hidden></div>
+
+            <div class="upload_panel">
+                <div class="upload_panel_head">
+                    <span class="upload_panel_title">上传文档</span>
+                    <span class="upload_panel_hint">.txt / .md / .pdf</span>
+                </div>
+                <input class="file_input" type="file" accept=".txt,.md,.pdf" id="document">
+                <label class="file_picker" for="document" id="file_picker">
+                    <span class="file_picker_icon">+</span>
+                    <span class="file_picker_text" id="file_picker_text">选择文件</span>
+                </label>
+                <button type="button" id="document_btn" class="upload_btn">上传并入库</button>
+            </div>
+        </aside>
+
+        <!-- 右侧：对话 -->
+        <main class="main">
             <div class="top_chat_box">
-                <!-- 用户聊天框 -->
-                <!-- <div class="user_chat_frame chat_frame">用户头像、更省内存。</div> -->
-                <!-- 助手聊天框 -->
-                 <!-- <div class="assistant_chat_frame chat_frame">
-                    <span class="Index_tab">[1]</span>
-                    用户头像、Excel 报表、视频素材……文件上传是 Web 后端的高频需求。大文件自动落盘）
-                    <div class="source_card_container">
-                        <div class="source_card">
-                            <div class="source_title"><span class="Index_tab">[1]</span>xxhahiakk</div>
-                            <div class="source_metadata">
-                                创建时间：2026.10.8<br>
-                                xxx：hhhh \n<br>
-                                jjj：jjjj
-                            </div>
-                        </div>
-                        <div class="source_card">
-                            <div class="source_title">xxhahiakk</div>
-                            <div class="source_metadata">
-                                创建时间：2026.10.8<br>
-                                xxx：hhhh \n<br>
-                                jjj：jjjj
-                            </div>
+                <div class="chat_inner">
+                    <div class="welcome" id="welcome">
+                        <div class="welcome_badge">智答</div>
+                        <h1 class="welcome_title">基于年报与技术文档的智能问答</h1>
+                        <p class="welcome_desc">
+                            向量召回 + BM25 混合排序 + 百炼精排，回答附带可跳转的原文锚点。
+                        </p>
+                        <div class="welcome_examples">
+                            <button type="button" class="example_btn" data-question="极米科技 2025 年营业收入是多少？">极米科技 2025 年营业收入是多少？</button>
+                            <button type="button" class="example_btn" data-question="成都银行 2025 年的不良贷款率是多少？">成都银行 2025 年不良贷款率是多少？</button>
+                            <button type="button" class="example_btn" data-question="Vue3 的 props 和 emits 有什么区别？">Vue3 的 props 和 emits 有什么区别？</button>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
-            <div class="bottom_box">
-                <textarea name="" id="input_box" placeholder="有什么想知道的？"></textarea>
-                <button id="bottom_box_btn">发送</button>
+
+            <div class="composer_wrap">
+                <div class="composer">
+                    <textarea id="input_box" rows="1" placeholder="有什么想知道的？Enter 发送，Shift + Enter 换行"></textarea>
+                    <div class="composer_bar">
+                        <span class="composer_hint">回答会标注来源，点击卡片可跳到原文</span>
+                        <button type="button" id="bottom_box_btn">发送</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
     <script src="/static/js/app.js"></script>
 </body>
