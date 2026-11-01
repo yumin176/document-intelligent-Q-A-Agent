@@ -1,9 +1,10 @@
 # 智答 Agent（document-intelligent-Q-A-Agent）
 
-基于 **混合检索 + Agent 自主推理** 的文档智能问答系统。
+基于 **混合检索 + 实体上下文注入 + 精排 + Agent 自主推理** 的文档智能问答系统。
 
-> 目标不是复刻一个 PDF 问答 Demo，而是搭建一个具备生产级工程能力的 RAG 应用：
-> 文档上传 → 解析入库 → 向量检索 → LLM 流式生成 → 引用溯源，并逐步加入混合检索、Rerank、Agent 工作流与评测体系。
+> 目标不是复刻一个 PDF 问答 Demo，而是搭一套有数据质量意识的 RAG 工程：
+> 文档上传 → 页级去噪 → 可插拔清洗 → 实体上下文 → 分块 → 向量化入库 → 混合检索 → 精排 → LLM 流式生成 → 引用溯源，
+> 并且每一步改动都有可复现的评测数据支撑（含失败与负收益记录）。
 
 ## 当前进度
 
@@ -15,7 +16,22 @@
 | M3 | FastAPI 接口、SSE 流式输出、文档上传、原生前端 | ✅ 已完成 |
 | M4 | 混合检索（向量 + BM25 + Rerank）与对比评测 | ✅ 已完成 |
 | M5 | LangGraph Agent 工作流（Router / Grader / Rewrite） | ✅ 已完成 |
-| M6 | LangSmith 追踪、Docker 打包与最终收尾 | ⏳ 待开始 |
+| M6 | 入库链路改造、知识库查看、追踪与交付收尾 | 🟡 进行中 |
+
+M6 细分（详细过程见 `docs/召回质量问题清单.md`、`docs/M6-optimization-log.md`）：
+
+| 子项 | 状态 | 说明 |
+|---|---|---|
+| 可插拔文档清洗管线 | ✅ | `app/ingestion/cleaning/`，5 个通用清洗器 + PDF 页级去噪 |
+| 分块策略与对比实验 | ✅ | `fixed` / `recursive` 均可切，实测定稿 `fixed 500/50` |
+| chunk 稳定锚点 id | ✅ | `doc_id#chunk_index:sha1[:8]`，重入库不变 |
+| 重入库 + 内容锚点评测 | ✅ | 3 套内容锚点评测集，生产库 `qa_chunks_prod_v3` |
+| 精排接入（百炼 text-rerank） | ✅ | 生产语料 Recall@5 0.9333 → 0.9667 |
+| 知识库只读接口 | ✅ | `/api/knowledge/*` 三个接口 + 测试 |
+| 知识库查看页面 | ✅ | `/knowledge`：文档列表 → chunk 列表 → 锚点高亮定位 |
+| 来源卡片点击跳转 | ✅ | `sources` 事件带 `anchor_id` 等定位字段，卡片可点 |
+| LangSmith 全链路追踪 | ⏳ 待做 | Router / Grader / Rewrite 节点尚未打点 |
+| 应用本体 Docker 打包 | ⏳ 待做 | 当前 compose 只编排 Milvus 依赖栈 |
 
 ## 技术栈
 
@@ -25,35 +41,56 @@
 | Agent / LLM | OpenAI 兼容 SDK（可切换 DeepSeek / 百炼 / OpenAI 等） |
 | Agent 工作流 | LangGraph 1.2 |
 | 向量库 | Milvus 2.5（Docker Compose） |
-| 检索 | 向量检索 + BM25 + RRF + Rerank |
-| Embedding | OpenAI 兼容接口（示例：百炼 `qwen3.7-text-embedding`） |
-| LLM | OpenAI 兼容接口（示例：`deepseek-v4-flash`、`qwen-plus`） |
+| 检索 | 向量检索 + BM25 + RRF 融合 + Rerank 精排 |
+| 精排 | 阿里云百炼 `qwen3.7-text-rerank`（text-rerank 协议） |
+| Embedding | OpenAI 兼容接口（示例：`qwen3.7-text-embedding`，1024 维） |
+| 分块 | `fixed` / `recursive`，默认 `fixed`，`chunk_size=500`、`chunk_overlap=50` |
 | 前端 | 原生 HTML / CSS / JavaScript |
 | 流式协议 | SSE（Server-Sent Events） |
-| 测试 | pytest |
+| 测试 | pytest（310 passed / 4 skipped） |
 | 部署 | Docker Compose（Milvus + etcd + MinIO） |
 
 ## 核心特性
 
-- 文档解析：支持 `.txt` / `.md` / `.pdf`
-- 文本分块：支持 `chunk_size` 与 `chunk_overlap`
-- 向量化入库：批量调用 Embedding API，写入 Milvus
-- 向量检索：基于余弦相似度的 top-k 检索
+**数据链路**
+
+- 文档解析：`.txt` / `.md` / `.pdf`，PDF 保留页边界供页级去噪
+- 页级去噪：识别并删除页眉、页脚、页码，双通道判定（全局比例阈值 + 连续页段）
+- 可插拔清洗管线：`Normalize` → `Media` → `Noise` → `Whitespace` → `Dedup`，统一 `BaseCleaner.clean(text) -> str`
+- 清洗可审计：保留每步 `cleaner_name`、字符数变化、清洗前后 diff，PDF 额外记录删除的页眉/页脚/页码键
+- 实体上下文注入：每个块首加 `【极米科技(688696)｜2025年年度报告】`，Markdown 用最近章节标题
+- 分块策略：`fixed` 与 `recursive` 可配置，按语料实测选定
+- 稳定锚点 id：`{doc_id}#{chunk_index}:{sha1(text[:50])[:8]}`，同内容重入库 id 不变，hash 段可检测内容漂移
+- 增量友好：同文档重入库先写新块再清理失效锚点，不整库重建
+
+**检索**
+
+- 向量检索：Milvus 余弦相似度 top-k
 - BM25 关键词检索：jieba 分词 + rank_bm25
 - 混合检索：向量与 BM25 通过 RRF 融合
-- Rerank 精排：支持 Cohere 兼容 API、LLM Rerank 与 NoOp 基线
+- Rerank 精排：百炼 text-rerank（主用），保留 LLM Rerank 与 NoOp 基线实现
 - 可配置检索模式：`vector` / `bm25` / `hybrid` / `hybrid_rerank`
-- 检索评测：Recall@k、Hit@k、MRR@k、nDCG@k 与延迟对比
-- Agent Router：自动区分 `direct` 直答与 `retrieve` 知识库检索
-- Agent Grader：过滤与问题无关的召回 chunk，降低上下文噪声
-- Agent Rewrite：检索无相关结果时改写查询，最多重试 `AGENT_MAX_REWRITES` 次
+- 精排可观测：失败自动回退原顺序，并记录 `fallback_count` 与最后一次错误原因
+- 检索评测：Recall@k、Hit@k、MRR@k、nDCG@k 与延迟对比，支持内容锚点标注
+
+**Agent 与生成**
+
+- Router：自动区分 `direct` 直答与 `retrieve` 知识库检索
+- Grader：过滤与问题无关的召回 chunk，降低上下文噪声
+- Rewrite：检索无相关结果时改写查询，最多重试 `AGENT_MAX_REWRITES` 次
 - 无依据拒答：多轮检索仍无相关 chunk 时明确告知资料不足，不让 LLM 自由编造
 - RAG 生成：检索结果编号注入 Prompt，LLM 依据资料回答
 - 引用溯源：回答标注 `[1]`，返回 `filename`、`chunk_index`、`score`
 - SSE 流式输出：模型 token 逐步推送，前端打字机效果
-- 文件上传接口：浏览器直接上传文档并写入知识库
+
+**接口与前端**
+
+- 文档上传接口：浏览器直接上传并写入知识库
+- 知识库只读接口：文档列表、文档 chunk 列表、按锚点查单块
+- 知识库页面：`/knowledge`，从对话页点击文档或来源卡片即可跳转定位
+- 来源卡片可点击：携带 `anchor_id` 跳到知识库页面，滚动到对应块并高亮
 - 原生前端：对话、上传、流式渲染、引用卡片
-- 可替换设计：`Embedder` / `VectorStore` / `Retriever` / `Reranker` / `ChatModel` 均面向接口编程
+- 可替换设计：`Embedder` / `VectorStore` / `Retriever` / `Reranker` / `ChatModel` / `BaseCleaner` 均面向接口编程
 
 ## 系统架构
 
@@ -65,24 +102,29 @@
                            │ HTTP / SSE
 ┌──────────────────────────▼──────────────────────────────┐
 │                        FastAPI                           │
-│  POST /api/documents      文档上传与入库                  │
-│  POST /api/chat           非流式问答                      │
-│  POST /api/chat/stream    SSE 流式问答                    │
+│  POST /api/documents          文档上传与入库              │
+│  POST /api/chat               非流式问答                  │
+│  POST /api/chat/stream        SSE 流式问答                │
+│  GET  /api/knowledge/*        知识库只读查看              │
 └──────────────────────────┬──────────────────────────────┘
                            │
-┌──────────────────────────▼──────────────────────────────┐
-│                      AgentService                        │
-│  LangGraph 决策 → Prompt 组装 → LLM 流式生成 → 引用溯源   │
-└──────────────────────────┬──────────────────────────────┘
-                           │
-┌──────────────────────────▼──────────────────────────────┐
-│                     LangGraph Workflow                   │
-│  Router ──▶ Retrieve ──▶ Grader ──▶ Rewrite（可选）       │
-│    │                         │             │             │
-│    └──── direct ────────────┴──▶ Answer ◀──┘             │
-└──────────────┬───────────────────────────┬──────────────┘
-               ▼                           ▼
-       Embedding API + Milvus         Rerank API
+        ┌──────────────────┴───────────────────┐
+        ▼                                      ▼
+┌───────────────────┐              ┌───────────────────────┐
+│ IngestionService  │              │     AgentService      │
+│ 解析→去噪→清洗    │              │ LangGraph 决策        │
+│ →实体前缀→分块    │              │ → Prompt → LLM 流式   │
+│ →向量化→入库      │              │ → 引用溯源            │
+└─────────┬─────────┘              └───────────┬───────────┘
+          │                                    │
+          ▼                                    ▼
+┌───────────────────┐              ┌───────────────────────┐
+│ Embedding API     │              │  LangGraph Workflow   │
+│ Milvus            │              │ Router→Retrieve→Grade │
+└───────────────────┘              │   →Rewrite（可选）    │
+                                   └───────────┬───────────┘
+                                               ▼
+                                   Embedding + Milvus / Rerank
 ```
 
 ### Agent 工作流
@@ -102,6 +144,7 @@ START → Router
 - `Rewrite`：检索失败时生成新查询，最多重试 `AGENT_MAX_REWRITES` 次。
 - **异常回退**：Router 输出无效时使用规则路由；Grader 输出无效时保留全部候选；Rewrite 输出无效时使用保守改写。
 - **流式兼容**：路由、检索和评分在生成前完成，最终答案仍通过 SSE `delta` 事件逐 token 输出。
+
 ### Milvus 依赖组件
 
 ```text
@@ -113,6 +156,43 @@ Milvus 容器
 - `19530`：pymilvus 连接端口
 - `9091`：Milvus 健康检查 / 指标
 - `9001`：MinIO 管理控制台
+
+## 数据链路：从文件到 chunk
+
+```text
+文件
+ └─ parse_document            保留 PDF 页边界
+     └─ PdfPageNoiseCleaner   PDF：删页眉/页脚/页码（全局阈值 + 连续页段）
+         └─ dewrap + join     跨页断行合并、页与页拼接
+             └─ CleanerPipeline  通用清洗：Normalize → Media → Noise → Whitespace → Dedup
+                 └─ build_chunk_header  块首注入实体上下文
+                     └─ split_text      fixed / recursive
+                         └─ embed_batch 批量向量化
+                             └─ Milvus upsert（锚点 id 为主键）
+```
+
+### 清洗器清单
+
+| 清洗器 | 职责 |
+|---|---|
+| `PdfPageNoiseCleaner` | 页眉、页脚、页码；双通道判定，支持分段排版的多套页眉 |
+| `NormalizeCleaner` | 全角→半角、去 BOM、统一换行、去零宽字符 |
+| `MediaCleaner` | Markdown 图片、base64 长串 → 占位或丢弃 |
+| `NoiseCleaner` | 去水印行、孤立页码等规则噪声 |
+| `WhitespaceCleaner` | 合并连续空行 / 多空格、行首行尾 strip |
+| `DedupCleaner` | 去完全重复段落（扫描件、PDF 常见） |
+
+页级去噪为什么需要双通道：成都银行年报 267 页分两段排版，两套页眉各占 45% / 44%，
+都过不了 `min_ratio=0.6` 的全局阈值，导致 121 处页眉被跨页合并粘进正文（形如 `2025年年度报告59`）。
+补上 `min_run=8` 的连续页段识别后残留归零。实测该文档删除 533 行 / 14,379 字（占原文 6%），正文抽查完整。
+
+### 实体上下文为什么是最大的杠杆
+
+年报里"主要会计数据""研发投入"等表格在多家公司之间措辞高度同构，而块正文通常不含公司名，
+实体只出现在 query 里——问 A 公司会返回 B 公司的表。同一套块边界、同一套融合参数，
+只给每块加一行 `【公司(代码)｜年份】`，pdf5 数据集上 hybrid Recall@5 从 0.54 提到 0.82，vector 从 0.24 提到 0.72。
+
+前缀同时进入 BM25 与 embedding；锚点 id 仍基于**原始块**计算，保证开关上下文前后 id 稳定可比。
 
 ## 目录结构
 
@@ -126,34 +206,63 @@ backend/
 │   ├── api/routes/
 │   │   ├── health.py        # 健康检查
 │   │   ├── chat.py          # 问答与 SSE 流式接口
-│   │   └── documents.py     # 文档上传接口
+│   │   ├── documents.py     # 文档上传接口
+│   │   └── knowledge.py     # 知识库只读查看接口
 │   ├── ingestion/
 │   │   ├── loader.py        # txt / md / pdf 解析
-│   │   ├── splitter.py      # 文本分块
-│   │   └── service.py       # 入库编排
+│   │   ├── pdf_text.py      # PDF 页级去噪后的 dewrap 与拼接
+│   │   ├── cleaning/        # 可插拔清洗管线
+│   │   │   ├── base.py      # BaseCleaner 接口
+│   │   │   ├── pipeline.py  # 串行管线与 trace
+│   │   │   ├── normalize.py / whitespace.py / dedup.py
+│   │   │   ├── noise.py / media.py / code_regions.py
+│   │   │   ├── pdf_page_noise.py  # 页眉页脚页码
+│   │   │   ├── report.py    # 清洗报告与 diff
+│   │   │   └── factory.py   # 默认管线装配
+│   │   ├── context.py       # 实体上下文前缀 / 最近章节标题
+│   │   ├── splitter.py      # fixed / recursive 分块
+│   │   ├── manifest.py      # 入库清单
+│   │   └── service.py       # 入库编排、锚点 id、增量替换
 │   ├── embedding/           # Embedding 接口与实现
 │   ├── vectorstore/         # 向量库接口、内存版、Milvus 版
 │   ├── llm/                 # ChatModel 接口、Fake、OpenAI 兼容实现
 │   ├── agent/               # LangGraph Router / Grader / Rewrite / Service
 │   ├── rag/                 # RAGService 组装层
 │   ├── retrieval/           # 向量、BM25、RRF、Rerank 检索器
-│   ├── rerank/              # Cohere / LLM / NoOp Reranker
+│   ├── rerank/              # DashScope / LLM / NoOp Reranker
 │   ├── evaluation/          # Recall、MRR、nDCG 指标与评测运行器
 │   └── prompts/             # Prompt 模板
 ├── scripts/
-│   ├── inspect_milvus.py    # 只读查看 Milvus 数据
-│   ├── ingest_js_note.py    # 命令行文档入库演示
+│   ├── ingest_corpus.py     # 批量语料入库 + manifest
+│   ├── ingest_js_note.py    # 单文档入库演示
+│   ├── preview_cleaning.py  # 清洗前后 diff 预览
 │   ├── ask.py               # 命令行 RAG 问答
-│   └── evaluate_retrieval.py # 多模式检索对比评测
+│   ├── inspect_milvus.py    # 只读查看 Milvus 数据
+│   ├── evaluate_retrieval.py    # 多模式检索评测
+│   ├── validate_content_eval.py # 校验评测集 snippet 是否存在于语料
+│   ├── tune_fusion.py       # RRF 融合参数离线网格扫描
+│   ├── build_ctx_collection.py  # 给存量库补实体前缀
+│   └── probe_*.py           # 精排策略探针（MaxP / 融合权重）
 ├── evaluation/
-│   ├── retrieval_cases.jsonl # 27 条标注问题
-│   └── results.json          # 最近一次完整评测报告
+│   ├── retrieval_cases_content.jsonl  # 45 题，生产语料（20 Vue + 25 年报）
+│   ├── retrieval_cases_pdf.jsonl      # 25 题，5 份年报
+│   ├── retrieval_cases_pilot.jsonl    # 14 题，早期 pilot
+│   ├── qa_refusal_cases.jsonl         # 拒答样本
+│   ├── corpus_manifest.json           # 最近一次入库清单
+│   └── results_*.json                 # 各次评测的完整逐题结果
 └── tests/                   # 单元测试与集成测试
 
 frontend/
 ├── index.html               # 对话与上传页面
-├── css/style.css            # 页面样式
-└── js/app.js                # 上传、SSE 解析、流式渲染
+├── knowledge.html           # 知识库只读查看页面
+├── css/style.css            # 对话页样式
+├── css/knowledge.css        # 知识库页样式
+├── js/app.js                # 上传、SSE 解析、流式渲染、来源卡片跳转
+└── js/knowledge.js          # 文档列表、chunk 列表、锚点定位
+
+docs/
+├── M6-optimization-log.md   # M6 基线冻结记录
+└── 召回质量问题清单.md      # 召回问题的定位、实验、结论与负结果
 
 docker-compose.yml           # Milvus + etcd + MinIO
 .env.example                 # 环境变量模板
@@ -194,11 +303,15 @@ LLM_API_KEY=你的 LLM Key
 LLM_MODEL=你的 LLM 模型名
 
 RERANK_API_URL=https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank
-RERANK_API_KEY=你的百炼 Key（可与 Embedding 共用）
+RERANK_API_KEY=你的百炼 Key
 RERANK_MODEL=qwen3.7-text-rerank
 
 RETRIEVAL_MODE=hybrid_rerank
 RETRIEVAL_CANDIDATE_K=50
+MILVUS_COLLECTION_NAME=qa_chunks_prod_v3
+CHUNK_STRATEGY=fixed
+CHUNK_SIZE=500
+CHUNK_OVERLAP=50
 AGENT_MAX_REWRITES=1
 ```
 
@@ -229,7 +342,7 @@ cd backend
 
 ### 6. 使用 Web 界面
 
-1. 左侧选择 `.txt` / `.md` / `.pdf` 文件并上传；
+1. 左侧选择 `.txt` / `.md` / `.pdf` 文件并上传（自动走清洗、实体前缀、分块、入库）；
 2. 输入问题，点击发送；
 3. 回答会通过 SSE 逐字显示；
 4. 回答下方会展示引用来源卡片。
@@ -279,7 +392,7 @@ Content-Type: application/json
   "answer": "...",
   "sources": [
     {
-      "chunk_id": "...",
+      "chunk_id": "e16532bf...#0:8f3a2c1b",
       "score": 0.8026,
       "text": "...",
       "metadata": {
@@ -329,61 +442,156 @@ fetch("/api/chat/stream", {
 
 然后通过 `response.body.getReader()` 逐块读取，并用 `TextDecoder` 处理 UTF-8。
 
+### 知识库只读接口
+
+```text
+GET /api/knowledge/documents
+```
+
+返回文档列表，含 `document_id`、`doc_name`、`chunk_count`、分块参数与 embedding 模型 / 维度。
+
+```text
+GET /api/knowledge/documents/{document_id}/chunks
+```
+
+返回该文档的全部 chunk：`anchor_id`、`chunk_index`、`page_number`、`block_type`、`text`、`chunk_hash`。
+
+```text
+GET /api/knowledge/chunks?anchor_id={anchor_id}
+```
+
+按锚点 id 定位单个 chunk，供引用卡片跳转使用。
+
+### 知识库页面
+
+```text
+GET /knowledge
+```
+
+只读页面，路由用 `location.hash` 承载：
+
+```text
+/knowledge#/knowledge?doc={document_id}&anchor={anchor_id}
+```
+
+- 只带 `doc`：打开该文档的 chunk 列表；
+- 只带 `anchor`：先反查锚点所属文档再定位；
+- 命中锚点时滚动到对应块并高亮；锚点失效（文档已重建）时给出提示。
+
+对话页的来源卡片和左侧文档列表都会生成这类链接。
+
 ## 命令行工具
 
-### 文档入库
-
-编辑 `backend/scripts/ingest_js_note.py` 的 `FILE_PATH` 后执行：
+| 脚本 | 用途 |
+|---|---|
+| `ingest_corpus.py` | 批量入库并生成 manifest，支持 `--docs` / `--chunk-*` / `--context-header` / `--dry-run` |
+| `ingest_js_note.py` | 单文档入库演示 |
+| `preview_cleaning.py` | 打印清洗前后 diff 与报告，调规则时先用它 |
+| `ask.py` | 命令行 RAG 问答 |
+| `inspect_milvus.py` | 只读查看 Milvus 中的块 |
+| `evaluate_retrieval.py` | 四模式检索评测，支持 `--dataset` / `--modes` / `--candidate-k` / `--show-misses` |
+| `validate_content_eval.py` | 校验评测集 snippet 是否真实存在于清洗后语料 |
+| `tune_fusion.py` | 候选只取一次，离线穷举 `rrf_k × 权重` |
+| `build_ctx_collection.py` | 给存量 collection 补实体前缀，不重新解析 |
 
 ```powershell
 cd backend
-.\.venv\Scripts\python.exe scripts\ingest_js_note.py
-```
+# 批量入库（16 篇生产语料）
+.\.venv\Scripts\python.exe scripts\ingest_corpus.py `
+  --corpus-root "<语料根目录>" --collection qa_chunks_prod_v3 `
+  --strategy fixed --chunk-size 500 --chunk-overlap 50 --docs <相对路径...>
 
-### 命令行问答
+# 清洗预览（调规则时先看 diff）
+.\.venv\Scripts\python.exe scripts\preview_cleaning.py "path\to\file.pdf"
 
-```powershell
-cd backend
+# 命令行问答
 .\.venv\Scripts\python.exe scripts\ask.py "你的问题" --top-k 3
-```
 
-### 查看 Milvus 数据
-
-```powershell
-cd backend
+# 查看 Milvus 数据
 .\.venv\Scripts\python.exe scripts\inspect_milvus.py --limit 10
 ```
 
 ## 检索评测
 
-评测集位于 `backend/evaluation/retrieval_cases.jsonl`，当前包含 27 条基于 `js.md` 标注的问题。
-评测只比较检索质量，不调用 LLM 生成回答。
+评测集位于 `backend/evaluation/`，全部使用**内容锚点**标注：
 
-```powershell
-cd backend
-.\.venv\Scripts\python.exe scripts\evaluate_retrieval.py
+```json
+{ "id": "jimo-001", "question": "...", "relevant_doc": "上市公司年报/极米科技_2025年年度报告.pdf",
+  "relevant_snippets": ["2025 年,极米科技实现营业收入34.67 亿元"], "category": "...", "difficulty": "..." }
 ```
 
-指定参数或保存完整报告：
+命中判定用"检索结果文本是否包含 snippet"，因此改分块参数后**评测集不需要重标**。
 
-```powershell
-.\.venv\Scripts\python.exe scripts\evaluate_retrieval.py `
-  --modes vector bm25 hybrid hybrid_rerank `
-  --top-k 5 --candidate-k 10 `
-  --show-misses --output evaluation\results.json
-```
+| 评测集 | 题数 | 构成 |
+|---|---:|---|
+| `retrieval_cases_content.jsonl` | 45 | 生产语料：20 题 Vue 3 文档 + 25 题 5 份上市公司年报 |
+| `retrieval_cases_pdf.jsonl` | 25 | 仅年报，考数值 / 表格类问题 |
+| `retrieval_cases_pilot.jsonl` | 14 | 早期 pilot：4 题技术文档 + 10 题年报 |
 
-最近一次结果（27 题，`top_k=5`，`candidate_k=10`）：
+生产索引 `qa_chunks_prod_v3`：16 篇文档 / 2620 块 / 1024 维 / `fixed 500/50` / 全量块带实体前缀。
+
+### 四模式对比（content 45 题，`top_k=5`，`candidate_k=50`）
 
 | 模式 | Recall@5 | Hit@5 | MRR@5 | nDCG@5 | 平均延迟 |
 |---|---:|---:|---:|---:|---:|
-| `vector` | 1.0000 | 1.0000 | 0.9105 | 0.9212 | 522.87 ms |
-| `bm25` | 0.9630 | 0.9630 | 0.7963 | 0.8389 | 0.52 ms |
-| `hybrid` | 0.9815 | 1.0000 | 0.8457 | 0.8731 | 552.46 ms |
-| `hybrid_rerank` | 1.0000 | 1.0000 | 1.0000 | 0.9941 | 1090.15 ms |
+| `vector` | 0.8222 | 0.8222 | 0.6415 | 0.7110 | 461.67 ms |
+| `bm25` | 0.8000 | 0.8000 | 0.6589 | 0.7220 | 16.93 ms |
+| `hybrid` | 0.9333 | 0.9333 | 0.7619 | 0.8331 | 482.01 ms |
+| `hybrid_rerank` | **0.9667** | **0.9778** | **0.7981** | **0.8831** | 727.25 ms |
 
-> 延迟受网络、模型服务和运行环境影响，只适合做同一环境下的相对比较。
-> 完整逐题结果见 `backend/evaluation/results.json`。
+完整逐题结果见 `backend/evaluation/results_content_v3_4modes.json`。
+
+### 三套评测集上的当前成绩
+
+| 评测集 | hybrid Recall@5 | hybrid_rerank Recall@5 | 精排 MRR@5 | 精排 nDCG@5 |
+|---|---:|---:|---:|---:|
+| content 45 | 0.9333 | **0.9667** | 0.7981 | 0.8831 |
+| pdf 25 | 0.8800 | **0.9400** | 0.7033 | 0.8139 |
+| pilot 14 | 0.9286 | **0.9643** | 0.7143 | 0.8044 |
+
+三套数据 `rerank_fallback_count` 均为 0，说明精排链路没有静默降级。
+
+### 优化过程（同一套评测集上的演进）
+
+| 阶段 | content 45 hybrid | pdf 25 hybrid | pilot 14 hybrid |
+|---|---:|---:|---:|
+| M4 基线（`qa_chunks_prod_v1`，无上下文） | 0.700 | 0.52 | 0.607 |
+| + 实体上下文（`prod_v2`） | 0.922 | 0.86 | 0.821 |
+| + 页眉去噪（`prod_v3`） | 0.9333 | 0.88 | 0.9286 |
+| + 百炼精排 | **0.9667** | **0.9400** | **0.9643** |
+
+> 基线行取自 `candidate_k=10` 时期（当时尚未带实体上下文）。扩池到 50 后单路与 hybrid 还会有小幅变化，
+> 逐项对比见 `docs/召回质量问题清单.md` 第 7.2 节。
+>
+> 延迟受网络、模型服务和运行环境影响，只适合同一环境内的相对比较。精排引入的增量约 250~550 ms，
+> 精排请求自身中位数 254 ms（`RERANK_MAX_CANDIDATES=30`）。
+
+### 验证过但不采用的方案
+
+负结果同样记录在 `docs/召回质量问题清单.md`，避免重复踩坑：
+
+- **`chunk_overlap` 50 → 80**：块数 +7%，但 content 45 hybrid 掉到 0.800、pdf 25 掉到 0.640。财报表格区数字密集，多带的尾巴会把上一块的数字串拖进块首，向量和 BM25 排序一起变差。已回滚。
+- **表格感知解析（pdfplumber `find_tables`）**：254 页年报前 10 页就要 4.5 s，整文档 900 s 未跑完，且表格块会绕开页眉去噪与实体前缀这条收益最大的链路；覆盖面只有 1/45 题。实现已删除。
+- **句子级 MaxP 精排**：把只含答案片段的噪声块顶上来了，pdf 25 掉到 0.600。
+- **去掉块首实体前缀**：精排 MRR 0.638 → 0.366，说明前缀对精排是正作用。
+- **800 字块**：pdf 25 掉到 0.76，"PDF 建议 800 字"的经验在这套语料上不成立。
+
+### 复现
+
+```powershell
+cd backend
+# 四模式对比
+.\.venv\Scripts\python.exe scripts\evaluate_retrieval.py `
+  --dataset evaluation\retrieval_cases_content.jsonl `
+  --candidate-k 50 --top-k 5 `
+  --modes vector bm25 hybrid hybrid_rerank `
+  --show-misses --output evaluation\results_content_v3_4modes.json
+
+# 只看精排（快）
+.\.venv\Scripts\python.exe scripts\evaluate_retrieval.py `
+  --dataset evaluation\retrieval_cases_pdf.jsonl `
+  --candidate-k 50 --top-k 5 --modes hybrid hybrid_rerank
+```
 
 ## 配置说明
 
@@ -401,15 +609,18 @@ cd backend
 | `LLM_TEMPERATURE` | `0` | 生成温度，知识问答建议 0 |
 | `LLM_TIMEOUT` | `30` | LLM 请求超时（秒） |
 | `MILVUS_URI` | `http://127.0.0.1:19530` | Milvus 连接地址 |
-| `MILVUS_COLLECTION_NAME` | `qa_chunks_prod_v3` | 默认 Collection 名称 |
+| `MILVUS_COLLECTION_NAME` | `qa_chunks_prod_v3` | 当前生产 Collection |
 | `MILVUS_TIMEOUT` | `10` | Milvus 请求超时（秒） |
-| `RERANK_API_URL` | `https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank` | Rerank 接口地址（百炼 text-rerank） |
-| `RERANK_API_KEY` | 空 | Rerank API Key |
+| `RERANK_API_URL` | 百炼 text-rerank 地址 | Rerank 接口地址 |
+| `RERANK_API_KEY` | 空 | Rerank API Key（可与 Embedding 共用） |
 | `RERANK_MODEL` | `qwen3.7-text-rerank` | Rerank 模型名 |
 | `RERANK_TIMEOUT` | `30` | Rerank 请求超时（秒） |
 | `RERANK_MAX_CANDIDATES` | `30` | 送精排的候选数（实测 30 已饱和） |
 | `RETRIEVAL_MODE` | `hybrid_rerank` | `vector` / `bm25` / `hybrid` / `hybrid_rerank` |
-| `RETRIEVAL_CANDIDATE_K` | `50` | 混合检索与 Rerank 前的候选数量 |
+| `RETRIEVAL_CANDIDATE_K` | `50` | 混合检索与精排前的候选数量 |
+| `CHUNK_STRATEGY` | `fixed` | `fixed` / `recursive` |
+| `CHUNK_SIZE` | `500` | 分块长度 |
+| `CHUNK_OVERLAP` | `50` | 分块重叠（不建议调大，见负结果） |
 | `AGENT_MAX_REWRITES` | `1` | Grader 无相关结果时的最大查询改写次数 |
 
 ## 测试
@@ -419,37 +630,29 @@ cd backend
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-当前测试覆盖：
+当前 310 passed / 4 skipped（skip 为需要外部服务的用例）。覆盖范围：
 
 - 配置与健康检查
-- 文档解析与分块
-- Embedding 接口
-- 内存向量库与 Milvus 集成
-- RAGService 编排
-- ChatModel 流式接口
-- Chat / SSE / 文件上传 API
-- BM25、RRF 混合检索与 Rerank 回退逻辑
-- 检索评测指标与数据集加载
+- 文档解析、PDF 页边界、分块（fixed / recursive）
+- 清洗管线：各清洗器、管线 trace、清洗报告、年报清洗回归、PDF 页眉页码去噪
+- 实体上下文前缀与锚点 id 稳定性
+- Embedding 接口、内存向量库与 Milvus 集成
+- BM25、RRF 混合检索、精排（DashScope / LLM / NoOp）与回退逻辑
+- 检索评测指标、内容锚点数据集加载
 - LangGraph Router / Grader / Rewrite 分支与异常回退
 - Agent 直答、RAG 生成、无依据拒答与流式输出
+- Chat / SSE / 文件上传 / 知识库接口
+- 知识库页面与静态资源路由
+- `SourceOut` 定位字段组装与回退
+- 入库 manifest 与上下文注入
 
-健康状态下预期：
+## 已知问题与下一步
 
-```text
-98 passed, 1 skipped
-```
-
-## 常用 Docker 命令
-
-```powershell
-docker compose up -d          # 启动
-docker compose ps             # 查看状态
-docker compose stop           # 停止但保留数据
-docker compose start          # 重新启动
-docker compose logs -f milvus # 查看 Milvus 日志
-```
-
-> 不要执行 `docker compose down -v`，它会删除数据卷，导致向量数据全部丢失。
+1. **LangSmith 追踪未接**：Router / Grader / Rewrite 节点尚未打 `run_name`，链路耗时只能靠日志。
+2. **应用本体未 Docker 化**：`docker-compose.yml` 只编排 Milvus 依赖栈，无后端 `Dockerfile`。
+3. **块边界问题未解**：`tongwei-001` 的答案行被 500 字窗口从中间切断，top5 第 5 条是同文档邻居块。加 overlap 已验证是负收益，方向改为「检索后把命中块的 ±1 邻居一并作为上下文」。
+4. **多事实问题**：`iflytek-005` 两条 snippet 分属两块，需要查询拆解，与分块无关。
+5. **回答中的 Markdown 未渲染**：前端用 `textContent` 输出（防 XSS），`**加粗**` 等标记会原样显示；如需渲染应引入白名单式渲染器。
 
 ## 常见问题
 
@@ -488,19 +691,22 @@ minio/minio:RELEASE.2023-03-20T20-16-18Z
 milvusdb/milvus:v2.5.4
 ```
 
+### 精排好像没生效
+
+先看评测报告里的 `diagnostics.rerank_fallback_count`：
+
+- `0`：精排正常；
+- 大于 0：精排接口异常并已静默回退原顺序，报告里同时有 `last_fallback_error`。
+
+历史踩坑：某 rerank 服务在本机走代理必然 502、直连超时，重试无意义。**先查服务商 `/models` 确认真实模型名，再写适配器。**
+
 ### Python 找不到 app 包
 
 脚本需从 `backend` 目录运行；测试使用 `conftest.py` 自动处理导入路径。
 
 ### 前端页面没有样式或 JS 不加载
 
-前端由 FastAPI 托管在：
-
-```text
-/static
-```
-
-`index.html` 中的资源路径应为：
+前端由 FastAPI 托管在 `/static`，`index.html` 中的资源路径应为：
 
 ```html
 /static/css/style.css
@@ -509,23 +715,17 @@ milvusdb/milvus:v2.5.4
 
 ### 修改 CSS 后浏览器不更新
 
-FastAPI 静态文件不会触发热更新。开发时请在 DevTools 中勾选：
-
-```text
-Network → Disable cache
-```
-
+FastAPI 静态文件不会触发热更新。开发时请在 DevTools 中勾选 `Network → Disable cache`，
 然后使用 `Ctrl + Shift + R` 强制刷新。
 
 ### 使用 Live Server 时接口 404 / 跨域
 
-Live Server 的 `5500` 端口和 FastAPI 的 `8000` 端口不同源。开发推荐直接访问：
+Live Server 的 `5500` 端口和 FastAPI 的 `8000` 端口不同源。开发推荐直接访问 `http://127.0.0.1:8000/`。
 
-```text
-http://127.0.0.1:8000/
-```
+### 重入库会丢数据吗
 
-如果必须使用 Live Server，需要在后端配置 CORS，并让前端通过 `http://127.0.0.1:8000` 请求接口。
+不会。`IngestionService` 先写入新锚点，再删除同文档中已不存在的旧锚点，属于安全替换。
+但**不要执行 `docker compose down -v`**，它会删除数据卷，向量数据全部丢失。
 
 ## 安全说明
 
