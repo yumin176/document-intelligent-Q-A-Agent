@@ -56,6 +56,14 @@ class Settings(BaseSettings):
     # Agent
     agent_max_rewrites: int = 1
 
+    # LangSmith 全链路追踪（可选）：api_key 配置且 tracing 打开后才启用，
+    # 默认关闭，不发任何网络请求（测试与离线环境安全）
+    langsmith_tracing: bool = False
+    langsmith_api_key: str = ""
+    langsmith_project: str = "smart-qa-agent"
+    # 国内网络访问慢时，可换成官方 agent 网关或代理地址
+    langsmith_endpoint: str = "https://api.smith.langchain.com"
+
     # chunk
     chunk_strategy: Literal["fixed", "recursive"] = "fixed"
     chunk_size: int = 500

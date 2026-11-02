@@ -1,5 +1,6 @@
 """FastAPI 应用入口。"""
 
+import logging
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -11,8 +12,11 @@ from app.api.routes.documents import router as documents_router
 from app.api.routes.health import router as health_router
 from app.api.routes.knowledge import router as knowledge_router
 from app.config import get_settings
+from app.observability.tracing import is_enabled
 
 FRONTEND_DIR = Path(__file__).resolve().parents[2] / "frontend"
+
+logger = logging.getLogger(__name__)
 
 
 def create_app() -> FastAPI:
@@ -30,6 +34,8 @@ def create_app() -> FastAPI:
     app.include_router(chat_router)
     app.include_router(documents_router)
     app.include_router(knowledge_router)
+
+    logger.info("LangSmith 追踪: %s", "已启用" if is_enabled() else "关闭")
 
     app.mount(
         "/static",

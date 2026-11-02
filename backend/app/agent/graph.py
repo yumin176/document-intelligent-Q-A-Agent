@@ -81,6 +81,7 @@ class AgentGraph:
         return self.run(question)["route"]
 
     def _router_node(self, state: AgentState) -> dict:
+        # 节点级 span 由 LangGraph 原生上报（节点名即 run_name），无需手动埋点
         route = route_question(
             question=state["question"],
             chat_model=self.chat_model,
