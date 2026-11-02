@@ -12,3 +12,8 @@ httpx>=0.27,<1.0
 pypdf>=4.0,<6.0
 pymilvus>=2.5,<2.6
 openai>=3.19,<4.0
+numpy>=1.26,<3.0
+# 上传接口（UploadFile / File）运行时依赖，缺了会在注册路由时报错
+python-multipart>=0.0.9,<1.0
+# 追踪：虽然是 langchain 的传递依赖，但我们直接 import，需显式声明
+langsmith>=0.3,<1.0
