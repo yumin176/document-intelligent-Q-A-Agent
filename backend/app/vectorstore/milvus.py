@@ -62,7 +62,7 @@ class MilvusStore(VectorStore):
             limit=top_k,
             filter=filter_expr or "",
             output_fields=["text", "metadata_json"],
-            consistency_level="Strong",
+            consistency_level="Strong", #控制本次读取操作能看到多“新”的数据，Strong 等到最新数据同步后再查询，延迟最高。默认的 Bounded 级别允许读取略微滞后的数据
             timeout=self.timeout,
         )
 
