@@ -83,15 +83,26 @@ class MilvusStore(VectorStore):
             )
         return search_results
 
-    def all_chunks(self)->list[TextRecord]:
+    def all_chunks(self, include_text: bool = True) -> list[TextRecord]:
         if not self._client.has_collection(self.collection_name):
             return []
+        # include_text=False 供只遍历 metadata 的调用方减负：
+        # 实测 2620 块下 text 约占载荷一半，不传输可把全表扫描
+        # 从 ~618ms 降到 ~327ms（知识库文档列表场景）。
+        output_fields = (
+            ["id", "text", "metadata_json"]
+            if include_text
+            else ["id", "metadata_json"]
+        )
         rows = self._client.query(
             collection_name=self.collection_name,
             filter="",
-            output_fields=["id", "text", "metadata_json"],
+            output_fields=output_fields,
             limit=16384,
-            consistency_level="Strong",
+            # 刻意用默认（Bounded）一致性，理由同 get_by_ids：
+            # upsert/delete 都已同步 flush，新数据对 Bounded 读立即可见，
+            # Strong 每次要多等约 250ms 时间戳对齐（实测 874ms vs 618ms）。
+            consistency_level="Bounded",
         )
 
         records: list[TextRecord] = []

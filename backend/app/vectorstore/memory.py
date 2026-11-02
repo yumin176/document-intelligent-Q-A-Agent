@@ -48,7 +48,8 @@ class InMemoryVectorStore(VectorStore):
         ]
         return result
 
-    def all_chunks(self)->list[TextRecord]:
+    def all_chunks(self, include_text: bool = True) -> list[TextRecord]:
+        # 内存实现没有网络传输成本，include_text 直接忽略
         result=[
             TextRecord(
                 id=id,

@@ -50,8 +50,13 @@ class VectorStore(ABC):
         """按向量相似度检索 top_k 条记录。"""
 
     @abstractmethod
-    def all_chunks(self) -> list[TextRecord]:
-        """返回全部 chunk 的文本和元数据，用于构建 BM25 索引。"""
+    def all_chunks(self, include_text: bool = True) -> list[TextRecord]:
+        """返回全部 chunk 的文本和元数据，用于构建 BM25 索引。
+
+        include_text=False 时允许实现省略正文（如 Milvus 不传输 text
+        字段），供只需要统计/遍历 metadata 的调用方（知识库文档列表、
+        入库后清理旧锚点）减负。text 内容不保证有值。
+        """
 
     def get_by_ids(self, ids: list[str]) -> list[TextRecord]:
         """按主键批量取回 chunk，返回顺序与入参一致，查不到的 id 直接跳过。

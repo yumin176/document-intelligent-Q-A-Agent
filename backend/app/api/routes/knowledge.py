@@ -27,7 +27,9 @@ def list_documents(
     store: VectorStore = Depends(get_vector_store),
 ) -> list[DocumentSummary]:
     documents: dict[str, DocumentSummary] = {}
-    for record in store.all_chunks():
+    # 文档列表只需要 metadata 里的 document 级信息，不用把全部正文
+    # 拉回来（实测省掉约一半传输量）
+    for record in store.all_chunks(include_text=False):
         metadata = record.metadata
         document_id = metadata.get("document_id")
         if not document_id:

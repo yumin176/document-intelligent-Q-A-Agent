@@ -259,7 +259,8 @@ class IngestionService:
             new_ids = {record.id for record in records}
             old_ids = {
                 record.id
-                for record in self.vector_store.all_chunks()
+                # 只需要 metadata 里的 document_id，不必取回正文
+                for record in self.vector_store.all_chunks(include_text=False)
                 if record.metadata.get("document_id") == document_id
             }
             stale_ids = old_ids - new_ids
