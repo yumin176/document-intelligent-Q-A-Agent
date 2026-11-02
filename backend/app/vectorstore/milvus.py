@@ -62,7 +62,11 @@ class MilvusStore(VectorStore):
             limit=top_k,
             filter=filter_expr or "",
             output_fields=["text", "metadata_json"],
-            consistency_level="Strong", #控制本次读取操作能看到多“新”的数据，Strong 等到最新数据同步后再查询，延迟最高。默认的 Bounded 级别允许读取略微滞后的数据
+            # 刻意用默认（Bounded）一致性，理由同 all_chunks / get_by_ids：
+            # upsert/delete 都已同步 flush，新数据对 Bounded 读立即可见，
+            # Strong 每次要多等时间戳对齐，聊天热路径不值得（实测见
+            # scripts/bench_all_chunks.py，该等待与查询类型无关）。
+            consistency_level="Bounded",
             timeout=self.timeout,
         )
 
