@@ -9,7 +9,7 @@
 | `retrieval_cases_content.jsonl` | 45 | 20 题 Vue 3 技术文档 + 25 题上市公司年报（5 家） | 生产语料主评测集，最贴近线上 |
 | `retrieval_cases_pdf.jsonl` | 25 | 仅上市公司年报 | 数值 / 表格类问题专项 |
 | `retrieval_cases_pilot.jsonl` | 14 | 4 题技术文档 + 10 题年报 | 早期 pilot，做交叉验证 |
-| `qa_refusal_cases.jsonl` | 2 | 知识库外问题 | 拒答链路，不计入 Recall / MRR / nDCG |
+| `qa_refusal_cases.jsonl` | 3 | 知识库外问题（未来股价 / 未来市值 / Vue 4 文档） | 拒答链路，不计入 Recall / MRR / nDCG |
 | `retrieval_cases.jsonl` | 27 | 单篇 `js.md`，用 `filename + chunk_index` 标注 | 迁移前旧格式，仅作对照 |
 
 ## 标注格式（内容锚点，当前标准）
