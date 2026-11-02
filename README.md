@@ -16,7 +16,7 @@
 | M3 | FastAPI 接口、SSE 流式输出、文档上传、原生前端 | ✅ 已完成 |
 | M4 | 混合检索（向量 + BM25 + Rerank）与对比评测 | ✅ 已完成 |
 | M5 | LangGraph Agent 工作流（Router / Grader / Rewrite） | ✅ 已完成 |
-| M6 | 入库链路改造、知识库查看、追踪与交付收尾 | 🟡 进行中 |
+| M6 | 入库链路改造、知识库查看、追踪与交付收尾 | ✅ 已完成 |
 
 M6 细分（详细过程见 `docs/召回质量问题清单.md`、`docs/M6-optimization-log.md`）：
 
@@ -30,8 +30,8 @@ M6 细分（详细过程见 `docs/召回质量问题清单.md`、`docs/M6-optimi
 | 知识库只读接口 | ✅ | `/api/knowledge/*` 三个接口 + 测试 |
 | 知识库查看页面 | ✅ | `/knowledge`：文档列表 → chunk 列表 → 锚点高亮定位 |
 | 来源卡片点击跳转 | ✅ | `sources` 事件带 `anchor_id` 等定位字段，卡片可点 |
-| LangSmith 全链路追踪 | ⏳ 待做 | Router / Grader / Rewrite 节点尚未打点 |
-| 应用本体 Docker 打包 | ⏳ 待做 | 当前 compose 只编排 Milvus 依赖栈 |
+| LangSmith 全链路追踪 | ✅ | 根 span + 4 个节点 + LLM span，单请求一条 trace |
+| 应用本体 Docker 打包 | ✅ | `backend/Dockerfile`，compose 一键起 api + Milvus 依赖栈 |
 
 ## 技术栈
 
@@ -47,8 +47,9 @@ M6 细分（详细过程见 `docs/召回质量问题清单.md`、`docs/M6-optimi
 | 分块 | `fixed` / `recursive`，默认 `fixed`，`chunk_size=500`、`chunk_overlap=50` |
 | 前端 | 原生 HTML / CSS / JavaScript |
 | 流式协议 | SSE（Server-Sent Events） |
-| 测试 | pytest（310 passed / 4 skipped） |
-| 部署 | Docker Compose（Milvus + etcd + MinIO） |
+| 可观测性 | LangSmith（默认关闭，按需开启；载荷脱敏） |
+| 测试 | pytest（326 passed / 4 skipped） |
+| 部署 | Docker Compose（api + Milvus + etcd + MinIO，一条命令） |
 
 ## 核心特性
 
@@ -230,6 +231,7 @@ backend/
 │   ├── rag/                 # RAGService 组装层
 │   ├── retrieval/           # 向量、BM25、RRF、Rerank 检索器
 │   ├── rerank/              # DashScope / LLM / NoOp Reranker
+│   ├── observability/       # LangSmith 追踪封装（关闭时零开销）
 │   ├── evaluation/          # Recall、MRR、nDCG 指标与评测运行器
 │   └── prompts/             # Prompt 模板
 ├── scripts/
@@ -264,7 +266,9 @@ docs/
 ├── M6-optimization-log.md   # M6 基线冻结记录
 └── 召回质量问题清单.md      # 召回问题的定位、实验、结论与负结果
 
-docker-compose.yml           # Milvus + etcd + MinIO
+docker-compose.yml           # api + Milvus + etcd + MinIO
+backend/Dockerfile           # 后端镜像（依赖分层、非 root、自带 healthcheck）
+.dockerignore                # 构建上下文排除 venv / 密钥 / 评测数据
 .env.example                 # 环境变量模板
 ```
 
@@ -318,29 +322,42 @@ AGENT_MAX_REWRITES=1
 > `LLM_BASE_URL` / `LLM_API_KEY` 留空时，会复用 `EMBEDDING_BASE_URL` / `EMBEDDING_API_KEY`。
 > `.env` 已被 `.gitignore` 忽略，请勿提交真实密钥。
 
-### 4. 启动 Milvus
+### 4. 启动（二选一）
 
-在项目根目录执行：
+**方式一：Docker 一键启动（推荐，验收用这个）**
 
 ```powershell
-docker compose up -d
+docker compose up -d --build
 docker compose ps
 ```
 
-### 5. 启动后端
+首次构建约 3–5 分钟；之后只改 `backend/app` 或 `frontend` 时重建很快（依赖单独一层，不重装）。
+`api` 容器自带 healthcheck，`docker compose ps` 里显示 `healthy` 即就绪。
+
+两个容易踩的点：
+
+- 密钥通过 `env_file: ./backend/.env` 注入，**不会打进镜像**（`.dockerignore` 已排除）；
+- 容器里的 `127.0.0.1` 指容器自己，所以 compose 把 `MILVUS_URI` 覆盖成 `http://milvus:19530`。
+  若日后把 Embedding / LLM / Rerank 换成本机服务，同样要改成 `http://host.docker.internal:端口`。
+
+**方式二：本地开发（改代码即时生效）**
 
 ```powershell
+docker compose up -d etcd minio milvus   # 只起依赖栈
 cd backend
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload
 ```
 
-访问：
+两种方式访问地址相同：
 
 - Web 界面：http://127.0.0.1:8000/
+- 知识库页：http://127.0.0.1:8000/knowledge
 - 健康检查：http://127.0.0.1:8000/health
 - Swagger 文档：http://127.0.0.1:8000/docs
 
-### 6. 使用 Web 界面
+> 端口冲突：Docker 版与本地版都占用 8000，切换时先停掉另一个。
+
+### 5. 使用 Web 界面
 
 1. 左侧选择 `.txt` / `.md` / `.pdf` 文件并上传（自动走清洗、实体前缀、分块、入库）；
 2. 输入问题，点击发送；
@@ -593,6 +610,37 @@ cd backend
   --candidate-k 50 --top-k 5 --modes hybrid hybrid_rerank
 ```
 
+## 可观测性：LangSmith 全链路追踪
+
+**默认关闭**：`LANGSMITH_TRACING=false`（或没填 key）时不创建客户端、不发任何网络请求。
+`tests/conftest.py` 里用环境变量强制关闭，避免开发者本地开了追踪后单测往远端刷几百条 trace。
+
+开启方式（写进 `backend/.env`）：
+
+```text
+LANGSMITH_API_KEY=lsv2_pt_xxx
+LANGSMITH_TRACING=true
+LANGSMITH_PROJECT=smart-qa-agent
+```
+
+一次问答对应一条 trace，`/api/chat` 与 `/api/chat/stream` 结构一致：
+
+| span | 类型 | 记录内容 |
+|---|---|---|
+| `AgentService.answer` | chain | 根 span：request_id、检索模式、candidate_k、collection、来源数与回答字数 |
+| `LangGraph` | chain | 图执行整体耗时 |
+| `router` / `retrieve` / `grade` / `rewrite` | chain | LangGraph 原生上报，节点名即 run_name |
+| `_route_after_router` / `_route_after_grader` | chain | 条件边走向（direct / retrieve / ready / rewrite） |
+| `generate` | llm | 首 token 延迟、总字数、耗时；输入是完整 system + user 消息 |
+
+三个实现细节，都是实测撞出来的：
+
+1. **节点 span 不手动埋点**。LangGraph 在追踪开启时会自动为每个节点上报，再手动加一层会出现同名 span 重复，且两层都会上传完整 state。
+2. **载荷必须脱敏**。原生节点输出是整个 AgentState，含 50 条候选正文；客户端挂 `hide_inputs` / `hide_outputs` 把候选压成 `{id, score}`，单条 trace 的输出体积从几十 KB 降到约 1.8 KB。
+3. **SSE 端点必须是 async**。同步生成器会被 Starlette 丢进线程池迭代，`with` 的进入与退出跨线程，根 span 上报不出去（表现为只剩一个孤立的 `generate`）。改成 async 端点后，阻塞的检索与打分再用 `run_in_threadpool` 隔离，不卡事件循环。
+
+关掉追踪时，这些埋点全部走 `None` 分支，链路行为与未接入前完全一致。
+
 ## 配置说明
 
 | 环境变量 | 默认值 | 说明 |
@@ -622,6 +670,10 @@ cd backend
 | `CHUNK_SIZE` | `500` | 分块长度 |
 | `CHUNK_OVERLAP` | `50` | 分块重叠（不建议调大，见负结果） |
 | `AGENT_MAX_REWRITES` | `1` | Grader 无相关结果时的最大查询改写次数 |
+| `LANGSMITH_TRACING` | `false` | 是否开启 LangSmith 追踪，需同时配置 key |
+| `LANGSMITH_API_KEY` | 空 | LangSmith API Key，空则追踪不生效 |
+| `LANGSMITH_PROJECT` | `smart-qa-agent` | LangSmith 项目名（trace 归档位置） |
+| `LANGSMITH_ENDPOINT` | `https://api.smith.langchain.com` | 上报地址，国内可换 agent 网关 |
 
 ## 测试
 
@@ -630,7 +682,7 @@ cd backend
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-当前 310 passed / 4 skipped（skip 为需要外部服务的用例）。覆盖范围：
+当前 326 passed / 4 skipped（skip 为需要外部服务的用例）。覆盖范围：
 
 - 配置与健康检查
 - 文档解析、PDF 页边界、分块（fixed / recursive）
@@ -645,14 +697,14 @@ cd backend
 - 知识库页面与静态资源路由
 - `SourceOut` 定位字段组装与回退
 - 入库 manifest 与上下文注入
+- LangSmith 追踪封装：默认关闭不联网、载荷脱敏、span 参数装配
 
 ## 已知问题与下一步
 
-1. **LangSmith 追踪未接**：Router / Grader / Rewrite 节点尚未打 `run_name`，链路耗时只能靠日志。
-2. **应用本体未 Docker 化**：`docker-compose.yml` 只编排 Milvus 依赖栈，无后端 `Dockerfile`。
-3. **块边界问题未解**：`tongwei-001` 的答案行被 500 字窗口从中间切断，top5 第 5 条是同文档邻居块。加 overlap 已验证是负收益，方向改为「检索后把命中块的 ±1 邻居一并作为上下文」。
-4. **多事实问题**：`iflytek-005` 两条 snippet 分属两块，需要查询拆解，与分块无关。
-5. **回答中的 Markdown 未渲染**：前端用 `textContent` 输出（防 XSS），`**加粗**` 等标记会原样显示；如需渲染应引入白名单式渲染器。
+1. **块边界问题未解**：`tongwei-001` 的答案行被 500 字窗口从中间切断，top5 第 5 条是同文档邻居块。加 overlap 已验证是负收益，方向改为「检索后把命中块的 ±1 邻居一并作为上下文」。
+2. **多事实问题**：`iflytek-005` 两条 snippet 分属两块，需要查询拆解，与分块无关。
+3. **回答中的 Markdown 未渲染**：前端用 `textContent` 输出（防 XSS），`**加粗**` 等标记会原样显示；如需渲染应引入白名单式渲染器。
+4. **`all_chunks()` 仍走 Strong 一致性**：每次全表约 575ms，知识库页首屏因此约 1.1s。改成 Bounded 可降到 0.3s 量级，但涉及检索主链路的一致性语义，需单独评估后再动。
 
 ## 常见问题
 
@@ -690,6 +742,26 @@ quay.io/coreos/etcd:v3.5.5
 minio/minio:RELEASE.2023-03-20T20-16-18Z
 milvusdb/milvus:v2.5.4
 ```
+
+`backend/Dockerfile` 的基础镜像同理固定为华为云镜像源（`swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/python:3.11-slim`）。
+**如果你机器的 Docker 配了 registry 加速器**（Docker Desktop → Settings → Docker Engine → `registry-mirrors`），
+加速器证书失效时会报 `x509: certificate is not valid for any names`——这类报错来自加速器，与项目无关，
+要么在加速器里换一个可用地址，要么直接把 Dockerfile 的 `FROM` 换成能拉通的完整镜像地址。
+
+### 容器启动即退出 / healthcheck 一直 starting
+
+先看日志，不要猜：
+
+```powershell
+docker logs smart-qa-api --tail 50
+```
+
+两个真实踩过的案例：
+
+- `RuntimeError: Form data requires "python-multipart" to be installed`：上传接口的路由注册依赖它，
+  但本地 venv 里恰好装了、`requirements.txt` 漏了。已补入依赖清单。
+- `failed to read .env: line 1: unexpected character "#" in variable name`：`backend/.env` 首行混入了
+  非注释文本。pydantic 会忽略这类行，但 compose 的 `env_file` 解析器更严格，直接拒绝启动。
 
 ### 精排好像没生效
 
